@@ -10,7 +10,7 @@ class CourseController {
     def courseService
 
     static navigation = [
-        group:'mainMenu',
+        group:'mainLinks',
         action:'list',
         title:'Courses',
 		isVisible: { SecurityUtils.subject?.isAuthenticated() },

@@ -12,7 +12,7 @@ class LessonDateController {
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
     static navigation = [
-        group:'mainMenu',
+        group:'mainLinks',
         action:'calendar',
         title:'Calendar',
         isVisible: { SecurityUtils.subject?.isAuthenticated() },

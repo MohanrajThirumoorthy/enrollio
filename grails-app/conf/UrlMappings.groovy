@@ -8,7 +8,7 @@ class UrlMappings {
 
 	// auth controller
 	'/login'(controller: 'auth', action: 'login')
-	'/logout'(controller: 'auth', action: 'signOut')
+	'/logout'(controller: 'auth', action: 'logout')
 	'/unauthorized' (controller: 'auth', action: 'unauthorized')
 	'/signin'(controller: 'auth', action: 'signIn')
 

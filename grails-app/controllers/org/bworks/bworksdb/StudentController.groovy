@@ -10,7 +10,7 @@ class StudentController {
     def searchableService
 
     static navigation = [
-        group:'mainMenu',
+        group:'mainLinks',
         action:'list',
         title:'Students',
 		isVisible: { SecurityUtils.subject?.isAuthenticated() },

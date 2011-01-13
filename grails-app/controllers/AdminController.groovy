@@ -7,12 +7,13 @@ class AdminController {
     def searchableService
 
     static navigation = [
-        group:'mainMenu',
+        group:'adminLinks',
         action:'index',
         title:'Admin',
         order:100,
-		isVisible: { SecurityUtils.subject?.hasRole("Administrator") }
+        isVisible: { SecurityUtils.subject?.hasRole("Administrator") }
     ]
+    
 
     def startMirroring = {
         searchableService.startMirroring()

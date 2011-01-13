@@ -1,0 +1,30 @@
+body{
+    font-family: Arial, Tahoma, Verdana;
+}
+
+/* Remove line between header and nav. tabs */
+#header.ui-widget-header, #header + .ui-widget-header {
+    border-top : none;
+}
+
+#studentSearchForm {
+    padding:15px;
+    float:right;
+}
+
+#secondMenu {
+    /* border:none; */
+}
+
+#someMenu {
+    border : none;
+}
+
+#someMenu a, #someMenu a:visited {
+    padding-left : 15px;
+}
+
+#ulSecond {
+    background : none;
+    border : none;
+}

@@ -10,25 +10,24 @@ class AuthController {
 
     def shiroSecurityManager
 
-    def index = { redirect(action: "login", params: params) }
-
     static navigation = [
-        [
-            group:'mainMenu',
-            action:'login',
-            title:'Login',
-            isVisible: { !SecurityUtils.subject?.isAuthenticated() },
-            order:300
-        ],
-        [
-        
-            group:'mainMenu',
-            action:'signOut',
-            title:'Logout',
-            isVisible: { SecurityUtils.subject?.isAuthenticated() },
-            order:300
+            [
+                group:'login',
+                action:'login',
+                title:'Login',
+                isVisible: { !SecurityUtils.subject?.isAuthenticated() },
+                order:300
+            ],
+            [
+            
+                group:'login',
+                action:'logout',
+                title:'Logout',
+                isVisible: { SecurityUtils.subject?.isAuthenticated() },
+                order:300
+            ]
         ]
-    ]
+    def index = { redirect(action: "login", params: params) }
 
     def login = {
         return [ username: params.username, rememberMe: (params.rememberMe != null), targetUri: params.targetUri ]
@@ -85,7 +84,7 @@ class AuthController {
         }
     }
 
-    def signOut = {
+    def logout = {
         // Log the user out of the application.
         SecurityUtils.subject?.logout()
 
