@@ -9,31 +9,33 @@
         <!--[if IE]>
         <link rel="stylesheet" type="text/css" href="css/ie-sucks.css" />
         <![endif]-->
+        <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'960.css')}" />
+        <!--
         <link rel="stylesheet" type="text/css" href="${resource(dir:'css/redmond', file:'jquery-ui-1.7.2.custom.css')}" />
         <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'theme.css')}" />
         <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'style.css')}" />
         <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'theme1.css')}" />
+        -->
         <g:layoutHead />
         <nav:resources override="true" />
         <g:javascript library="application" />
     </head>
     <body>
-        <div id="container">
-            <div id="header">
-                <g:mascotIcon style="vertical-align:middle" />
-                <shiro:isLoggedIn>
-                    <h2 style="display:inline">Welcome to Enrollio, 
-                    <shiro:principal />!</h2>
-                </shiro:isLoggedIn>
-                <shiro:isNotLoggedIn>
-                    <h2 style="display:inline">Welcome to Enrollio!</h2>
-                </shiro:isNotLoggedIn>
-    
-                <div id="topmenu">
-                    <nav:render group="mainMenu" /> 
-                </div>
-            </div>
-            <g:layoutBody />
-        </div>
+    <div id="header" class="container_16">
+        <g:mascotIcon style="vertical-align:middle" />
+        <shiro:isLoggedIn>
+        <h2 style="display:inline">Welcome to Enrollio, 
+        <shiro:principal />!</h2>
+        </shiro:isLoggedIn>
+        <shiro:isNotLoggedIn>
+        <h2 style="display:inline">Welcome to Enrollio!</h2>
+        </shiro:isNotLoggedIn>
+
+        <div id="topmenu">
+        <nav:render group="mainMenu" /> 
+    </div>
+    <div id="content" class="container_16">
+        <g:layoutBody />
+    </div>
     </body>
 </html>

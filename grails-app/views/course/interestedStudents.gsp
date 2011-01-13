@@ -149,19 +149,8 @@
                         </g:form>
                     <table>
                         <thead>
-                            <th>Contact</th>
+                            <th colspan="2">Contact</th>
                             <th>Students</th>
-                            <th colspan="1">
-                                Reserved For? <a id="changeAllLink" href="#">Reserve All</a>
-                                <div id="changeAllDiv" style="display:none">
-                                        <g:select id="changeAllSelectBox"
-                                        name="reserveAllForUser"
-                                        from="${users}" 
-                                        optionKey="id" 
-                                        value=""
-                                        noSelection="['':'']" />
-                                </div>
-                            </th>
                         </thead>
                         <g:each var="con" 
                             in="${contactInstanceList}">
