@@ -17,38 +17,46 @@
                         <g:link id="${course.id}" action="show" controller="course">${course.name}</g:link>
                     </li>
                 </g:each>
-                </span>
             </ul>
             <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:render template="individualCourseMenu" />
                 <p class="youhave">${courseInstance.name}</p>
                 <p class="youhave">${courseInstance.description}</p>
                 <p class="youhave">${activeInterestCount} interested Students</p>
-                        <table>
-                            <tbody>
+                <div>
+                <div class="ui-widget ui-widget-content ui-corner-all">
+                    <div class="ui-widget-header ui-corner-all ui-helper-clearfix">
+                        <span class="ui-dialog-title" id="ui-dialog-title-dialog">Lessons</span>
+                    </div>
+                    <div id="dialog" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 101.6px; height: auto;">
+                        <ul>
                                 <g:each var="lesson" in="${courseInstance.lessons}">
-                                    <tr>
-                                        <td>
+                                <li>
                                             <g:link controller="lesson" action="show"
                                             id="${lesson.id}">
                                             ${lesson?.encodeAsHTML()}</g:link>
-                                        </td>
-                                    </tr>
+                                </li>
                                 </g:each>
-                            </tbody>
-                        </table>
-                        <table>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ui-widget ui-widget-content ui-corner-all">
+                    <div class="ui-widget-header ui-corner-all ui-helper-clearfix">
+                        <span class="ui-dialog-title" id="ui-dialog-title-dialog">Sessions</span>
+                    </div>
+                    <div id="dialog" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 101.6px; height: auto;">
+                        <ul>
                                 <g:each var="session" in="${courseInstance.classSessions}">
-                                    <tr>
-                                        <td>
+                                <li>
                                             <g:link controller="classSession"
                                             action="show" id="${session.id}">
                                             ${session?.name}</g:link>
-                                        </td>
-                                        <td><enrollio:formatDate date="${session.startDate}" /></td>
-                                    </tr>
+                                </li>
                                 </g:each>
-                        </table>
+                        </ul>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
     </g:if>
