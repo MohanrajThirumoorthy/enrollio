@@ -18,17 +18,16 @@
                     </li>
                 </g:each>
             </ul>
-            <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+            <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:render template="individualCourseMenu" />
                 <p class="youhave">${courseInstance.name}</p>
                 <p class="youhave">${courseInstance.description}</p>
                 <p class="youhave">${activeInterestCount} interested Students</p>
-                <div>
-                <div class="ui-widget ui-widget-content ui-corner-all">
+                <div style="width:40%;float:left;" class="ui-widget ui-widget-content ui-corner-all">
                     <div class="ui-widget-header ui-corner-all ui-helper-clearfix">
                         <span class="ui-dialog-title" id="ui-dialog-title-dialog">Lessons</span>
                     </div>
-                    <div id="dialog" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 101.6px; height: auto;">
+                    <div id="dialog" style="border-right:none;" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 101.6px; height: auto;">
                         <ul>
                                 <g:each var="lesson" in="${courseInstance.lessons}">
                                 <li>
@@ -40,7 +39,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="ui-widget ui-widget-content ui-corner-all">
+                <div style="width:40%;float:left;" class="ui-widget ui-widget-content ui-corner-all">
                     <div class="ui-widget-header ui-corner-all ui-helper-clearfix">
                         <span class="ui-dialog-title" id="ui-dialog-title-dialog">Sessions</span>
                     </div>
@@ -55,7 +54,6 @@
                                 </g:each>
                         </ul>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
