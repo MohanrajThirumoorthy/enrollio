@@ -40,7 +40,11 @@
                     $(".phoneNumber").mask("(999) 999-9999")
             });
         </script>
-        <div class="grid_16">
+        <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+            <g:link url="${[controller:'course', action:'create']}" id="newCourseLink" class="module_add">&#160;New</g:link>
+        </div>
+        <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <div class="float-container ui-tabs-panel ui-widget-content ui-corner-bottom">
             <g:hasErrors bean="${contactInstance}">
                 <div class="errors">
                     <g:renderErrors bean="${contactIntance}" as="list" />
