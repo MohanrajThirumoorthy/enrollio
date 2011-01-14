@@ -24,8 +24,9 @@ class CourseController {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
         def courseInstanceList = Course.list( params )
         def courseInstance = courseInstanceList[0]
-        [ courseInstanceList : courseInstanceList, courseInstance : courseInstance,
-          courseInstanceTotal: Course.count() ]
+        render(view:'show', 
+             model : [ courseInstanceList : courseInstanceList, courseInstance : courseInstance,
+                       courseInstanceTotal: Course.count() ])
     }
 
     def saveLessonSort = {
@@ -51,14 +52,23 @@ class CourseController {
     }
 
     def show = {
-        def courseInstance = Course.get( params.id )
-
-        if(!courseInstance) {
-            flash.message = "Course not found with id ${params.id}"
-            redirect(action:list)
+        def courseInstance
+        def courseInstanceList = Course.list()
+        if (params.id != '') {
+            courseInstance = Course.get( params.id )
         }
-        else { return [ courseInstance : courseInstance, 
-            activeInterestCount : courseService.activeInterests(courseInstance).size() ] }
+        else {
+            courseInstance = courseInstanceList[0]
+        }
+
+        if(!courseInstance && params.id) {
+            flash.message = "Course not found with id ${params.id}"
+        }
+        else { 
+            return [ courseInstance : courseInstance, 
+                     activeInterestCount : courseService.activeInterests(courseInstance).size(),
+                     courseInstanceList : courseInstanceList ]
+        }
     }
 
     def delete = {
