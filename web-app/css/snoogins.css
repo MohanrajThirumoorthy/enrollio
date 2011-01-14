@@ -42,3 +42,24 @@ body{
     padding-right : 15px;
     float : left;
 }
+
+/* - see http://pageaffairs.com/web/css/containing-floats/ */
+.float-container {
+    overflow : hidden;
+}
+
+fieldset {
+    margin : 1em 0;
+    padding : 1em;
+    margin-right : 1em;
+}
+
+fieldset input {
+    width : 13em;
+}
+
+fieldset label {
+    float:left;
+    width:8em;
+}
+
