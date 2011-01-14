@@ -8,12 +8,6 @@
                 Waiting List
             </g:link></li>
         
-            <li>
-            <g:link class="waiting_list" action="interestedStudents" 
-               controller="course" id="${courseInstance.id}">
-                Waiting List
-            </g:link>
-            </li>
             <!--
             <li>
             <g:link class="group_gear" name="manageCallListLink" 
