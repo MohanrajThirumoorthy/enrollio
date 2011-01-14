@@ -28,19 +28,6 @@
                             <!-- For some reason, these links get added out of order (add->edit) -->
                                         <br />
                             </h3>
-                        <table>
-                            <tbody>
-                                <g:each var="lesson" in="${courseInstance.lessons}">
-                                    <tr>
-                                        <td>
-                                            <g:link controller="lesson" action="show"
-                                            id="${lesson.id}">
-                                            ${lesson?.encodeAsHTML()}</g:link>
-                                        </td>
-                                    </tr>
-                                </g:each>
-                            </tbody>
-                        </table>
                     </div>
                     <div class="infobox margin-left">
                         <h3 class="reallynow">
@@ -49,17 +36,6 @@
                         </h3>
                         <table>
                             <tbody>
-                                <g:each var="session"
-                                in="${courseInstance.classSessions}">
-                                    <tr>
-                                        <td>
-                                            <g:link controller="classSession"
-                                            action="show" id="${session.id}">
-                                            ${session?.name}</g:link>
-                                        </td>
-                                        <td><enrollio:formatDate date="${session.startDate}" /></td>
-                                    </tr>
-                                </g:each>
                             </tbody>
                         </table>
                     </div>
