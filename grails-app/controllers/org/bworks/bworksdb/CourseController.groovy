@@ -26,6 +26,7 @@ class CourseController {
         def courseInstance = courseInstanceList[0]
         render(view:'show', 
              model : [ courseInstanceList : courseInstanceList, courseInstance : courseInstance,
+                     activeInterestCount : courseService.activeInterests(courseInstance).size(),
                        courseInstanceTotal: Course.count() ])
     }
 
