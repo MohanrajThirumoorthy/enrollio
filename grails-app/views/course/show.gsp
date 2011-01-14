@@ -21,6 +21,7 @@
             </ul>
             <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:render template="individualCourseMenu" />
+                <p class="youhave">${courseInstance.name}</p>
                 <p class="youhave">${courseInstance.description}</p>
                 <p class="youhave">${activeInterestCount} interested Students</p>
                         <table>
