@@ -172,16 +172,6 @@
                                 classSessionId:classSessionInstance?.id]" />
                 </div>
             </div>
-            <div id="sidebar">
-                <g:if test="${classSessionInstance}">
-                    <g:render template="/classSession/individualClassSessionMenu" 
-                    model="[classSessionInstance:classSessionInstance]" />
-                </g:if>
-                <g:else>
-                <g:render template="individualCourseMenu" 
-                        model="[q:params.q, reservedForUserId : reservedForUserId]"/>
-                </g:else>
-            </div>
         </div>
     </body>
 </html>

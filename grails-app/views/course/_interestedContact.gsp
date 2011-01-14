@@ -39,24 +39,4 @@
     
     
     </td>
-    <td>
-
-            <!-- show red push pin if this contact is reserved for currently logged
-                 in user -->
-        <g:if test="${callListContacts[contactInstance.id]?.user?.id == currentUser.id}">
-            <img src="${resource(dir:'images/icons', file:'push_pin_red.png')}" 
-                    contactId="${contactInstance.id}" 
-                    userId=""
-                    class="reservationPushPin" 
-                    courseId="${courseInstance.id}"/>
-        </g:if>
-        <g:else>
-        <!-- Post a gray pin, and the current users ID -->
-            <img src="${resource(dir:'images/icons', file:'push_pin_gray.png')}" 
-                    contactId="${contactInstance.id}" 
-                    userId="${currentUser.id}"
-                    class="reservationPushPin" 
-                    courseId="${courseInstance.id}"/>
-        </g:else>
-    </td>
 </tr>
