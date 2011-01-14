@@ -22,7 +22,10 @@ class CourseController {
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        [ courseInstanceList: Course.list( params ), courseInstanceTotal: Course.count() ]
+        def courseInstanceList = Course.list( params )
+        def courseInstance = courseInstanceList[0]
+        [ courseInstanceList : courseInstanceList, courseInstance : courseInstance,
+          courseInstanceTotal: Course.count() ]
     }
 
     def saveLessonSort = {
