@@ -7,17 +7,16 @@
         <title>Student List</title>
     </head>
     <body>
-        <div id="sidebar" class="grid_3 alpha">
-            <g:render template="studentMenu" />
-        </div>
-        <div id="students" class="grid_13">
-            <h3 class="reallynow">Students 
-                <br /></h3>
+    <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <g:link action="create" controller="student" 
+                id="newStudentLink" class="user_add">&#160;New Student</g:link>
+    </div>
+    <div id="students">
             <table>
                 <thead>
                     <tr>
-                        <g:sortableColumn property="contact" title="Contact" />
-                        <g:sortableColumn property="firstName" title="Student(s)" />
+                        <th>Column </th>
+                        <th>Students </th>
                         <th>Info</th>
                     </tr>
                 </thead>
