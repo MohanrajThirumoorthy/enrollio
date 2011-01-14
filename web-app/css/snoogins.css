@@ -20,11 +20,25 @@ body{
     border : none;
 }
 
-#someMenu a, #someMenu a:visited {
+#someMenu a, #someMenu a:visited, .menuList a, .menuList a:visited {
     padding-left : 15px;
 }
 
 #ulSecond {
     background : none;
     border : none;
+}
+
+.menuList {
+    padding : 0;
+    margin : 0;
+    list-style : none;
+    float:right;
+}
+
+.menuList ul {
+}
+.menuList li {
+    padding-right : 15px;
+    float : left;
 }
