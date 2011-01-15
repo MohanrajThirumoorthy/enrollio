@@ -74,3 +74,12 @@ fieldset.horizontal label {
 fieldset.horizontal input {
     width:8em;
 }
+
+.dataBox {
+    float:left;
+    width:50%;
+}
+
+.ui-tabs-panel {
+    overflow:hidden;
+}

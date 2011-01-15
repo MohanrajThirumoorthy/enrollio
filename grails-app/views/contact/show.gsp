@@ -29,72 +29,85 @@
         <title>${studentInstance ? "Student: " + studentInstance : "Contact:" + contactInstance}</title>
     </head>
     <body>
-        <div id="wrapper">
-        <div id="foo">
-        </div>
-            <div id="content">
-                    <div class="infobox">
-                        <g:if test="${flash.message}">
-                        <div class="message">${flash.message}</div>
-                        </g:if>
-                        <h3 class="reallynow">Contact Info</h3>
-                        <table>
-                            <tbody>
-                                <g:if test="${contactInstance.cannotReach}">
-                                <tr>
-                                    <td colspan="4" class="errors">Cannot Reach</td>
-                                </tr>
-                                </g:if>
-                                <tr>
-                                    <td>${contactInstance}</td>
-                                    <td>${contactInstance.address1} 
-                                        <br />
-                                        <g:if test="${contactInstance.address2}">
-                                        ${contactInstance.address2} 
-                                        <br /></g:if>
-                                        <g:if test="${contactInstance.city}">
-                                        ${contactInstance.city},&#160;&#160;</g:if>
-                                        <g:if test="${contactInstance.state}">
-                                        ${contactInstance.state} 
-                                        <br /></g:if>
-                                        <g:if test="${contactInstance.zipCode}">
-                                        ${contactInstance.zipCode}&#160;&#160;</g:if>
-                                        <br /></td>
-                                </tr>
-                                <tr>
-                                    <td>Email:</td>
-                                    <td>${contactInstance.emailAddress}</td>
-                                </tr>
-                                <g:each var="phone" in="${contactInstance.phoneNumbers}">
-                                <tr>
-                                    <td>${phone.label}</td>
-                                    <td>${phone.phoneNumber}</td>
-                                </tr>
-                                </g:each>
-                                <g:if test="${contactInstance.comments}">
-                                </g:if>
-                            </tbody>
-                        </table>
-                    <div class="infobox">
-                        <h3 class="reallynow">Notes:</h3><g:form id="${contactInstance.id}" controller="contact" action="addNote">
-                        <table>
-                            <tbody>
-                                <comments:each bean="${contactInstance}">
-                                    <g:render template="/common/showNote"
-                                              model="[ noteInstance : comment ]"/>
-                                </comments:each>
-                                <tr>
-                                    <td>
-                                    <g:textField name="noteText" />
-                                </td>
-                                <td>
-                                    <input type="submit" value="Add Note" />
-                                    </td>
-                                      </tr>
-                            </tbody>
-                        </table></g:form>
-                    </div>
-                    </div>
+    <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <g:link action="create" controller="contact" 
+                elementId="newStudentLink" class="user_add">&#160;New Student</g:link>
+    </div>
+    <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <g:if test="${flash.message}">
+            <div class="message">${flash.message}</div>
+        </g:if>
+        <table style="width:40%;" class="ui-widget ui-widget-content">
+            <thead>
+                <tr class="ui-widget-header2">
+                    <th colspan="2">Parent Info</th>
+                </tr>
+            </thead> 
+            <tbody>
+                <g:if test="${contactInstance.cannotReach}">
+                <tr>
+                    <td colspan="4" class="errors">Cannot Reach</td>
+                </tr>
+                </g:if>
+                <tr>
+                    <td>${contactInstance}</td>
+                    <td>${contactInstance.address1} 
+                        <br />
+                        <g:if test="${contactInstance.address2}">
+                        ${contactInstance.address2} 
+                        <br /></g:if>
+                        <g:if test="${contactInstance.city}">
+                        ${contactInstance.city},&#160;&#160;</g:if>
+                        <g:if test="${contactInstance.state}">
+                        ${contactInstance.state} 
+                        <br /></g:if>
+                        <g:if test="${contactInstance.zipCode}">
+                        ${contactInstance.zipCode}&#160;&#160;</g:if>
+                        <br /></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>${contactInstance.emailAddress}</td>
+                </tr>
+                <g:each var="phone" in="${contactInstance.phoneNumbers}">
+                <tr>
+                    <td>${phone.label}</td>
+                    <td>${phone.phoneNumber}</td>
+                </tr>
+                </g:each>
+                <g:if test="${contactInstance.comments}">
+                </g:if>
+            </tbody>
+        </table>
+        <table style="width:40%;" class="ui-widget ui-widget-content">
+            <thead>
+                <tr class="ui-widget-header2">
+                    <th colspan="2">Notes</th>
+                </tr>
+            </thead> 
+            <g:form id="${contactInstance.id}" controller="contact" action="addNote">
+            <tbody>
+                <comments:each bean="${contactInstance}">
+                    <g:render template="/common/showNote"
+                              model="[ noteInstance : comment ]"/>
+                </comments:each>
+                <tr>
+                    <td>
+                    <g:textField name="noteText" />
+                </td>
+                <td>
+                    <input type="submit" value="Add Note" />
+                    </td>
+                      </tr>
+            </tbody>
+        </table>
+        </g:form>
+        <table class="ui-widget ui-widget-content">
+            <thead>
+                <tr class="ui-widget-header2">
+                    <th colspan="2">Notes</th>
+                </tr>
+            </thead> 
                 <div class="infowrap">
                     <div class="infobox margin-left">
                         <g:if test="${contactInstance.students}">
