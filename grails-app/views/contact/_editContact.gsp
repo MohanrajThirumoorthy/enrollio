@@ -31,14 +31,19 @@
 </fieldset>
 
 <fieldset style="float:left;" class="ui-widget ui-widget-content">
-    <legend class="ui-widget-header ui-corner-all">Phone Numbers</legend>
-    <div class="field">
-        <label for="emailAddress">Email Address:</label>
-        <input type="text" id="emailAddress" name="emailAddress" value="${fieldValue(bean:contactInstance,field:'emailAddress')}"/>
-    </div>
+    <legend class="ui-widget-header2 ui-corner-all">Phone Numbers</legend>
+    <g:each var="phone" status="i" in="${contactInstance.phoneNumbers}">
+        <div class="field">
+            <g:select from="${['Home', 'Work', 'Mobile', 'Other' ]}"
+                      name="phoneNumber${i}.label" />
+            <input type="text" name="phoneNumber${i}.phoneNumber"
+                   value="${phone.phoneNumber}"
+                   class="phoneNumber" />
+        </div>
+    </g:each>
 </fieldset>
 <fieldset style="float:left;" class="ui-widget ui-widget-content">
-    <legend class="ui-widget-header ui-corner-all">Additional Info</legend>
+    <legend class="ui-widget-header2 ui-corner-all">Additional Info</legend>
     <div class="field">
         <label for="emailAddress">Email Address:</label>
         <input type="text" id="emailAddress" name="emailAddress" value="${fieldValue(bean:contactInstance,field:'emailAddress')}"/>
