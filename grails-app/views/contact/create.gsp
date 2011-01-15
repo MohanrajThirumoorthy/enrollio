@@ -41,7 +41,7 @@
             });
         </script>
         <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-            <g:link url="${[controller:'course', action:'create']}" id="newCourseLink" class="module_add">&#160;New</g:link>
+            <g:link url="${[controller:'contact', action:'create']}" id="newContactLink" class="module_add">&#160;New</g:link>
         </div>
         <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <div class="float-container ui-tabs-panel ui-widget-content ui-corner-bottom">
@@ -50,24 +50,30 @@
                     <g:renderErrors bean="${contactIntance}" as="list" />
                 </div>
             </g:hasErrors>
-            <g:hasErrors bean="${studentInstance}">
-                <div class="errors">
-                    <g:renderErrors bean="${studentInstance}" as="list" />
-                </div>
-            </g:hasErrors>
             <g:form method="post" action="save" controller="contact" >
                <g:render template="editContact" 
                                  model="[contactInstance:contactInstance]" />                      <br />
 
                  <fieldset style="float:left;" class="horizontal ui-widget ui-widget-content">
                      <legend class="ui-widget-header2 ui-corner-all">Student Info
-                     
                          <g:checkBox name="newStudentOption" 
                          class="enrollStudent" 
                          value="${true}" />
-                     
-                     
                      </legend>
+                    <g:hasErrors bean="${studentInstance}">
+                        <div class="ui-widget">
+				<div style="" class="ui-state-error ui-corner-all"> 
+                                    <p>
+                                    <span style="float: left; margin-right: 0.3em;" 
+                                        class="ui-icon ui-icon-alert">
+                                    </span> 
+                                    <strong>Alert:</strong> 
+                                    <g:renderErrors bean="${studentInstance}" as="list" />
+                                    </p>
+				</div>
+			</div>
+                    
+                    </g:hasErrors>
                     <div class="field">
                         <label for="student.firstName">First Name : </label> 
 
