@@ -1,44 +1,40 @@
-<h3> 
-    <span starId="${studentInstance.id}" class="star">
-        <g:render template="/utility/starredThingy" model="[thingy:studentInstance]" />
-    </span>
-    <g:link action="edit" name="editStudentLink${studentInstance.id}" 
-    id="${studentInstance.id}" controller="student"
-    title="${studentInstance}">
-    ${studentInstance}
-    </g:link>
-</h3>
-<table>
-    <tbody>
+<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <h1 class="ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+        <span starId="${studentInstance.id}" class="star">
+            <g:render template="/utility/starredThingy" model="[thingy:studentInstance]" />
+        </span>
+        <g:link action="edit" name="editStudentLink${studentInstance.id}" 
+        id="${studentInstance.id}" controller="student"
+        title="${studentInstance}">
+            ${studentInstance}
+        </g:link>
+    </h1>
+        <table>
+        <g:if test="${studentInstance.birthDate}">
+            <tr class="prop">
+                <td valign="top" class="name">Birth Date:</td>
+
+                <td valign="top" class="value">
+                    <enrollio:formatDate date="${studentInstance.birthDate}" />
+                </td>
+
+            </tr>
+        </g:if>
+        <g:if test="${studentInstance.grade}">
         <tr class="prop">
+            <td valign="top" class="name">Grade:</td>
 
-            <g:if test="${studentInstance.birthDate}">
-                <tr class="prop">
-                    <td valign="top" class="name">Birth Date:</td>
+            <td valign="top" class="value">${fieldValue(bean:studentInstance, field:'grade')}</td>
 
-                    <td valign="top" class="value">
-                        <enrollio:formatDate date="${studentInstance.birthDate}" />
-                    </td>
+        </tr>
+        </g:if>
+        <g:if test="${studentInstance.gender}">
+            <td valign="top" class="name">Gender:</td>
 
-                </tr>
-            </g:if>
+            <td valign="top" class="value">${fieldValue(bean:studentInstance, field:'gender')}</td>
+        </g:if>
 
-            <g:if test="${studentInstance.grade}">
-            <tr class="prop">
-                <td valign="top" class="name">Grade:</td>
 
-                <td valign="top" class="value">${fieldValue(bean:studentInstance, field:'grade')}</td>
-
-            </tr>
-            </g:if>
-            <g:if test="${studentInstance.gender}">
-            <tr class="prop">
-                <td valign="top" class="name">Gender:</td>
-
-                <td valign="top" class="value">${fieldValue(bean:studentInstance, field:'gender')}</td>
-
-            </tr>
-            </g:if>
             <g:if test="${studentInstance.emailAddress}">
             <tr class="prop">
                 <td valign="top" class="name">Email Address:</td>
@@ -80,5 +76,5 @@
             </tr>
             </g:if>
 
-        </tbody>
-    </table>
+        </table>
+    </div>
