@@ -46,8 +46,16 @@
         <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <div class="float-container ui-tabs-panel ui-widget-content ui-corner-bottom">
             <g:hasErrors bean="${contactInstance}">
-                <div class="errors">
-                    <g:renderErrors bean="${contactIntance}" as="list" />
+                <div class="ui-widget">
+                    <div style="" class="ui-state-error ui-corner-all"> 
+                        <p>
+                        <span style="float: left; margin-right: 0.3em;" 
+                            class="ui-icon ui-icon-alert">
+                        </span> 
+                        <strong>Alert:</strong> 
+                        <g:renderErrors bean="${contactInstance}" as="list" />
+                        </p>
+                    </div>
                 </div>
             </g:hasErrors>
             <g:form method="post" action="save" controller="contact" >

@@ -126,19 +126,52 @@ class ContactController {
     // TODO DRY up the 'save' action and 'addStudent' action.
     def save = {
         def contactInstance = new Contact(params)
+        def studentInstance
+
+        if (params.newStudentOption) {
+            studentInstance = new Student(params.student)
+            studentInstance.validate()
+        }
+
+        // prepare for invalid contact or invalid student
+        def signupDates
+        def possibleInterests = [params['interestInCourse']].flatten()
         def studentSignupDate = params.studentSignupDate
-        if(!contactInstance.hasErrors() && contactInstance.save()) {
-            if (params.noteText) {
-                contactInstance.addComment(userService.loggedInUser(), params.noteText)
-                contactInstance.save()
+
+        if (studentSignupDate) {
+            signupDates = [:]
+            [params['interestInCourse']].flatten().each { courseId ->
+                signupDates[courseId] = Date.parse('MM/dd/yyyy', studentSignupDate)
             }
-            else {
+        }
+
+        if (contactInstance.hasErrors() || !contactInstance.validate() ||
+            (studentInstance && studentInstance.hasErrors())) {
+            // remove annoying message about 'contact' must have a value
+                studentInstance.discard()
+                contactInstance.discard()
+                render(view:'create', model:[contactInstance   : contactInstance,
+                                             studentInstance   : studentInstance,
+                                             studentSignupDate : studentSignupDate,
+                                             possibleInterests : possibleInterests])
+        }
+        else {
+            // student is valid or user doesn't want to save it.
+            // proceed with contact saving
+            if (contactInstance.save()) {
+                if (studentInstance) {
+                    studentInstance.contact = contactInstance
+                    contactInstance.addToStudents(studentInstance).save()
+                    studentInstance.save()
+                    studentService.saveInterests(studentInstance, params['interestInCourse'], signupDates)
+                }
+                if (params.noteText) {
+                    contactInstance.addComment(userService.loggedInUser(), params.noteText)
+                    contactInstance.save()
+                }
                 flash.message = "Created contact \"${contactInstance}\".  You can enter students below."
                 redirect(action:show,id:contactInstance.id)
             }
-        }
-        else {
-            render(view:'create',model:[contactInstance:contactInstance])
         }
     }
 
