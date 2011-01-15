@@ -35,8 +35,8 @@
     <g:each var="phone" status="i" in="${contactInstance.phoneNumbers}">
         <div class="field">
             <g:select from="${['Home', 'Work', 'Mobile', 'Other' ]}"
-                      name="phoneNumber${i}.label" />
-            <input type="text" name="phoneNumber${i}.phoneNumber"
+                      name="phoneNumbers[${i}].label" />
+            <input type="text" name="phoneNumbers[${i}].phoneNumber"
                    value="${phone.phoneNumber}"
                    class="phoneNumber" />
         </div>
