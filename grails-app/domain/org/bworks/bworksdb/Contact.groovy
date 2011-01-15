@@ -37,6 +37,7 @@ class Contact implements Commentable {
         zipCode(nullable:true)
         emailAddress(nullable:true)
         lastUpdated(nullable:true, blank:true)
+        lastName(blank:false)
     }
 
     String toString(){
