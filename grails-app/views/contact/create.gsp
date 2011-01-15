@@ -55,67 +55,56 @@
                     <g:renderErrors bean="${studentInstance}" as="list" />
                 </div>
             </g:hasErrors>
-            <h2>Parent Info</h2>
             <g:form method="post" action="save" controller="contact" >
                <g:render template="editContact" 
                                  model="[contactInstance:contactInstance]" />                      <br />
 
-                <div class="grid_16">
-                    <h3>Student Info
-                        
+                 <fieldset style="float:left;" class="horizontal ui-widget ui-widget-content">
+                     <legend class="ui-widget-header2 ui-corner-all">Student Info
+                     
                          <g:checkBox name="newStudentOption" 
                          class="enrollStudent" 
                          value="${true}" />
-                        
-                    </h3>
-                    <p> You can add more students after saving the Contact.</p>
-                    <table width="100%">
-                        <tbody>
-                            <tr class="prop">
-                                <td><label for="student.firstName">First Name : </label> </td>
-                                <td>
-                                    <input type="text" id="firstName" 
-                                    name="student.firstName" 
-                                    value="${fieldValue(bean:studentInstance,field:'firstName')}"/><br />
-                                </td> 
-                            </tr>
-                            <tr class="prop">
-                                <td><label for="student.middleName">Middle Name: </label> </td>
-                                <td>
-                                    <input type="text" id="middleName" 
-                                    name="student.middleName" 
-                                    value="${fieldValue(bean:studentInstance,field:'middleName')}"/><br />
-                                </td> 
-                            </tr>
+                     
+                     
+                     </legend>
+                    <div class="field">
+                        <label for="student.firstName">First Name : </label> 
 
-                            <tr class="prop">
-                                <td><label for="student.lastName">Last Name: </label> </td>
-                                <td>
-                                    <input type="text" id="lastName" 
-                                    name="student.lastName" 
-                                    value="${fieldValue(bean:studentInstance,field:'lastName')}"/><br />
-                                </td> 
-                            </tr>
-                            <tr>
-                                <td><label for="studentSignupDate">Signup Date</label></td>
-                                <td>
-                                    <input class="hasDatePicker" type="text" 
+                        <input type="text" id="firstName" 
+                        name="student.firstName" 
+                        value="${fieldValue(bean:studentInstance,field:'firstName')}"/><br />
+                    </div>
+                                 
+                    <div class="field">
+                        <label for="student.middleName">Middle Name: </label> 
+
+                        <input type="text" id="middleName" 
+                        name="student.middleName" 
+                        value="${fieldValue(bean:studentInstance,field:'middleName')}"/><br />
+                    </div>
+                                 
+                    <div class="field">
+                        <label for="student.lastName">Last Name: </label> 
+
+                        <input type="text" id="lastName" 
+                        name="student.lastName" 
+                        value="${fieldValue(bean:studentInstance,field:'lastName')}"/><br />
+                    </div>                                
+                    <div class="field">
+                        <label for="studentSignupDate">Signup Date</label>
+                        <input class="hasDatePicker" type="text" 
                                     id="studentSignupDate" 
                                     name="studentSignupDate" 
                                     value="${studentSignupDate ?: new Date().format('MM/dd/yyyy')}" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label for="lastName">Interests</label> </td>
-                                <td>
-                                    <enrollio:courseDropDown studentInstance="${studentInstance}" 
-                                                           possibleInterests="${possibleInterests}" />
-                                </td>
-                            </tr>
-                        </tbody>
-                </table>
-                </div>
-                <div class="grid_16">
+                    </div>
+                    <div class="field">
+                        <label for="lastName">Interests</label> 
+                        <enrollio:courseDropDown studentInstance="${studentInstance}" 
+                                               possibleInterests="${possibleInterests}" />
+                    </div>
+                </fieldset>
+                <div style="float:left">
                     <g:actionSubmit value="Save" action="save" />
                 </div>
             </g:form>

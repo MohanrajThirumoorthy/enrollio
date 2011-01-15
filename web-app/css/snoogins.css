@@ -63,3 +63,14 @@ fieldset label {
     width:8em;
 }
 
+fieldset.horizontal .field {
+    float:left;
+}
+
+fieldset.horizontal label {
+    float : none;
+    display:block;
+}
+fieldset.horizontal input {
+    width:8em;
+}
