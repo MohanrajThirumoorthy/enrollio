@@ -9,7 +9,7 @@
         <meta name="tabName" content="classSession" />
         <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'fullcalendar.css')}" />
         <meta name="layout" content="main" />
-        <g:javascript src="jquery-1.4.2.min.js" />
+        <title>Calendar</title>
         <g:javascript src="fullcalendar.min.js" />
 
         <script type="text/javascript">

@@ -9,7 +9,6 @@
         <meta name="layout" content="main" />
         <meta name="tabName" content="classSession" />
         <title>Certificates: ${classSessionInstance.name}</title>
-	<script type="text/javascript" src="${resource(dir:'js', file:'jquery-1.4.2.min.js')}"></script>
         <script type="text/javascript">
              $(document).ready(function(){
                 $('#gradCertsForm').submit(function(){

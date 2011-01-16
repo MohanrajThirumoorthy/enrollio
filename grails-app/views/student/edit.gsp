@@ -4,9 +4,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <script type="text/javascript" src="${resource(dir:'js', file:'jquery-1.3.2.js')}"></script>
-	<script type="text/javascript" src="${resource(dir:'js', file:'ui.core.js')}"></script>
-	<script type="text/javascript" src="${resource(dir:'js', file:'ui.datepicker.js')}"></script>
 	<script type="text/javascript" src="${resource(dir:'js', file:'date.js')}"></script>
         <script type="text/javascript">
             $(document).ready(function(){

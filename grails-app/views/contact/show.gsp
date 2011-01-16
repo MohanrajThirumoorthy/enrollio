@@ -5,10 +5,7 @@
         <meta name="layout" content="main" />
         <meta name="tabName" content="contact" />
         <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'jquery.multiselect.css')}" />
-
-	<script type="text/javascript" src="${resource(dir:'js', file:'jquery-1.4.2.min.js')}"></script>
 	<script type="text/javascript" src="${resource(dir:'js', file:'jquery.multiselect.min.js')}"></script>
-	<script type="text/javascript" src="${resource(dir:'js', file:'ui.datepicker.js')}"></script>
 	<script type="text/javascript" src="${resource(dir:'js', file:'enrollioContact.js')}"></script>
         <script type="text/javascript">
              $(document).ready(function(){
@@ -22,6 +19,13 @@
                   $(".star").click(function(){
                     $(this).load('${createLink(controller:"student", action:"toggleStar")}', 
                         { 'starred' : $(this).children('img').attr('starred'), 'id' : $(this).attr("starId") }); });
+                 $('.hasDatePicker').datepicker({
+                     defaultDate: '-10y',
+                     yearRange: '-100:+10', 
+                     changeMonth: true,
+                     changeYear:  true
+                 });
+                 $('.hasDatePicker').datepicker({changeYear:true});
 
               });
 

@@ -6,10 +6,8 @@
         <meta name="tabName" content="contact" />    
         <title>Create Contact</title>         
         <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'jquery.multiselect.css')}" />
-        <g:javascript src="jquery-1.4.2.min.js" />
         <g:javascript src="jquery.maskedinput-1.2.2.min.js" />
         <g:javascript src="jquery.multiselect.min.js" />
-	<script type="text/javascript" src="${resource(dir:'js', file:'ui.datepicker.js')}"></script>
         <g:javascript src="enrollioContact" />
         <script type="text/javascript">
             

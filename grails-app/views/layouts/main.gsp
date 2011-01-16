@@ -10,8 +10,8 @@
         <link rel="stylesheet" type="text/css" href="css/ie-sucks.css" />
         <![endif]-->
         <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'960.css')}" />
-        <script type="text/javascript" src="${resource(dir:'js', file:'jquery-ui-1.8.7.custom.min.js')}"></script>
         <script type="text/javascript" src="${resource(dir:'js', file:'jquery-1.4.4.min.js')}"></script>
+        <script type="text/javascript" src="${resource(dir:'js', file:'jquery-ui-1.8.7.custom.min.js')}"></script>
         <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'snoogins.css')}" />
         <link rel="stylesheet" type="text/css" href="${resource(dir:'css/redmond', file:'jquery-ui-1.8.7.custom.css')}" />
         <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'icons.css')}" />
