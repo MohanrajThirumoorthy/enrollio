@@ -59,65 +59,9 @@
                 </div>
             </g:hasErrors>
             <g:form method="post" action="save" controller="contact" >
-               <g:render template="editContact" 
-                                 model="[contactInstance:contactInstance]" />                      <br />
+               <g:render template="editContact" model="[contactInstance:contactInstance]" />
+               <g:render template="createStudent" model="[studentInstance:newStudentInstance, optionalForm:true]" />
 
-                 <fieldset style="float:left;" class="horizontal ui-widget ui-widget-content">
-                     <legend class="ui-widget-header2 ui-corner-all">Student Info
-                         <g:checkBox name="newStudentOption" 
-                         class="enrollStudent" 
-                         value="${true}" />
-                     </legend>
-                    <g:hasErrors bean="${studentInstance}">
-                        <div class="ui-widget">
-				<div style="" class="ui-state-error ui-corner-all"> 
-                                    <p>
-                                    <span style="float: left; margin-right: 0.3em;" 
-                                        class="ui-icon ui-icon-alert">
-                                    </span> 
-                                    <strong>Alert:</strong> 
-                                    <g:renderErrors bean="${studentInstance}" as="list" />
-                                    </p>
-				</div>
-			</div>
-                    
-                    </g:hasErrors>
-                    <div class="field">
-                        <label for="student.firstName">First Name : </label> 
-
-                        <input type="text" id="firstName" 
-                        name="student.firstName" 
-                        value="${fieldValue(bean:studentInstance,field:'firstName')}"/><br />
-                    </div>
-                                 
-                    <div class="field">
-                        <label for="student.middleName">Middle Name: </label> 
-
-                        <input type="text" id="middleName" 
-                        name="student.middleName" 
-                        value="${fieldValue(bean:studentInstance,field:'middleName')}"/><br />
-                    </div>
-                                 
-                    <div class="field">
-                        <label for="student.lastName">Last Name: </label> 
-
-                        <input type="text" id="lastName" 
-                        name="student.lastName" 
-                        value="${fieldValue(bean:studentInstance,field:'lastName')}"/><br />
-                    </div>                                
-                    <div class="field">
-                        <label for="studentSignupDate">Signup Date</label>
-                        <input class="hasDatePicker" type="text" 
-                                    id="studentSignupDate" 
-                                    name="studentSignupDate" 
-                                    value="${studentSignupDate ?: new Date().format('MM/dd/yyyy')}" />
-                    </div>
-                    <div class="field">
-                        <label for="lastName">Interests</label> 
-                        <enrollio:courseDropDown studentInstance="${studentInstance}" 
-                                               possibleInterests="${possibleInterests}" />
-                    </div>
-                </fieldset>
                 <div style="float:left">
                     <g:actionSubmit value="Save" action="save" />
                 </div>

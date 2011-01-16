@@ -36,11 +36,11 @@ class ContactController {
             redirect(action:list)
         }
         else { 
-            def newStudentInstance = contactService.createStudentStub(contactInstance)
+            def studentInstance = contactService.createStudentStub(contactInstance)
             def contactCallListPositions = courseService.contactCallListPositions(contactInstance)
             return [ contactInstance : contactInstance, 
-                  newStudentInstance : newStudentInstance,
-                  contactCallListPositions : contactCallListPositions ] 
+                     newStudentInstance : studentInstance,
+                     contactCallListPositions : contactCallListPositions ] 
         }
     }
 
@@ -119,7 +119,7 @@ class ContactController {
         contactInstance.properties = params
         def defaultAreaCode = configSettingService.getSetting(ConfigSetting.DEFAULT_AREA_CODE)?.toString()
         return ['contactInstance':contactInstance,
-                'studentInstance':studentInstance,
+                'newStudentInstance':studentInstance,
                  defaultAreaCode : defaultAreaCode]
     }
 
@@ -155,7 +155,7 @@ class ContactController {
             studentInstance.discard()
             contactInstance.discard()
             render(view:'create', model:[contactInstance   : contactInstance,
-                                         studentInstance   : studentInstance,
+                                         newStudentInstance   : studentInstance,
                                          studentSignupDate : studentSignupDate,
                                          possibleInterests : possibleInterests])
         }
@@ -179,7 +179,8 @@ class ContactController {
     }
 
     def saveStudent = {
-        def studentInstance = new Student(params)
+        println "boo " * 10
+        def studentInstance = new Student(params.student)
 
         // Find contact that student belongs to.
         def contactInstance = Contact.get(params.contact.id)
@@ -203,9 +204,9 @@ class ContactController {
             redirect(action:'show', id:contactInstance.id)
         }
         else {
+            def possibleInterests = [params['interestInCourse']].flatten()
             render(view:'show',
-                  model:[studentInstance:studentInstance,
-                         contactInstance:contactInstance])
+                  model:[ newStudentInstance:studentInstance, possibleInterests : possibleInterests, contactInstance:contactInstance ])
         }
     }
     //Replace inline div with "New student" button

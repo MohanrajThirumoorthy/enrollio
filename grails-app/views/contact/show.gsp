@@ -120,8 +120,11 @@
         </div>
     </div>
     <div style="overflow:hidden" class="ui-corner-all ui-widget-content ui-corner-bottom">
+        <g:form action="saveStudent" controller="contact" method="POST" name="newStudentForm">
         <g:render template='/contact/createStudent' 
-                     model="[contactInstance:contactInstance, studentInstance : newStudentInstance]" />
+                     model="[contactInstance:contactInstance, possibleInterests : possibleInterests, studentInstance : newStudentInstance]" />
+            <g:submitButton style="float:right" class="save" name="saveButton" value="Save" />
+                     </g:form>
     </div>
     </body>
 </html>
