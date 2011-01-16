@@ -6,72 +6,51 @@
 </head>
 
 <body>
-    <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-        <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
-        <div style="width:50%;float:left;overflow:hidden;">
+    <div id="secondMenu" style="overflow:hidden;" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <div style="width:50%;float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
             <div class="ui-widget ui-widget-content ui-corner-all">
-            <h3 class="ui-datepicker-header ui-widget-header2 ui-helper-clearfix ui-widget-content ui-corner-all">Boink</h3>
-                <div class="ui-widget-header ui-corner-all ui-helper-clearfix">
-                    <span class="ui-dialog-title" id="ui-dialog-title-dialog">Parent Info</span>
-                </div>
-            <table style="width:50%;" class="ui-widget ui-widget-content">
-                        <tbody>
-                            <tr>
-                                <td>foo</td>
-                                <td>foo</td>
-                            </tr>
-                            <tr>
-                                <td>Email:</td>
-                                <td>foo</td>
-                            </tr>
-                            <tr>
-                                <td>foo</td>
-                                <td>foo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-            <div class="ui-widget ui-widget-content ui-corner-all">
-                <div class="ui-widget-header ui-corner-all ui-helper-clearfix">
-                    <span class="ui-dialog-title" id="ui-dialog-title-dialog">Lessons</span>
-                </div>
-                <div id="dialog" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 101.6px; height: auto;">
-                    <ul>
-                        <li>Barf </li>
-                        <li>Barf </li>
-                        <li>Barf </li>
-                        <li>Barf </li>
-                    </ul>
-                </div>
+                <h3 style="padding:0.5em 1em;" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header2 ui-corner-all">
+                    Parent Info
+                </h3>
+                <table style="width:50%;" class="ui-widget ui-widget-content">
+                    <tbody>
+                        <tr>
+                            <td>foo</td>
+                            <td>foo</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>foo</td>
+                        </tr>
+                        <tr>
+                            <td>foo</td>
+                            <td>foo</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
-
-        <div style="width:40%;overflow:hidden;">
+        <div style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
             <div class="ui-widget ui-widget-content ui-corner-all">
-                <div class="ui-widget-header ui-corner-all ui-helper-clearfix">
-                    <span class="ui-dialog-title" id="ui-dialog-title-dialog">Lessons</span>
-                </div>
-                <div id="dialog" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 101.6px; height: auto;">
-                    <ul>
-                        <li>Barf </li>
-                        <li>Barf </li>
-                        <li>Barf </li>
-                        <li>Barf </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="ui-widget ui-widget-content ui-corner-all">
-                <div class="ui-widget-header ui-corner-all ui-helper-clearfix">
-                    <span class="ui-dialog-title" id="ui-dialog-title-dialog">Lessons</span>
-                </div>
-                <div id="dialog" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 101.6px; height: auto;">
-                    <ul>
-                        <li>Barf </li>
-                        <li>Barf </li>
-                        <li>Barf </li>
-                        <li>Barf </li>
-                    </ul>
-                </div>
+                <h3 style="padding:0.5em 1em;" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header2 ui-corner-all">
+                    Students
+                </h3>
+                <table style="width:50%;" class="ui-widget ui-widget-content">
+                    <tbody>
+                        <tr>
+                            <td>foo</td>
+                            <td>foo</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>foo</td>
+                        </tr>
+                        <tr>
+                            <td>foo</td>
+                            <td>foo</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
