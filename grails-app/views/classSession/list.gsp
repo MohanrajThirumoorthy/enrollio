@@ -10,6 +10,7 @@
         <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
         <div style="width:50%;float:left;overflow:hidden;">
             <div class="ui-widget ui-widget-content ui-corner-all">
+            <h3 class="ui-datepicker-header ui-widget-header2 ui-helper-clearfix ui-widget-content ui-corner-all">Boink</h3>
                 <div class="ui-widget-header ui-corner-all ui-helper-clearfix">
                     <span class="ui-dialog-title" id="ui-dialog-title-dialog">Parent Info</span>
                 </div>
@@ -45,7 +46,7 @@
         </div>
     </div>
 
-        <div style="width:40%;float:right;overflow:hidden;">
+        <div style="width:40%;overflow:hidden;">
             <div class="ui-widget ui-widget-content ui-corner-all">
                 <div class="ui-widget-header ui-corner-all ui-helper-clearfix">
                     <span class="ui-dialog-title" id="ui-dialog-title-dialog">Lessons</span>
