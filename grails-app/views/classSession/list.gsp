@@ -51,6 +51,44 @@
                         </tr>
                     </tbody>
                 </table>
+                <h3 style="padding:0.5em 1em;" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header2 ui-corner-all">
+                    Students
+                </h3>
+                <table style="width:50%;" class="ui-widget ui-widget-content">
+                    <tbody>
+                        <tr>
+                            <td>foo</td>
+                            <td>foo</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>foo</td>
+                        </tr>
+                        <tr>
+                            <td>foo</td>
+                            <td>foo</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3 style="padding:0.5em 1em;" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header2 ui-corner-all">
+                    Students
+                </h3>
+                <table style="width:50%;" class="ui-widget ui-widget-content">
+                    <tbody>
+                        <tr>
+                            <td>foo</td>
+                            <td>foo</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>foo</td>
+                        </tr>
+                        <tr>
+                            <td>foo</td>
+                            <td>foo</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
