@@ -58,7 +58,7 @@
             </g:hasErrors>
             <g:form method="post" action="save" controller="contact" >
                <g:render template="editContact" model="[contactInstance:contactInstance]" />
-               <g:render template="createStudent" model="[studentInstance:newStudentInstance, optionalForm:true]" />
+               <g:render template="createStudent" model="[contactInstance:contactInstance, studentInstance:newStudentInstance, optionalForm:true]" />
 
                 <div style="float:left">
                     <g:actionSubmit value="Save" action="save" />

@@ -179,12 +179,12 @@ class ContactController {
     }
 
     def saveStudent = {
-        println "boo " * 10
         def studentInstance = new Student(params.student)
 
         // Find contact that student belongs to.
         def contactInstance = Contact.get(params.contact.id)
 
+        studentInstance.contact = contactInstance
         if(!studentInstance.hasErrors() && studentInstance.validate()) {
             contactInstance.addToStudents(studentInstance)
 
