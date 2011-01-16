@@ -6,8 +6,8 @@
 </head>
 
 <body>
-    <div id="secondMenu" style="overflow:hidden;" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-        <div style="width:50%;float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
+    <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <div id="mainContent" style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
             <div class="ui-widget ui-widget-content ui-corner-all">
                 <h3 style="padding:0.5em 1em;" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header2 ui-corner-all">
                     Parent Info
