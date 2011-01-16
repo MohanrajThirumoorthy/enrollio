@@ -105,6 +105,9 @@
             </div>
         </div>
         <div style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
+            <h3 style="padding:0.5em 1em;" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header2 ui-corner-all">
+                Students
+            </h3>
             <g:if test="${contactInstance.students}">
                 <g:each var="stu" in="${contactInstance.students}">
                     <g:render template="/student/studentQuickView" model="[studentInstance:stu]" />
