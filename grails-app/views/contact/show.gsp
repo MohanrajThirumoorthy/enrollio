@@ -33,7 +33,7 @@
         <g:link action="create" controller="contact" 
                 elementId="newStudentLink" class="user_add">&#160;New Student</g:link>
     </div>
-    <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <div id="mainContent" style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
             <div class="ui-widget ui-widget-content ui-corner-all">
                 <g:if test="${flash.message}">
