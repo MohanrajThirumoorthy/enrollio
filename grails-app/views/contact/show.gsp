@@ -118,60 +118,10 @@
                 <p>No students</p>
             </g:else>
         </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-        <div style="overflow:hidden" class="ui-corner-all ui-widget-content ui-corner-bottom">
-            <fieldset class="horizontal ui-widget ui-widget-content" style="float: left;">
-                     <legend class="ui-widget-header2 ui-corner-all">Student Info
-                         <input type="hidden" name="_newStudentOption"><input type="checkbox" id="newStudentOption" class="enrollStudent" checked="checked" name="newStudentOption">
-                     </legend>
-                    
-                    <div class="field">
-                        <label for="student.firstName">First Name : </label> 
-
-                        <input type="text" value="" name="student.firstName" id="firstName"><br>
-                    </div>
-                                 
-                    <div class="field">
-                        <label for="student.middleName">Middle Name: </label> 
-
-                        <input type="text" value="" name="student.middleName" id="middleName"><br>
-                    </div>
-                                 
-                    <div class="field">
-                        <label for="student.lastName">Last Name: </label> 
-
-                        <input type="text" value="" name="student.lastName" id="lastName"><br>
-                    </div>                                
-                    <div class="field">
-                        <label for="studentSignupDate">Signup Date</label>
-                        <input type="text" value="01/16/2011" name="studentSignupDate" id="studentSignupDate" class="hasDatePicker hasDatepicker">
-                    </div>
-                    <div class="field">
-                        <label for="lastName">Interests</label> 
-                        <a class="ui-multiselect ui-widget ui-state-default ui-corner-all ui-state-hover" id="" style="width: 205px;"><input type="text" value="Children's EAC" class="ui-state-default" readonly="readonly" style="width: 189px;" title="Children's EAC"><span class="ui-icon ui-icon-triangle-1-s"></span></a><div class="ui-multiselect-options ui-widget ui-widget-content ui-corner-all"><ul class="ui-multiselect-checkboxes ui-helper-reset"><li class=""><label class="ui-corner-all"><input type="checkbox" checked="checked" title="Children's EAC" value="1" name="interestInCourse">Children's EAC</label></li><li class=""><label class="ui-corner-all"><input type="checkbox" title="Adult EAC" value="2" name="interestInCourse">Adult EAC</label></li><li class=""><label class="ui-corner-all"><input type="checkbox" title="Earn-A-Bike" value="3" name="interestInCourse">Earn-A-Bike</label></li><li class=""><label class="ui-corner-all"><input type="checkbox" title="Mentorship Course" value="4" name="interestInCourse">Mentorship Course</label></li></ul></div>
-                    </div>
-                </fieldset>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
+    </div>
+    <div style="overflow:hidden" class="ui-corner-all ui-widget-content ui-corner-bottom">
+        <g:render template='/contact/createStudent' 
+                     model="[contactInstance:contactInstance, studentInstance : newStudentInstance]" />
+    </div>
     </body>
 </html>

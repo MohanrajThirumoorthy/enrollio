@@ -1,51 +1,35 @@
 <%@ page import="org.bworks.bworksdb.Course;" %>
-<div>
-<h3 class="reallynow">Add Student</h3>
-<g:hasErrors bean="${studentInstance}">
-<div class="errors">
-    <g:renderErrors bean="${studentInstance}" as="list" />
-</div>
-</g:hasErrors>
 <g:form action="saveStudent" controller="contact" method="POST" name="newStudentForm">
-<table width="100%">
-    <thead>
-        <tr>
-            <th width="20%">First</th>
-            <th width="10%">Middle</th>
-            <th width="20%">Last</th>
-            <th width="20%">Signup Date</th>
-            <th width="20%">Interests</th>
-            <th width="5%"></th> <!-- column for the 'save' button -->
-        </tr>
-    </thead>
-    <tbody>
-        <input type="hidden" id="contact.id" name="contact.id"
-        value="${contactInstance?.id}" />
-        <tr class="dataEntry">
-            <td>
-                <input class="squishy" type="text" id="firstName" name="firstName"
-                value="${fieldValue(bean:studentInstance,field:'firstName')}" />
-            </td>
-            <td>
-                <input class="squishy"   type="text" id="middleName" name="middleName"
-                value="${fieldValue(bean:studentInstance,field:'middleName')}" />
-            </td>
-            <td>
-                <input  class="squishy" type="text" id="lastName" name="lastName"
-                value="${fieldValue(bean:studentInstance,field:'lastName')}" />
-            </td>
-            <td>
-                <input class="hasDatePicker" type="text" id="signupDate" name="signupDate" 
-                       value="${new Date().format('MM/dd/yyyy')}" />
-            </td>
-            <td>
-                <enrollio:courseDropDown studentInstance="${studentInstance}"/>
-            </td>
-            <td>
-                <g:submitButton style="float:right" class="save" name="saveButton" value="Save" />
-            </td>
-        </tr>
-    </tbody>
-</table>
+    <div class="errors">
+        <g:renderErrors bean="${studentInstance}" as="list" />
+    </div>
+    <fieldset class="horizontal ui-widget ui-widget-content" style="float: left;">
+        <legend class="ui-widget-header2 ui-corner-all">Add  Student</legend>
+
+        <div class="field">
+            <label for="student.firstName">First Name : </label> 
+            <input type="text" value="" name="student.firstName" id="firstName"><br>
+        </div>
+
+        <div class="field">
+            <label for="student.middleName">Middle Name: </label> 
+            <input type="text" value="" name="student.middleName" id="middleName"><br>
+        </div>
+
+        <div class="field">
+            <label for="student.lastName">Last Name: </label> 
+            <input type="text" value="" name="student.lastName" id="lastName"><br>
+        </div>                                
+        <div class="field">
+            <label for="studentSignupDate">Signup Date</label>
+            <input type="text" value="01/16/2011" name="studentSignupDate" id="studentSignupDate" class="hasDatePicker hasDatepicker">
+        </div>
+        <div class="field">
+            <label for="lastName">Interests</label> 
+            <enrollio:courseDropDown studentInstance="${studentInstance}"/>
+        </div>
+        <div class="field">
+            <g:submitButton style="float:right" class="save" name="saveButton" value="Save" />
+        </div>
+    </fieldset>
 </g:form>
-</div>
