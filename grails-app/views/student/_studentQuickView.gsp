@@ -1,4 +1,4 @@
-<div class="dataBox ui-tabs ui-widget ui-widget-content ui-corner-all">
+<div class="ui-widget ui-widget-content ui-corner-all">
     <h1 class="ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
         <span starId="${studentInstance.id}" class="star">
             <g:render template="/utility/starredThingy" model="[thingy:studentInstance]" />
