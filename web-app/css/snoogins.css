@@ -83,3 +83,12 @@ fieldset.horizontal input {
 .ui-tabs-panel {
     overflow:hidden;
 }
+
+.studentBox {
+    overflow:hidden;
+    float:right;
+}
+
+.secondMenu {
+    overflow:hidden;
+}

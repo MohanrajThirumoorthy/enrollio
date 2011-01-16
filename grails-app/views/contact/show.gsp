@@ -102,37 +102,25 @@
             </tbody>
         </table>
         </g:form>
-        <table class="ui-widget ui-widget-content">
-            <thead>
-                <tr class="ui-widget-header2">
-                    <th colspan="2">Notes</th>
-                </tr>
-            </thead> 
+        <div class="studentBox">
+            <g:if test="${contactInstance.students}">
+                <g:each var="stu" in="${contactInstance.students}">
+                    <g:render template="/student/studentQuickView" model="[studentInstance:stu]" />
+                </g:each>
+            </g:if>
+            <g:else>
+                <h3>Students</h3>
+                <p>No students</p>
+            </g:else>
+        </div>
+        <div id="wrapper">
+            <div id="content">
                 <div class="infowrap">
-                    <div class="infobox margin-left">
-                        <g:if test="${contactInstance.students}">
-                            <g:each var="stu" in="${contactInstance.students}">
-                                <g:render template="/student/studentQuickView" model="[studentInstance:stu]" />
-                            </g:each>
-                        </g:if>
-                        <g:else>
-                            <h3>Students</h3>
-                            <p>No students</p>
-                        </g:else>
-                    </div>
+                    <g:render template='/contact/createStudent' 
+                        model="[contactInstance:contactInstance, studentInstance : newStudentInstance]" />
                 </div>
             </div>
-            <div id="sidebar">
-                <g:render template="/student/studentMenu" model="[contactInstance:contactInstance]"/>
-            </div>
-            <div id="wrapper">
-                <div id="content">
-                    <div class="infowrap">
-                        <g:render template='/contact/createStudent' 
-                            model="[contactInstance:contactInstance, studentInstance : newStudentInstance]" />
-                    </div>
-                </div>
-            </div>
+        </div>
         </div>
     </body>
 </html>
