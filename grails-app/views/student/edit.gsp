@@ -31,8 +31,11 @@
     </head>
     <body>
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-        <div id="mainContent" style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
-            <g:hasErrors bean="${studentInstance}">
+        <g:form action="update" name="editStudentForm" method="post" >
+            <input type="hidden" name="id" value="${studentInstance?.id}" />
+            <input type="hidden" name="version" value="${studentInstance?.version}" />
+            <div id="mainContent" style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
+                <g:hasErrors bean="${studentInstance}">
                 <div class="ui-widget">
                     <div style="" class="ui-state-error ui-corner-all"> 
                         <p>
@@ -42,16 +45,15 @@
                         <strong>Alert:</strong> 
                         <g:renderErrors bean="${studentInstance}" as="list" />
                         </p>
+                        <g:if test="${flash.message}">
+                        <div class="message">${flash.message}</div>
+                        </g:if>
                     </div>
                 </div>
-            </g:hasErrors>
-            <h3 class="reallynow">Edit Student: ${studentInstance}</h3>
-            <g:if test="${flash.message}">
-                <div class="message">${flash.message}</div>
-            </g:if>
-            <g:form action="update" name="editStudentForm" method="post" >
-                <input type="hidden" name="id" value="${studentInstance?.id}" />
-                <input type="hidden" name="version" value="${studentInstance?.version}" />
+                </g:hasErrors>
+                <h3 style="padding:0.5em 1em;" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header2 ui-corner-all">
+                    Edit Student: ${studentInstance}
+                </h3>
                 <table>
                     <tbody>
                         <tr class="prop">
@@ -79,8 +81,6 @@
                                 value="${fieldValue(bean:studentInstance,field:'lastName')}"/><br />
                             </td> 
                         </tr>
-
-
                         <tr class="prop">
                             <td><label for="birthDate">Birth Date : </label></td> 
                             <td>    
@@ -126,15 +126,19 @@
                     </tbody>
                 </table>
             </div>
-            <div class="ui-corner-all ui-widget-content">
-                <h3 class="reallynow">Interests</h3>
-                    <g:interestCheckBoxes student="${studentInstance}"  />
+
+        <div style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
+            <div class="ui-widget ui-widget-content ui-corner-all">
+                <h3 style="padding:0.5em 1em;" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header2 ui-corner-all">
+                    Student Interests
+                </h3>
+                <g:interestCheckBoxes student="${studentInstance}"  />
                 <div class="buttons">
                     <span class="button">
                         <input class="save" type="submit" value="Save" />
                     </span>
                     or&nbsp;
-                    <g:link name="cancelLink" class="cancelLink" action="show" id="${studentInstance.id}" >Cancel</g:link>
+                <g:link name="cancelLink" class="cancelLink" action="show" id="${studentInstance.id}" >Cancel</g:link>
                 </div>
             </div>
             </g:form>
