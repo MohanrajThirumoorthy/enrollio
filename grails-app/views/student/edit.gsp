@@ -30,26 +30,30 @@
         <title>Edit Student</title>
     </head>
     <body>
-        <div id="wrapper">
-            <div id="content">
-                <div class="infowrap">
-                <div class="infobox">
-                    <h3 class="reallynow">Edit Student: ${studentInstance}</h3>
-                        <g:if test="${flash.message}">
-                        <div class="message">${flash.message}</div>
-                        </g:if>
-                        <g:hasErrors bean="${studentInstance}">
-                        <div class="errors">
-                            <g:renderErrors bean="${studentInstance}" as="list" />
-                        </div>
-                        </g:hasErrors>
+    <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <div id="mainContent" style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
+            <g:hasErrors bean="${studentInstance}">
+                <div class="ui-widget">
+                    <div style="" class="ui-state-error ui-corner-all"> 
+                        <p>
+                        <span style="float: left; margin-right: 0.3em;" 
+                            class="ui-icon ui-icon-alert">
+                        </span> 
+                        <strong>Alert:</strong> 
+                        <g:renderErrors bean="${studentInstance}" as="list" />
+                        </p>
+                    </div>
+                </div>
+            </g:hasErrors>
+            <h3 class="reallynow">Edit Student: ${studentInstance}</h3>
+            <g:if test="${flash.message}">
+                <div class="message">${flash.message}</div>
+            </g:if>
             <g:form action="update" name="editStudentForm" method="post" >
                 <input type="hidden" name="id" value="${studentInstance?.id}" />
                 <input type="hidden" name="version" value="${studentInstance?.version}" />
-            <div class="dialog">
                 <table>
                     <tbody>
-
                         <tr class="prop">
                             <td><label for="firstName">First Name : </label> </td>
                             <td>
@@ -121,11 +125,8 @@
                         </tr>
                     </tbody>
                 </table>
-
             </div>
-
-            </div>
-            <div class="infobox margin-left">                <!-- only auto-select the default prog if we have a new student -->
+            <div class="ui-corner-all ui-widget-content">
                 <h3 class="reallynow">Interests</h3>
                     <g:interestCheckBoxes student="${studentInstance}"  />
                 <div class="buttons">
@@ -137,11 +138,6 @@
                 </div>
             </div>
             </g:form>
-        </div>
-        </div>
-        </div>
-        <div id="sidebar">
-                <g:render template="studentMenu" />
         </div>
     </body>
 </html>
