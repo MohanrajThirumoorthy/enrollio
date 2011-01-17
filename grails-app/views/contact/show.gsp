@@ -37,6 +37,7 @@
         <g:link action="create" controller="contact" 
                 elementId="newStudentLink" class="user_add">&#160;New Student</g:link>
     </div>
+    <g:render template="/common/messages" />
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <div id="mainContent" style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
             <div class="ui-widget ui-widget-content ui-corner-all">
