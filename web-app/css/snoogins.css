@@ -106,3 +106,15 @@ fieldset.horizontal input {
 #sideContent {
 }
 
+ul.basicList {
+    list-style: none;
+    padding: 0 0 0.5em 0;
+}
+
+ul.basicList ul {
+    list-style: none;
+}
+
+ul.basicList > li {
+    padding: 0.5em;
+}

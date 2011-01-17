@@ -28,7 +28,7 @@ class MiscTagLib {
             if (defaultProgId) defaultProgId = defaultProgId.value;
         }
         def courses = Course.findAll()
-        out << '<ul class="prop">'
+        out << '<ul class="basicList">'
         courses.each { course ->
             out << '<li>'
             // Note: Need to search for active == true, also
