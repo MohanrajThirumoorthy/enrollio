@@ -116,5 +116,10 @@ ul.basicList ul {
 }
 
 ul.basicList > li {
-    padding: 0.5em;
+    padding: 0.3em;
+
+}
+
+.info .ui-state-highlight {
+    background:#DFEFFC;
 }

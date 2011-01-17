@@ -112,7 +112,7 @@ class MiscTagLib {
          def student = attrs['student']
          def contactCallListPositions = attrs['contactCallListPositions']
          
-         out << '<ul>'
+         out << '<ul class="basicList">'
          student.activeInterests().each { interest ->
              def dt = enrollio.formatDate(date:interest.signupDate)
              def link = g.link(controller:'course', action: 'interestedStudents',

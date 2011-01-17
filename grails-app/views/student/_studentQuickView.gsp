@@ -59,7 +59,7 @@
                 <td valign="top" class="name">Enrollments:</td>
 
                 <td  valign="top" style="text-align:left;" class="value">
-                <ul>
+                <ul class="basicList">
                     <g:each var="enr" in="${studentInstance.enrollments}">
                     <li>
                     ${enr.classSession.course.name}
