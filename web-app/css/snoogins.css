@@ -128,3 +128,12 @@ ul.basicList > li {
 .info .ui-state-highlight {
     background:#DFEFFC;
 }
+
+.linksdiv {
+    float : right;
+}
+
+.linksdiv a {
+    padding-left:20px;
+    padding-right:5px;
+}
