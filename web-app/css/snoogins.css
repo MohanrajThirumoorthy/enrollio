@@ -8,6 +8,10 @@ body{
     border-bottom :none;
 }
 
+#header h2 {
+    display:inline;
+}
+
 #studentSearchForm {
     padding:15px;
     float:right;
