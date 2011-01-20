@@ -26,17 +26,12 @@
             <shiro:isLoggedIn>
             <h2>Welcome to Enrollio, 
                 <shiro:principal />!</h2>
+                <g:render template="/common/searchForm" />
             </shiro:isLoggedIn>
             <shiro:isNotLoggedIn>
             <h2>Welcome to Enrollio!</h2>
             </shiro:isNotLoggedIn>
 
-            <div id="studentSearchForm" style="float:right;margin 30px;">
-                <g:form url="[controller: 'student', action: 'list']" id="studentSearchForm" name="searchableForm" method="get">
-                <g:textField name="q" value="${params.q}" size="20" />
-                <input id="studentSearchButton" type="submit" value="Search" />
-                </g:form>
-            </div>
         </div>
         <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-bottom">
             <nav:eachItem group="mainLinks" var="navLink">
