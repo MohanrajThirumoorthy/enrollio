@@ -1,5 +1,6 @@
 body{
     font-family: Arial, Tahoma, Verdana;
+    font-size:65%;
 }
 
 /* Remove line(s) between header and nav. tabs */
@@ -59,7 +60,7 @@ fieldset {
     margin-right : 1em;
 }
 
-fieldset input {
+fieldset input[type=text][type=password] {
     width : 13em;
 }
 
