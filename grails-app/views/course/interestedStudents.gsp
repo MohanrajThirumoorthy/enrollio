@@ -102,7 +102,7 @@
             id="${courseInstance.id}"
             method="GET">
 
-            <table id="interestedContacts" style="width:100%;float:left;">
+            <table id="interestedContactSearch" style="width:100%;float:left;">
                 <tr>
                     <td>
                         <label for="q">Contact Name:</label>
@@ -117,7 +117,7 @@
             
         </table>
         </g:form>
-        <table id="lessonDates" style="width:100%;float:left;" class="ui-widget ui-widget-content">
+        <table id="interestedStudents" style="width:100%;float:left;" class="ui-widget ui-widget-content">
             <thead>
                 <tr><th class="ui-widget-header2">Contact</th>
                 <th class="ui-widget-header2">Students</th></tr>
