@@ -91,68 +91,52 @@
         <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <ul id="ulSecond" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-bottom">
                 <g:each var="course" in="${courseInstanceList}">
-                <li class="ui-state-default ui-corner-top ${course.id == classSessionInstance.course.id ? 'ui-tabs-selected ui-state-active' : ''}">
+                <li class="ui-state-default ui-corner-top ${course.id == courseInstance.id ? 'ui-tabs-selected ui-state-active' : ''}">
                         <g:link id="${course.id}" action="show" controller="course">${course.name}</g:link>
                 </li>
                 </g:each>
             </ul>
             <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
-        <h3>Waiting List for ${courseInstance}</h3>
+        <h3>Waiting List</h3>
         <g:form controller="course" action="interestedStudents" 
             id="${courseInstance.id}"
             method="GET">
 
-            <g:hiddenField name="classSessionId" value="${classSessionInstance?.id}" />
-            <table>
+            <table id="interestedContacts" style="width:100%;float:left;">
                 <tr>
                     <td>
                         <label for="q">Contact Name:</label>
                         <g:textField name="q" value="${params.q}" size="20" />
+                        <g:submitButton name="submitFilter" value="Search" />
+                        <g:link action="interestedStudents" controller="course" id="${courseInstance.id}"> Clear </g:link>
                     </td>
                     <td>
-                        <label for="reservedForUser">Reserved For:</label>
-                        <g:select 
-                        name="reservedForUser"
-                        courseId="${courseInstance.id}"
-                        from="${users}" 
-                        optionKey="id" 
-                        value="${reservedForUserId}"
-                        noSelection="['':'']" />
-                        <g:submitButton name="submitFilter" value="Search" />
-                        <g:link action="interestedStudents" 
-                        controller="course" id="${courseInstance.id}">
-                        Clear
-                        </g:link>
                     </td>
 
                 </tr>
             
         </table>
         </g:form>
-                    <table>
-                        <thead>
-                            <th colspan="2">Contact</th>
-                            <th>Students</th>
-                        </thead>
-                        <g:each var="con" 
-                            in="${contactInstanceList}">
-                        <g:render template="interestedContact" 
-                        model="[
-                            users : users,
-                            contactInstance : con,
-                            selectedContactId : selectedContactId,
-                            callListContacts : callListContacts,
-                            courseInstance : courseInstance,
-                            classSessionInstance : classSessionInstance ]" />
-                        </g:each>
-                    </table>
-                </div>
-                <div class="paginateButtons">
-                    <g:paginate id="${courseInstance.id}" 
-                    total="${contactInstanceTotal}"
-                    params="[ reservedForUser : reservedForUserId ?: '',
-                                classSessionId:classSessionInstance?.id]" />
-                </div>
-            </div>
+        <table id="lessonDates" style="width:100%;float:left;" class="ui-widget ui-widget-content">
+            <thead>
+                <tr><th class="ui-widget-header2">Contact</th>
+                <th class="ui-widget-header2">Students</th></tr>
+            </thead>
+            <g:each var="con" in="${contactInstanceList}">
+                <g:render template="interestedContact" model="[ users : users,
+                    contactInstance : con,
+                    selectedContactId : selectedContactId,
+                    callListContacts : callListContacts,
+                    courseInstance : courseInstance,
+                    classSessionInstance : classSessionInstance ]" />
+            </g:each>
+        </table>
+        <div class="paginateButtons">
+            <g:paginate id="${courseInstance.id}" 
+            total="${contactInstanceTotal}"
+            params="[ reservedForUser : reservedForUserId ?: '',
+                        classSessionId:classSessionInstance?.id]" />
+        </div>
+        </div>
     </body>
 </html>
