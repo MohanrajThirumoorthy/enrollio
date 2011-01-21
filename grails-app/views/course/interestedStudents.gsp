@@ -107,83 +107,51 @@
             <ul id="ulSecond" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-bottom">
                 <g:each var="course" in="${courseInstanceList}">
                 <li class="ui-state-default ui-corner-top ${course.id == courseInstance.id ? 'ui-tabs-selected ui-state-active' : ''}">
-                        <g:link id="${course.id}" action="show" controller="course">${course.name}</g:link>
+                <g:link id="${course.id}" action="show" controller="course">${course.name}</g:link>
                 </li>
                 </g:each>
             </ul>
-        <div id="users-contain" class="ui-widget">
-        <table id="interestedStudents" style="width:100%;float:left;" class="ui-widget ui-widget-content">
-		<thead>
-			<tr class="ui-widget-header2 ">
-				<th width="40%">Contact</th>
-				<th>Student</th>
-				<th>Enrollments</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-                            <td>John Doe
-                                Lorem ipsum dolor sit amet, <br />
-                                consectetur adipisicing elit, <br />
-                                sed do eiusmod tempor incididunt ut labore et dolore <br />
-                                magna aliqua. Ut enim ad minim veniam, <br />
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex <br />
-                            
-                            
-                            
-                            </td>
-				<td>Bplug <a href="#" class="create-user" id="create-user">Create new user</a></td>
-				<td>Earn-A-Computer 10/12/2009</td>
-			</tr>
-                        <tr>
-                            <td></td>
-				<td>Dangle <a class="create-user" href="#" id="create-user">Smurf</a></td>
-                            <td>Earn-A-Computer 10/12/2009</td>
+
+            <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+                <g:form controller="course" action="interestedStudents" id="${courseInstance.id}" method="GET">
+                <h3>Waiting List</h3>
+                <fieldset class="ui-widget ui-widget-content">
+                    <legend class="ui-widget-header2 ui-corner-all">Search</legend>
+                    <label for="q">Contact Name:</label>
+                    <g:textField name="q" value="${params.q}" size="20" />
+                    <g:submitButton name="submitFilter" value="Search" />
+                    <g:link action="interestedStudents" controller="course" id="${courseInstance.id}"> Clear </g:link>
+                </fieldset>
+                </g:form>
+                <table id="interestedStudents" style="width:100%;float:left;" class="ui-widget ui-widget-content">
+                    <thead>
+                        <tr class="ui-widget-header2 ">
+                            <th width="40%">Contact</th>
+                            <th>Student</th>
+                            <th>Enrollments</th>
                         </tr>
-		</tbody>
-	</table>
-</div>
-            <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
-        <h3>Waiting List</h3>
-        <g:form controller="course" action="interestedStudents" 
-            id="${courseInstance.id}"
-            method="GET">
+                    </thead>
+                    <tbody>
 
-            <table id="interestedContactSearch" style="width:100%;float:left;">
-                <tr>
-                    <td>
-                        <label for="q">Contact Name:</label>
-                        <g:textField name="q" value="${params.q}" size="20" />
-                        <g:submitButton name="submitFilter" value="Search" />
-                        <g:link action="interestedStudents" controller="course" id="${courseInstance.id}"> Clear </g:link>
-                    </td>
-                    <td>
-                    </td>
-
-                </tr>
-            
-        </table>
-        </g:form>
-        <table id="interestedStudents" style="width:100%;float:left;" class="ui-widget ui-widget-content">
-            <thead>
-                <tr><th class="ui-widget-header2">Contact</th>
-                <th class="ui-widget-header2">Students</th></tr>
-            </thead>
-            <g:each var="con" in="${contactInstanceList}">
+                <g:each var="con" in="${contactInstanceList}">
                 <g:render template="interestedContact" model="[ users : users,
                     contactInstance : con,
                     selectedContactId : selectedContactId,
                     callListContacts : callListContacts,
                     courseInstance : courseInstance,
                     classSessionInstance : classSessionInstance ]" />
-            </g:each>
-        </table>
-        <div class="paginateButtons">
-            <g:paginate id="${courseInstance.id}" 
-            total="${contactInstanceTotal}"
-            params="[ reservedForUser : reservedForUserId ?: '',
-                        classSessionId:classSessionInstance?.id]" />
-        </div>
+                    </g:each>
+
+
+
+
+                    </tbody>
+                </table>
+                <div style="float:left;" class="paginateButtons">
+                    <g:paginate id="${courseInstance.id}" total="${contactInstanceTotal}"
+                    params="[ reservedForUser : reservedForUserId ?: '', classSessionId:classSessionInstance?.id]" />
+                </div>
+            </div>
         </div>
     </body>
 </html>

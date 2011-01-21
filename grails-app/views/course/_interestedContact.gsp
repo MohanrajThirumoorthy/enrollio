@@ -19,18 +19,17 @@
 
     <td>
         <table>
-        <g:each var="stud" in="${contactInstance.students}">
-        
-        <tr>
-            <td>
-            <g:render template="/utility/starredThingy" model="[thingy:stud, hideGreyStar : true]" />
-            <g:link controller="student" action="edit" id="${stud.id}">${stud}</g:link>
-            </td>
-            <td>
-            <a href="#">Enroll</a>
-            </td>
-        </tr>
-        </g:each>
+            <g:each var="stud" in="${contactInstance.students}">
+                <tr>
+                    <td>
+                        <g:render template="/utility/starredThingy" model="[thingy:stud, hideGreyStar : true]" />
+                        <g:link controller="student" action="edit" id="${stud.id}">${stud}</g:link>
+                    </td>
+                    <td>
+                        <a href="#">Enroll</a>
+                    </td>
+                </tr>
+            </g:each>
         </table>
     
     
