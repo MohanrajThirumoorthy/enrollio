@@ -82,6 +82,21 @@
 
         </script>
         <title>Interested Students</title>
+        <style>
+		label, input { display:block; }
+		input.text { margin-bottom:12px; width:95%; padding: .4em; }
+		fieldset { padding:0; border:0; margin-top:25px; }
+                fieldset label {
+                    float:left;
+                    padding:4px;
+                }
+		h1 { font-size: 1.2em; margin: .6em 0; }
+		div#users-contain { margin: 20px 0; }
+		div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+		div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+		.ui-dialog .ui-state-error { padding: .3em; }
+		.validateTips { border: 1px solid transparent; padding: 0.3em; }
+	</style>
     </head>
     <body>
         <g:render template="/common/messages" />
@@ -96,6 +111,38 @@
                 </li>
                 </g:each>
             </ul>
+        <div id="users-contain" class="ui-widget">
+        <table id="interestedStudents" style="width:100%;float:left;" class="ui-widget ui-widget-content">
+		<thead>
+			<tr class="ui-widget-header2 ">
+				<th width="40%">Contact</th>
+				<th>Student</th>
+				<th>Enrollments</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+                            <td>John Doe
+                                Lorem ipsum dolor sit amet, <br />
+                                consectetur adipisicing elit, <br />
+                                sed do eiusmod tempor incididunt ut labore et dolore <br />
+                                magna aliqua. Ut enim ad minim veniam, <br />
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex <br />
+                            
+                            
+                            
+                            </td>
+				<td>Bplug <a href="#" class="create-user" id="create-user">Create new user</a></td>
+				<td>Earn-A-Computer 10/12/2009</td>
+			</tr>
+                        <tr>
+                            <td></td>
+				<td>Dangle <a class="create-user" href="#" id="create-user">Smurf</a></td>
+                            <td>Earn-A-Computer 10/12/2009</td>
+                        </tr>
+		</tbody>
+	</table>
+</div>
             <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
         <h3>Waiting List</h3>
         <g:form controller="course" action="interestedStudents" 
