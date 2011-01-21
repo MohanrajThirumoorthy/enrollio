@@ -11,13 +11,6 @@ class ClassSessionController {
 
     def index = { redirect(action:list,params:params) }
 
-    static navigation = [
-        group:'mainLinks',
-        action:'list',
-        title:'Sessions',
-		isVisible: { SecurityUtils.subject?.isAuthenticated() },
-        order:11
-    ]
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', 
                              saveEnrollments:'POST', update:'POST',
