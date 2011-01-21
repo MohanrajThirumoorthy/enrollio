@@ -7,10 +7,7 @@
         <title>Student List</title>
     </head>
     <body>
-    <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-        <g:link action="create" controller="contact" 
-                elementId="newStudentLink" class="user_add">&#160;New Student</g:link>
-    </div>
+    <g:render template="/contact/contactMenu" />
     <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <table class="ui-widget ui-widget-content">
             <thead>

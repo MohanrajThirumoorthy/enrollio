@@ -1,17 +1,8 @@
-<ul>
-    <li>
-        <h3>
-            <g:link class="user" controller="student">Students</g:link>
-        </h3>
-        <ul>
-            <li>
-                <g:link class="useradd" controller="contact" action="create">New</g:link>
-            </li>
-            <g:if test="${contactInstance}">
-                <li>
-                    <g:link class="useredit" controller="contact" action="edit" id="${contactInstance.id}">Edit Contact</g:link>
-                </li>
-            </g:if>
-        </ul>
-    </li>
-</ul>
+<div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <g:link action="create" controller="contact" 
+    elementId="newStudentLink" class="user_add">&#160;New Contact/Students</g:link>
+    <g:link action="create" controller="contact" 
+    elementId="newStudentLink" class="user_add">&#160;New Contact/Students</g:link>
+    <g:link action="create" controller="contact" 
+    elementId="newStudentLink" class="user_add">&#160;New Contact/Students</g:link>
+</div>

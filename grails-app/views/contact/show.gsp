@@ -33,21 +33,15 @@
         <title>${studentInstance ? "Student: " + studentInstance : "Contact:" + contactInstance}</title>
     </head>
     <body>
-    <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-        <g:link action="create" controller="contact" 
-                elementId="newStudentLink" class="user_add">&#160;New Student</g:link>
-    </div>
     <g:render template="/common/messages" />
+    <g:render template="/contact/contactMenu" />
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <div id="mainContent" style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
             <div class="ui-widget ui-widget-content ui-corner-all">
-                <g:if test="${flash.message}">
-                    <div class="message">${flash.message}</div>
-                </g:if>
                 <h3 style="padding:0.5em 1em;" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header2 ui-corner-all">
                     Parent Info
                 </h3>
-                <table>
+                <table width="100%">
                     <tbody>
                         <g:if test="${contactInstance.cannotReach}">
                         <tr>

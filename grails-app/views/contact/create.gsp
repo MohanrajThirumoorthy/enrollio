@@ -38,9 +38,7 @@
                     $(".phoneNumber").mask("(999) 999-9999")
             });
         </script>
-        <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-            <g:link url="${[controller:'contact', action:'create']}" id="newContactLink" class="module_add">&#160;New</g:link>
-        </div>
+        <g:render template="/contact/contactMenu" />
         <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <div class="float-container ui-tabs-panel ui-widget-content ui-corner-bottom">
             <g:hasErrors bean="${contactInstance}">
