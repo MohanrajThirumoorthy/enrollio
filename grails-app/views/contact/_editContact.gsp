@@ -1,5 +1,6 @@
 <fieldset style="float:left;" class="ui-widget ui-widget-content">
     <legend class="ui-widget-header2 ui-corner-all">Parent/Contact Info</legend>
+    <input type="hidden" name="id" value="${contactInstance.id}" />
     <div class="field">
         <label for="firstName">First Name:</label>
         <input type="text" id="firstName" name="firstName" value="${fieldValue(bean:contactInstance,field:'firstName')}"/>

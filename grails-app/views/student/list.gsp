@@ -7,6 +7,7 @@
         <title>Student List</title>
     </head>
     <body>
+    <g:render template="/common/messages" />
     <g:render template="/contact/contactMenu" />
     <div class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <table style="width:100%;" class="ui-widget ui-widget-content">
