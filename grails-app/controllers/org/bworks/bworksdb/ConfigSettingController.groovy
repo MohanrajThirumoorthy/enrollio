@@ -37,7 +37,7 @@ class ConfigSettingController {
     // TODO: Make this error message friendlier
     def generateTestSessions = {
         try {
-            testDataService.loadAllDummyClassSessions()
+            testDataService.loadAllDummyClassSessions(params.moreSessions?.toInteger())
             flash.message = "Test Sessions were successfully generated."
             redirect(uri:'/')
         } catch (Exception e) {

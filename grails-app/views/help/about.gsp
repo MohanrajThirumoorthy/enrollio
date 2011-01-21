@@ -6,6 +6,7 @@
         <title>Help - About</title>
     </head>
     <body>
+        <g:render template="/common/messages" />
         <g:render template="/help/helpMenu" />
         <h3>${title ?: "What is Enrollio?"}</h3>
         <p>Enrollio is an open-source application that tracks enrollment

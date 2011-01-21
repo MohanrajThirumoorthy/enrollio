@@ -18,6 +18,7 @@
             <div class="dialog">
                 <h1>Load Test Class Sessions</h1>
             </div>
+            <input type="text" name="moreSessions" value="0" />
             <div class="buttons">
                 <span class="button">
                     <input class="save" type="submit" value="Go!" />

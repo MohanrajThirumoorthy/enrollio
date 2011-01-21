@@ -128,7 +128,7 @@ class TestDataService {
     } 
 
     // General method to load awesome dummy class sessions
-    def loadAllDummyClassSessions() {
+    def loadAllDummyClassSessions(moreSessions = 0) {
         def adultCourse      = Course.findByName(TestKeys.PROGRAM_ADULT_AEC)
         def mentorshipCourse = Course.findByName(TestKeys.PROGRAM_MENTORSHIP)
         def childrensCourse  = Course.findByName(TestKeys.PROGRAM_KIDS_AEC)
@@ -146,6 +146,14 @@ class TestDataService {
         loadDummyClassSession(adultCourse, 
                               TestKeys.SESSION_ADULT_DATE,
                               TestKeys.SESSION_ADULT_NAME)
+
+        moreSessions.times {
+            def d = new Date() + it
+            loadDummyClassSession(mentorshipCourse, 
+                                    d,
+                                  TestKeys.SESSION_MENTORSHIP_NAME + d)
+
+        }
 
     }
 

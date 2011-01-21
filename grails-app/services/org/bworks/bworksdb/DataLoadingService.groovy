@@ -326,7 +326,7 @@ class DataLoadingService {
     // prev. version of dB did not have the concept of "Courses"
     // Default to children's EAC course.
     def getDefaultCourse() {
-        def c = Course.findByNameIlike("chil") ?: Course.get(1)
+        def c = Course.findByNameIlike("chil") ?: Course.list[0]
         return c
     }
 
