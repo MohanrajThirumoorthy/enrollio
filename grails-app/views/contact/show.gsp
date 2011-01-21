@@ -78,7 +78,7 @@
                         </g:if>
                     </tbody>
                 </table>
-                <table class="ui-widget ui-widget-content">
+                <table width="100%" class="ui-widget ui-widget-content">
                     <thead>
                         <tr class="ui-widget-header2">
                             <th colspan="2">Notes</th>
@@ -117,13 +117,13 @@
                 <p>No students</p>
             </g:else>
         </div>
-    </div>
-    <div style="overflow:hidden" class="ui-corner-all ui-widget-content ui-corner-bottom">
+    <div class="ui-corner-all ui-widget-content ui-corner-bottom">
         <g:form action="saveStudent" controller="contact" method="POST" name="newStudentForm">
             <g:render template='/contact/createStudent' 
                          model="[contactInstance:contactInstance, possibleInterests : possibleInterests, studentInstance : newStudentInstance]" />
             <g:submitButton style="float:right" class="save" name="saveButton" value="Save" />
         </g:form>
+    </div>
     </div>
     </body>
 </html>
