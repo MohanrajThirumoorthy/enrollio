@@ -253,7 +253,7 @@ class ContactController {
                 flash.message = "Note saved."
             }
             else {
-                flash.message = "Blank notes are not allowed.  Meow."
+                flash.error = "Blank notes are not allowed.  Meow."
             }
         
         }
