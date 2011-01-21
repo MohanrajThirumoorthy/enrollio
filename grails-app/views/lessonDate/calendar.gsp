@@ -41,15 +41,12 @@
         <title>Calendar - ${lessonDateInstance}</title>
     </head>
     <body>
-        <div id="container">
-            <div id="wrapper">
-                <div id="content" class="calendar">
-                        <div id="calendar">
-
-                        </div>
-
-                </div>
+    <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <div id="mainContent" style="width:100%;float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
+            <div class="ui-widget ui-widget-content ui-corner-all">
+                <div id="calendar"></div>
             </div>
         </div>
+    </div>
     </body>
 </html>
