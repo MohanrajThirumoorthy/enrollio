@@ -138,3 +138,10 @@ ul.basicList > li {
     padding-left:20px;
     padding-right:5px;
 }
+
+
+h3.ui-widget-header a, h3.ui-widget-header2 a {
+    float:right;
+    padding-left:20px;
+    padding-right:5px;
+}

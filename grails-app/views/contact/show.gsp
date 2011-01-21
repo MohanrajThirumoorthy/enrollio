@@ -39,7 +39,7 @@
         <div id="mainContent" style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
             <div class="ui-widget ui-widget-content ui-corner-all">
                 <h3 style="padding:0.5em 1em;" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header2 ui-corner-all">
-                    Parent Info
+                    Parent Info <g:link class="useredit" action="edit" id="${contactInstance.id}">Edit</g:link>
                 </h3>
                 <table width="100%">
                     <tbody>
