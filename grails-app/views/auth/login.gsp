@@ -8,7 +8,7 @@
                 $(function() {
                         $( "input:submit").button();
                 });
-          </script>
+        </script>
 
     </head>
     <body>
