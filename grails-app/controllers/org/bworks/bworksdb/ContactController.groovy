@@ -95,7 +95,7 @@ class ContactController {
             }
             contactInstance.properties = params
             if(!contactInstance.hasErrors() && contactInstance.save()) {
-                flash.message = "Contact ${params.id} updated"
+                flash.message = "Contact '${contactInstance.toString()}' successfully updated"
                 redirect(action:show,id:contactInstance.id)
             }
             else {
