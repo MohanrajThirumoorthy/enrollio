@@ -26,7 +26,7 @@
                      changeYear:  true
                  });
                  $('.hasDatePicker').datepicker({changeYear:true});
-
+                $("#saveStudent,  #addNote").button();
               });
 
         </script>
@@ -95,7 +95,7 @@
                                 <g:textField name="noteText" />
                             </td>
                             <td>
-                                <input type="submit" value="Add Note" />
+                                <input id="addNote" type="submit" value="Add Note" />
                                 </td>
                                   </tr>
                         </tbody>
@@ -121,7 +121,9 @@
         <g:form action="saveStudent" controller="contact" method="POST" name="newStudentForm">
             <g:render template='/contact/createStudent' 
                          model="[contactInstance:contactInstance, possibleInterests : possibleInterests, studentInstance : newStudentInstance]" />
-            <g:submitButton style="float:right" class="save" name="saveButton" value="Save" />
+             <div class="buttonBox">
+                 <g:submitButton name="saveStudent" value="Save" />
+             </div>
         </g:form>
     </div>
     </div>
