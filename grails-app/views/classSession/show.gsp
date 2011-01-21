@@ -22,63 +22,56 @@
             </ul>
             <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <h3>${classSessionInstance.name}, <enrollio:formatDate date="${classSessionInstance.startDate}" /></h3>
-            <table id="lessonDates" style="width:40%;float:left;" class="ui-widget ui-widget-content">
-                <thead>
-                    <tr><th colspan="2" class="ui-widget-header2">Dates</th></tr>
-                </thead>
-                <tbody>
-                    <g:each var="lessonDate"
-                    in="${classSessionInstance.lessonDates}">
+                <table id="lessonDates" style="width:50%;float:left;" class="ui-widget ui-widget-content">
+                    <thead>
+                        <tr><th colspan="2" class="ui-widget-header2">Dates</th></tr>
+                    </thead>
+                    <tbody>
+                        <g:each var="lessonDate"
+                        in="${classSessionInstance.lessonDates}">
+                            <tr>
+                                <td>
+                                    <g:link controller="classSession"
+                                    action="attendance" 
+                                    id="${lessonDate.classSession.id}"
+                                    params="['lessonDateId':lessonDate.id]"
+                                    >
+                                    ${lessonDate.lesson.name}</g:link>
+                                </td>
+                                <td>
+                                    <enrollio:formatDate date="${lessonDate.lessonDate}" />
+                                </td>
+                            </tr>
+                        </g:each>
+                    </tbody>
+                </table>
+                <table id="enrollments" style="width:50%;float:left;" class="ui-widget ui-widget-content">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="ui-widget-header2">Enrollments
+
+                                <g:link name="editEnrollmentsLink" class="groupadd"
+                                controller="course"
+                                action="interestedStudents" id="${classSessionInstance.course.id}"
+                                params="[ classSessionId :classSessionInstance.id ]">Add</g:link>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <g:each var="enr"
+                        in="${classSessionInstance.enrollments}">
                         <tr>
                             <td>
-                                <g:link controller="classSession"
-                                action="attendance" 
-                                id="${lessonDate.classSession.id}"
-                                params="['lessonDateId':lessonDate.id]"
-                                >
-                                ${lessonDate.lesson.name}</g:link>
+                                <g:link controller="student"
+                                action="show"
+                                id="${enr.student.id}">${enr.student}</g:link>
                             </td>
-                            <td>
-                                <enrollio:formatDate date="${lessonDate.lessonDate}" />
-                            </td>
+                            <td>${enr.status.name}</td>
                         </tr>
-                    </g:each>
-                </tbody>
-            </table>
-            <table id="enrollments" style="width:40%;float:left;" class="ui-widget ui-widget-content">
-                <thead>
-                    <tr>
-                        <th colspan="2" class="ui-widget-header2">Enrollments
-
-                            <g:link name="editEnrollmentsLink" class="groupadd"
-                            controller="course"
-                            action="interestedStudents" id="${classSessionInstance.course.id}"
-                            params="[ classSessionId :classSessionInstance.id ]">Add</g:link>
-                        </th>
-                    </tr>
-
-
-
-                    </td></tr>
-                </thead>
-                <tbody>
-                    <g:each var="enr"
-                    in="${classSessionInstance.enrollments}">
-                    <tr>
-                        <td>
-                            <g:link controller="student"
-                            action="show"
-                            id="${enr.student.id}">${enr.student}</g:link>
-                        </td>
-                        <td>${enr.status.name}</td>
-                    </tr>
-                    </g:each>
-                </tbody>
-            </table>
-                        </div>
-                    </div>
-                </div>
-        </div>
+                        </g:each>
+                    </tbody>
+                </table>
             </div>
+        </div>
     </body>
 </html>
