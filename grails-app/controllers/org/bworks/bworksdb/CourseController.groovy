@@ -228,6 +228,7 @@ class CourseController {
     }
     
 
+    // TODO refactor
     def interestedStudents = {
 
         // default to showing 10 records, and at most 100 records
@@ -257,7 +258,8 @@ class CourseController {
             courseService.callList(params.id.toLong(), options) 
 
         def data = 
-        [ contactInstanceList : contactInstanceList,
+        [ courseInstanceList : Course.list(),
+        contactInstanceList : contactInstanceList,
           contactInstanceTotal : contactInstanceList.totalCount,
           reservedForUserId : params.reservedForUser,
             courseInstance : courseInstance,

@@ -84,68 +84,51 @@
         <title>Interested Students</title>
     </head>
     <body>
-        <div id="wrapper">
-            <div id="content">
-                <div class="rightnow">
-                    <h3 class="reallynow">
-                        <g:if test="${classSessionInstance}">
-                                <g:link controller="classSession"
-                                           class="headerLink calendar"
-                                           action="show"
-                                           id="${classSessionInstance.id}" >
-                                           ${classSessionInstance.name}</g:link>
-                        </g:if>
-                        <g:else>
-                            <span>Waiting List for ${courseInstance}</span>
-                        </g:else>
-                        <br />
-                    </h3>
-                        <g:form controller="course" action="interestedStudents" 
-                            id="${courseInstance.id}"
-                            method="GET">
+        <g:render template="/common/messages" />
+        <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+            <a href="#"></a>
+        </div>
+        <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+            <ul id="ulSecond" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-bottom">
+                <g:each var="course" in="${courseInstanceList}">
+                <li class="ui-state-default ui-corner-top ${course.id == classSessionInstance.course.id ? 'ui-tabs-selected ui-state-active' : ''}">
+                        <g:link id="${course.id}" action="show" controller="course">${course.name}</g:link>
+                </li>
+                </g:each>
+            </ul>
+            <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+        <h3>Waiting List for ${courseInstance}</h3>
+        <g:form controller="course" action="interestedStudents" 
+            id="${courseInstance.id}"
+            method="GET">
 
-                            <g:hiddenField name="classSessionId" value="${classSessionInstance?.id}" />
-                            <table>
-                                <tr>
-                                    <td>
-                                        <label for="q">Contact Name:</label>
-                                        <g:textField name="q" value="${params.q}" size="20" />
-                                    </td>
-                                    <td>
-                                        <label for="reservedForUser">Reserved For:</label>
-                                        <g:select 
-                                        name="reservedForUser"
-                                        courseId="${courseInstance.id}"
-                                        from="${users}" 
-                                        optionKey="id" 
-                                        value="${reservedForUserId}"
-                                        noSelection="['':'']" />
-                                        <g:submitButton name="submitFilter" value="Search" />
-                                        <g:link action="interestedStudents" 
-                                        controller="course" id="${courseInstance.id}">
-                                        Clear
-                                        </g:link>
-                                    </td>
+            <g:hiddenField name="classSessionId" value="${classSessionInstance?.id}" />
+            <table>
+                <tr>
+                    <td>
+                        <label for="q">Contact Name:</label>
+                        <g:textField name="q" value="${params.q}" size="20" />
+                    </td>
+                    <td>
+                        <label for="reservedForUser">Reserved For:</label>
+                        <g:select 
+                        name="reservedForUser"
+                        courseId="${courseInstance.id}"
+                        from="${users}" 
+                        optionKey="id" 
+                        value="${reservedForUserId}"
+                        noSelection="['':'']" />
+                        <g:submitButton name="submitFilter" value="Search" />
+                        <g:link action="interestedStudents" 
+                        controller="course" id="${courseInstance.id}">
+                        Clear
+                        </g:link>
+                    </td>
 
-                                </tr>
-                            
-                        <g:if test="${classSessionInstance}">
-                                <tr>
-                                
-                                    <td>
-                                    ${contactInstanceTotal} students interested in 
-                                    <g:link action="show" controller="course" id="${courseInstance.id}">${courseInstance}</g:link>
-                                    </td>
-                                    <td>
-                                        <span id="studentCount">
-                                        <b>${classSessionInstance.enrollments?.size()}</b> 
-                                        students enrolled.
-                                        </span>
-                                    </td>
-                                </tr>
-                        </g:if>
-                        </table>
-                        </g:form>
+                </tr>
+            
+        </table>
+        </g:form>
                     <table>
                         <thead>
                             <th colspan="2">Contact</th>
@@ -171,6 +154,5 @@
                                 classSessionId:classSessionInstance?.id]" />
                 </div>
             </div>
-        </div>
     </body>
 </html>
