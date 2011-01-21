@@ -6,6 +6,7 @@
         <title>Settings</title>
     </head>
     <body>
+        <g:render template="/admin/adminMenu" />
         <div id="wrapper">
             <div id="content">
                 <div class="rightnow">
@@ -44,9 +45,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="sidebar">
-            <g:render template="/admin/adminMenu" />
         </div>
     </body>
 </html>
