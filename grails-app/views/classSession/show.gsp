@@ -72,7 +72,7 @@
                     </tbody>
                 </table>
                 <g:if test="${lessonDateInstance}">
-                    <g:render template="/lessonDate/attendance" model="[ lessonDateInstance : lessonDateInstance ]" />
+                    <g:render template="/classSession/attendance" model="[ lessonDateInstance : lessonDateInstance ]" />
                 </g:if>
             </div>
         </div>
