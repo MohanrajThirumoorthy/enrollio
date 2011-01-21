@@ -28,16 +28,13 @@
                          $('#newStudentForm').hide('slow');
                          }
                  });
+                $("#saveContact").button();
+                $(".phoneNumber").mask("(999) 999-9999")
              });
         
         </script>
     </head>
     <body>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                    $(".phoneNumber").mask("(999) 999-9999")
-            });
-        </script>
         <g:render template="/contact/contactMenu" />
         <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <div class="float-container ui-tabs-panel ui-widget-content ui-corner-bottom">
