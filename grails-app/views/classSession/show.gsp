@@ -71,6 +71,9 @@
                         </g:each>
                     </tbody>
                 </table>
+                <g:if test="${lessonDateInstance}">
+                    <g:render template="/lessonDate/attendance" model="[ lessonDateInstance : lessonDateInstance ]" />
+                </g:if>
             </div>
         </div>
     </body>

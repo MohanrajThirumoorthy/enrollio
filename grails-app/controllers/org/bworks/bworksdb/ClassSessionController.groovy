@@ -373,8 +373,7 @@ class ClassSessionController {
                 else {
                     // Init. attendances if need be.
                     attendanceService.initializeAttendees(lessonDateInstance)
-                    [ classSessionInstance : classSessionInstance,
-                      lessonDateInstance : lessonDateInstance ]
+                    render(view:'show', model:[ courseInstanceList : Course.list(), classSessionInstance : classSessionInstance, lessonDateInstance : lessonDateInstance ])
                 }
             }
             else {
@@ -384,8 +383,7 @@ class ClassSessionController {
                     // Init. attendances if need be.
                     attendanceService.initializeAttendees(closestLessonDate)
                     
-                    [ classSessionInstance : classSessionInstance,
-                      lessonDateInstance : closestLessonDate ]
+                    render(view:'show', model:[ courseInstanceList : Course.list(), classSessionInstance : classSessionInstance, lessonDateInstance : closestLessonDate ])
                 }
                 else {
                     flash.message = "You don't have any lesson dates scheduled for this session"

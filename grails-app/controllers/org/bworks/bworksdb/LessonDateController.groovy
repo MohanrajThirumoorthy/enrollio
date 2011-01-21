@@ -55,10 +55,7 @@ class LessonDateController {
            // Initialize attendances, if need be.
            attendanceService.initializeAttendees(lessonDateInstance)
             
-            
-            
-            
-            return [ lessonDateInstance : lessonDateInstance ] }
+       return [ lessonDateInstance : lessonDateInstance ] }
     }
 
     def delete = {
