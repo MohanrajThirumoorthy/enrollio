@@ -58,8 +58,9 @@
                    <g:render template="editContact" model="[contactInstance:contactInstance, showNote:true]" />
                    <g:render template="createStudent" model="[contactInstance:contactInstance, studentInstance:newStudentInstance, optionalForm:true]" />
 
-                   <br />
-                   <g:actionSubmit class="ui-helper-reset" value="Save" action="save" />
+                   <div class="buttonBox">
+                       <g:actionSubmit id="saveContact" class="ui-helper-reset" value="Save" action="save" />
+                   </div>
                 </g:form>
             </div>
         </div>

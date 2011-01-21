@@ -10,7 +10,7 @@
     <g:render template="/common/messages" />
     <g:render template="/contact/contactMenu" />
     <div class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-        <table style="width:100%;" class="ui-widget ui-widget-content">
+        <table style="border-width:0;width:100%;" class="ui-widget ui-widget-content">
             <thead>
                 <tr class="ui-widget-header2">
                     <th>Contact/Parent</th>
