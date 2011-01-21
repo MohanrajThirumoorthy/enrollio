@@ -145,3 +145,11 @@ h3.ui-widget-header a, h3.ui-widget-header2 a {
     padding-left:20px;
     padding-right:5px;
 }
+
+/* Divs with this class are like a "newline"
+ * and are usually used to hold submit buttons */
+.buttonBox {
+    float:left;
+    width:100%;
+}
+

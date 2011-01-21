@@ -31,7 +31,9 @@
                         <label for="rememberMe">Remember me?:</label>
                         <g:checkBox name="rememberMe" value="${rememberMe}" />
                     </div>
-                    <input type="submit" value="Sign in" />
+                    <div class="buttonBox">
+                        <input type="submit" value="Sign in" />
+                    </div>
             </g:form>
         </fieldset>
     </body>
