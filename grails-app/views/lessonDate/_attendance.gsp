@@ -22,7 +22,7 @@
 
     });
 </script>
-<div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+<div id="contentContainer" style="float:left;" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
     <div class="ui-widget-header2 ui-widget-content">
         Attendance
     </div>
