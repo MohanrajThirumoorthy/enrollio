@@ -78,7 +78,7 @@
                         </g:if>
                     </tbody>
                 </table>
-                <table style="width:40%;" class="ui-widget ui-widget-content">
+                <table class="ui-widget ui-widget-content">
                     <thead>
                         <tr class="ui-widget-header2">
                             <th colspan="2">Notes</th>
