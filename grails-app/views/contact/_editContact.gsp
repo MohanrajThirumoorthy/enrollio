@@ -49,8 +49,10 @@
         <input type="text" id="emailAddress" name="emailAddress" value="${fieldValue(bean:contactInstance,field:'emailAddress')}"/>
     </div>
 
-    <div class="field">
-        <label for="noteText">Note:</label>
-        <g:textArea name="noteText" value="${noteText}" rows="2" cols="30"/>
-    </div>
+    <g:if test="${showNote}">
+        <div class="field">
+            <label for="noteText">Note:</label>
+            <g:textArea name="noteText" value="${noteText}" rows="2" cols="30"/>
+        </div>
+    </g:if>
 </fieldset>

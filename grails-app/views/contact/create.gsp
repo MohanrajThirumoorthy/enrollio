@@ -55,12 +55,11 @@
                     </div>
                 </g:hasErrors>
                 <g:form method="post" action="save" controller="contact" >
-                   <g:render template="editContact" model="[contactInstance:contactInstance]" />
+                   <g:render template="editContact" model="[contactInstance:contactInstance, showNote:true]" />
                    <g:render template="createStudent" model="[contactInstance:contactInstance, studentInstance:newStudentInstance, optionalForm:true]" />
 
-                    <div style="float:left">
-                        <g:actionSubmit value="Save" action="save" />
-                    </div>
+                   <br />
+                   <g:actionSubmit class="ui-helper-reset" value="Save" action="save" />
                 </g:form>
             </div>
         </div>

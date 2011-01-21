@@ -33,7 +33,7 @@
                     </div>
                 </g:hasErrors>
                 <g:form action="update" name="editContactForm" method="post" >
-                    <g:render template="editContact" model="[contactInstance:contactInstance, showDrop:true]" />
+                    <g:render template="editContact" model="[contactInstance:contactInstance" />
                         <g:actionSubmit style="float:left;" id="saveContact" value="Update" />
                 </g:form>
             </div>
