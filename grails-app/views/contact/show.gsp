@@ -45,7 +45,7 @@
                     <tbody>
                         <g:if test="${contactInstance.cannotReach}">
                         <tr>
-                            <td colspan="4" class="errors">Cannot Reach</td>
+                            <td colspan="4" class="ui-corner-all ui-state-error">Cannot Reach</td>
                         </tr>
                         </g:if>
                         <tr>
