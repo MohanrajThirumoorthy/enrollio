@@ -101,7 +101,7 @@ class ClassSessionController {
             flash.message = "ClassSession not found with id ${params.id}"
             redirect(action:list)
         }
-        else { return [ classSessionInstance : classSessionInstance ] }
+        else { return [ classSessionInstance : classSessionInstance, courseInstanceList : Course.list() ] }
     }
 
     def delete = {
