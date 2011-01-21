@@ -34,7 +34,9 @@
                 </g:hasErrors>
                 <g:form action="update" name="editContactForm" method="post" >
                     <g:render template="editContact" model="[contactInstance:contactInstance" />
-                        <g:actionSubmit style="float:left;" id="saveContact" value="Update" />
+                    <div class="buttonBox">
+                        <g:actionSubmit id="saveContact" value="Update" />
+                    </div>
                 </g:form>
             </div>
         </div>
