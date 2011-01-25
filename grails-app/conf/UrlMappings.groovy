@@ -25,6 +25,7 @@ class UrlMappings {
         "/graduation/$id"(controller: 'classSession', action: 'graduation')
         "/attendanceSheet/$id"(controller: 'classSession', action: 'attendanceSheet')
         "/enrollStudent"(controller: 'classSession', action: 'enrollStudent')
+        "/enrollStudent/$id"(controller:'course', action:'enrollStudent')
         "/attendance/$id"(controller: 'classSession', action: 'attendance')
         "/reserveContact"(controller: 'classSession', action: 'reserveContact')
         "/welcomeLetters/$id"(controller: 'classSession', action: 'welcomeLetters')
@@ -129,4 +130,5 @@ class UrlMappings {
         // response codes
         "500"(view:'/error')
         "404"(controller:'error', action:'pageNotFound')
+    }
 }

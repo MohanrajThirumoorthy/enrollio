@@ -24,12 +24,20 @@
     <tr>
         <td>
             <g:render template="/utility/starredThingy" model="[thingy:stud, hideGreyStar : true]" />
-            <a href="#">
+            <g:link controller="course" params="[studentId:stud.id]" action="enrollStudent" id="${courseInstance.id}">
                 <img border="none" alt="Enroll" src="${resource(dir:'/images/icons', file:'date_add.png')}" />
-            </a>
+            </g:link>
             <g:link controller="student" action="edit" id="${stud.id}">${stud}</g:link>
         </td>
         <td>
+            <g:each var="enrollment" in="${stud.enrollments}">
+            <g:if test="${enrollment.classSession.startDate > new Date()}">
+                boo
+            </g:if>
+            <g:else>
+            dangle
+            </g:else>
+            </g:each>
         </td>
         <td class="studentDetails">&nbsp;</td>
     </tr>

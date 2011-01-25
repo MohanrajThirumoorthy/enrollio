@@ -138,10 +138,6 @@
                     courseInstance : courseInstance,
                     classSessionInstance : classSessionInstance ]" />
                     </g:each>
-
-
-
-
                 </table>
                 <div style="float:left;" class="paginateButtons">
                     <g:paginate id="${courseInstance.id}" total="${contactInstanceTotal}"

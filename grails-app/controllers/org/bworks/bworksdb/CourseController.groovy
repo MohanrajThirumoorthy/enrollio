@@ -30,6 +30,18 @@ class CourseController {
                        courseInstanceTotal: Course.count() ])
     }
 
+    def enrollStudent = {
+        def courseInstance = Course.get(params.id)
+        def studentInstance = Student.get(params.studentId)
+        def classSessionInstanceList = courseInstance.classSessions
+        render (view : 'enrollStudent', model : [ courseInstance : courseInstance, 
+        studentInstance : studentInstance, 
+        classSessionInstanceList : classSessionInstanceList ])
+    }
+
+    def saveEnrollments = {
+    }
+
     def saveLessonSort = {
         def courseInstance = Course.get( params.id )
 
