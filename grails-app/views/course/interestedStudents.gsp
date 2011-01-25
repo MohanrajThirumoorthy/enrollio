@@ -114,15 +114,15 @@
 
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:form controller="course" action="interestedStudents" id="${courseInstance.id}" method="GET">
-                <h3>Waiting List</h3>
-                <fieldset class="ui-widget ui-widget-content">
-                    <legend class="ui-widget-header2 ui-corner-all">Search</legend>
+                <fieldset id="waitingListSearch">
+                <legend>Waiting List</legend>
                     <label for="q">Contact Name:</label>
+
                     <g:textField name="q" value="${params.q}" size="20" />
                     <g:submitButton name="submitFilter" value="Search" />
                     <g:link action="interestedStudents" controller="course" id="${courseInstance.id}"> Clear </g:link>
-                </fieldset>
                 </g:form>
+            </fieldset>
                 <table id="interestedStudents" style="width:100%;float:left;" class="ui-widget ui-widget-content">
                     <thead>
                         <tr class="ui-widget-header2 ">

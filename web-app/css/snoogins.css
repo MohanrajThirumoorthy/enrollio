@@ -188,3 +188,8 @@ input[type=submit] {
 #loginform {
     margin-left : 0;
 }
+
+#waitingListSearch {
+    margin-left : 0;
+    margin-top : 0;
+}
