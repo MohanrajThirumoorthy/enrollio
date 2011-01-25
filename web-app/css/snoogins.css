@@ -193,3 +193,10 @@ input[type=submit] {
     margin-left : 0;
     margin-top : 0;
 }
+
+.newContact td {
+    border-style : solid;
+    border-width : 1px 0 0 0;
+}
+
+

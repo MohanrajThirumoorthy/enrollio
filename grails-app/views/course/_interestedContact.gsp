@@ -1,6 +1,5 @@
-<tbody>
-<tr class="${contactInstance.id.toString() == selectedContactId.toString() ? 'selectedLight' : ''}">
-    <td>
+<tr class="newContact ${contactInstance.id.toString() == selectedContactId.toString() ? 'selectedLight' : ''}">
+    <td class="contactDetails">
 
         <g:link controller="contact" 
            action="show" id="${contactInstance.id}">${callListContacts[contactInstance.id]?.callListPosition}) ${contactInstance}</g:link>
@@ -26,5 +25,3 @@
         </td>
     </tr>
     </g:each>
-</tr>
-</tbody>
