@@ -24,10 +24,12 @@
     <tr>
         <td>
             <g:render template="/utility/starredThingy" model="[thingy:stud, hideGreyStar : true]" />
+            <a href="#">
+                <img border="none" alt="Enroll" src="${resource(dir:'/images/icons', file:'date_add.png')}" />
+            </a>
             <g:link controller="student" action="edit" id="${stud.id}">${stud}</g:link>
         </td>
         <td>
-            <a href="#">Enroll</a>
         </td>
     </tr>
     </g:each>
