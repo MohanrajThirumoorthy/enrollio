@@ -36,30 +36,28 @@
     </head>
     <body>
         <g:render template="/contact/contactMenu" />
-        <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-            <div class="float-container ui-tabs-panel ui-widget-content ui-corner-bottom">
-                <g:hasErrors bean="${contactInstance}">
-                    <div class="ui-widget">
-                        <div style="" class="ui-state-error ui-corner-all"> 
-                            <p>
-                            <span style="float: left; margin-right: 0.3em;" 
-                                class="ui-icon ui-icon-alert">
-                            </span> 
-                            <strong>Alert:</strong> 
-                            <g:renderErrors bean="${contactInstance}" as="list" />
-                            </p>
-                        </div>
-                    </div>
-                </g:hasErrors>
-                <g:form method="post" action="save" controller="contact" >
-                   <g:render template="editContact" model="[contactInstance:contactInstance, showNote:true]" />
-                   <g:render template="createStudent" model="[contactInstance:contactInstance, studentInstance:newStudentInstance, optionalForm:true]" />
-
-                   <div class="buttonBox">
-                       <g:actionSubmit id="saveContact" class="ui-helper-reset" value="Save" action="save" />
-                   </div>
-                </g:form>
+        <div id="secondMenu" class="float-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+            <g:hasErrors bean="${contactInstance}">
+            <div class="ui-widget">
+                <div style="" class="ui-state-error ui-corner-all"> 
+                    <p>
+                    <span style="float: left; margin-right: 0.3em;" 
+                        class="ui-icon ui-icon-alert">
+                    </span> 
+                    <strong>Alert:</strong> 
+                    <g:renderErrors bean="${contactInstance}" as="list" />
+                    </p>
+                </div>
             </div>
+            </g:hasErrors>
+            <g:form method="post" action="save" controller="contact" >
+               <g:render template="editContact" model="[contactInstance:contactInstance, showNote:true]" />
+               <g:render template="createStudent" model="[contactInstance:contactInstance, studentInstance:newStudentInstance, optionalForm:true]" />
+
+               <div class="buttonBox">
+                   <g:actionSubmit id="saveContact" class="ui-helper-reset" value="Save" action="save" />
+               </div>
+            </g:form>
         </div>
     </body>
 </html>
