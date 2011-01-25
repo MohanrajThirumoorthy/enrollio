@@ -1,5 +1,5 @@
 <fieldset style="float:left;" class="ui-widget ui-widget-content">
-    <legend class="ui-widget-header2 ui-corner-all">Parent/Contact Info</legend>
+    <legend class="ui-corner-all">Parent/Contact Info</legend>
     <input type="hidden" name="id" value="${contactInstance.id}" />
     <div class="field">
         <label for="firstName">First Name:</label>
@@ -32,7 +32,7 @@
 </fieldset>
 
 <fieldset style="float:left;" class="ui-widget ui-widget-content">
-    <legend class="ui-widget-header2 ui-corner-all">Phone Numbers</legend>
+    <legend class="ui-corner-all">Phone Numbers</legend>
     <g:each var="phone" status="i" in="${contactInstance.phoneNumbers}">
         <div class="field">
             <g:select from="${['Home', 'Work', 'Mobile', 'Other' ]}"

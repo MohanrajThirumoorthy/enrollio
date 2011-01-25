@@ -14,7 +14,7 @@
     </div>
 </g:hasErrors>
     <input type="hidden" id="contact.id" name="contact.id" value="${contactInstance?.id}" />
-    <legend class="ui-widget-header2 ui-corner-all">Add  Student
+    <legend class="ui-corner-all">Student
     <g:if test="${optionalForm}">
          <g:checkBox name="newStudentOption" class="enrollStudent" value="${true}" />
     </g:if>
