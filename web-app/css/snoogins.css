@@ -165,9 +165,8 @@ h3.ui-widget-header a, h3.ui-widget-header2 a, th.ui-widget-header2 a {
     width:100%;
 }
 
-#interestedStudents td {
-    border-width: 1px;
-    border-style: solid;
+td {
+    border-style: none;
     border-color: #A6C9E2;
 }
 
