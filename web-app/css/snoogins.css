@@ -20,10 +20,13 @@ body{
 
 #secondMenu {
     /* border:none; */
+    padding-bottom : 10px;
 }
 
 #someMenu {
     border : none;
+    margin-top : 10px;
+    margin-bottom : 5px;
 }
 
 #someMenu a, #someMenu a:visited, .menuList a, .menuList a:visited {
@@ -55,13 +58,16 @@ body{
 }
 
 fieldset {
-    margin : 1em 0;
-    padding : 1em;
-    margin-right : 1em;
+    margin-left:1em;
+    margin-top:0.5em;
 }
 
 fieldset input[type=text][type=password] {
     width : 13em;
+}
+
+fieldset textarea {
+    width : 13.4em;
 }
 
 fieldset label {
