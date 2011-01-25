@@ -32,10 +32,10 @@
         <td>
             <g:each var="enrollment" in="${stud.enrollments}">
             <g:if test="${enrollment.classSession.startDate > new Date()}">
-                boo
+                ${enrollment.classSession}
             </g:if>
             <g:else>
-            dangle
+                ${enrollment.classSession} past
             </g:else>
             </g:each>
         </td>
