@@ -11,9 +11,15 @@
             <g:if test="${contactInstance.city}">${contactInstance.city},&#160;&#160;</g:if>
             <g:if test="${contactInstance.state}">${contactInstance.state}&#160;</g:if>
             <g:if test="${contactInstance.zipCode}">${contactInstance.zipCode}&#160;&#160;</g:if>
-            <g:if test="${contactInstance.emailAddress}"> <li> ${contactInstance.emailAddress}</li> </g:if>
+            <g:if test="${contactInstance.emailAddress}"> ${contactInstance.emailAddress} </g:if>
     </td>
-
+   <td>
+       <g:each var="phone" in="${contactInstance.phoneNumbers}">
+       <div>
+           ${phone.label} - ${phone.phoneNumber}</div>
+       </g:each>
+   </td>
+</tr>
     <g:each var="stud" in="${contactInstance.students}">
     <tr>
         <td>
