@@ -74,12 +74,13 @@ class ClassSessionController {
         def msg
         if (params.enroll == 'true') {
             msg = classSessionService.enrollStudent(studentInstance, classSessionInstance)
+            render("Student ${studentInstance} enrolled in ${classSessionInstance}")
         }
         else {
             msg = classSessionService.disrollStudent(studentInstance, classSessionInstance)
+            render("Student ${studentInstance} removed from ${classSessionInstance}")
         }
 
-        render '<b>' + msg['enrolledStudents'] + '</b> students enrolled'
     }
 
 

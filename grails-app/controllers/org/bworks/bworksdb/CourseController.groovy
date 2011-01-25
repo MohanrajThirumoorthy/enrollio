@@ -32,11 +32,13 @@ class CourseController {
 
     def enrollStudent = {
         def courseInstance = Course.get(params.id)
+        def courseInstanceList = Course.list()
         def studentInstance = Student.get(params.studentId)
         def classSessionInstanceList = courseInstance.classSessions
         render (view : 'enrollStudent', model : [ courseInstance : courseInstance, 
         studentInstance : studentInstance, 
-        classSessionInstanceList : classSessionInstanceList ])
+        classSessionInstanceList : classSessionInstanceList,
+        courseInstanceList : courseInstanceList])
     }
 
     def saveEnrollments = {

@@ -6,23 +6,33 @@
         <meta name="layout" content="main" />
         <meta name="tabName" content="course" />
         <script type="text/javascript">
-                $('.enrollStudent').click(function() {
+            $(document).ready(function() {
+            $('.enrollStudent').click(function() {
                     $.post('${createLink(controller:"classSession",
-                                            action:"enrollStudent")}',
-                            { 'enroll' : $(this).attr('checked'), 
-                            'studentId' : $(this).attr("studentId"),
-                            'classSessionId' : $(this).attr("classSessionId") },
-                            function(data) {
+                            action:"enrollStudent")}',
+                        { 'enroll' : $(this).attr('checked'), 
+                        'studentId' : $(this).attr("studentId"),
+                        'classSessionId' : $(this).attr("classSessionId") },
+                        function(data) {
                             // update student count w/results from enrollStudent action
-                                $('#studentCount').html(data);
-                            });
+                            $('#message').text(data);
+                            $('#messageBox').show('slow');
+                        });
                     });
+            });
         </script>
     </head>
     <body>
         <g:render template="/common/messages" />
+                            <div id="messageBox" style="display:none;" class="info ui-widget">
+                                <div style="margin-top: 20px; padding: 0pt 0.7em;" class="ui-state-default ui-corner-all"> 
+                                    <p>
+                                        <span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-info"></span>
+                                        <span id="message"></span>
+                                    </p>
+                                </div>
+                            </div>
         <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-            <a href="#"></a>
         </div>
         <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <ul id="ulSecond" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-bottom">
@@ -43,16 +53,22 @@
                     <g:form action="saveEnrollments">
                     <g:hiddenField name="studentId" value="${studentInstance.id}" />
                     <g:hiddenField name="id" value="${courseInstance.id}" />
-                    </g:form>
+
+                    </tr>
                     <g:each var="classSession" in="${classSessionInstanceList}">
                     <tr>
                         <td>${classSession.name}
-                        
-                        
+                         <g:checkBox id="enrollInSession${classSession.id}"
+                                   name="enrollStudent${studentInstance.id}" 
+                                   class="enrollStudent"
+                         classSessionId="${classSession.id}" 
+                              studentId="${studentInstance.id}"
+                                  value="${classSession.enrollments.find { it.student.id == studentInstance.id }}" />
+                        <enrollio:formatDate date="${classSession.startDate}" />
                         </td>
-                        <td><enrollio:formatDate date="${classSession.startDate}" /></td>
                     </tr>
                     </g:each>
+                    </g:form>
                 </table>
             </div>
         </div>
