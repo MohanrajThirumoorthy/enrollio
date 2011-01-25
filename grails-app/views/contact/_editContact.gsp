@@ -29,6 +29,18 @@
         <label for="zipCode">Zip Code:</label>
         <input type="text" id="zipCode" name="zipCode" value="${fieldValue(bean:contactInstance,field:'zipCode')}"/>
     </div>
+
+    <div class="field">
+        <label for="emailAddress">Email Address:</label>
+        <input type="text" id="emailAddress" name="emailAddress" value="${fieldValue(bean:contactInstance,field:'emailAddress')}"/>
+    </div>
+
+    <g:if test="${showNote}">
+        <div class="field">
+            <label for="noteText">Note:</label>
+            <g:textArea name="noteText" value="${noteText}" rows="2" cols="30"/>
+        </div>
+    </g:if>
 </fieldset>
 
 <fieldset style="float:left;" class="ui-widget ui-widget-content">
@@ -43,17 +55,4 @@
         </div>
     </g:each>
 </fieldset>
-<fieldset style="float:left;" class="ui-widget ui-widget-content">
-    <legend class="ui-widget-header2 ui-corner-all">Additional Info</legend>
-    <div class="field">
-        <label for="emailAddress">Email Address:</label>
-        <input type="text" id="emailAddress" name="emailAddress" value="${fieldValue(bean:contactInstance,field:'emailAddress')}"/>
-    </div>
 
-    <g:if test="${showNote}">
-        <div class="field">
-            <label for="noteText">Note:</label>
-            <g:textArea name="noteText" value="${noteText}" rows="2" cols="30"/>
-        </div>
-    </g:if>
-</fieldset>
