@@ -153,6 +153,8 @@ h3.ui-widget-header a, h3.ui-widget-header2 a, th.ui-widget-header2 a {
 /* Divs with this class are like a "newline"
  * and are usually used to hold submit buttons */
 .buttonBox {
+    margin-top : 5px;
+    margin-left : 1em;
     float:left;
     width:100%;
 }
@@ -161,4 +163,22 @@ h3.ui-widget-header a, h3.ui-widget-header2 a, th.ui-widget-header2 a {
     border-width: 1px;
     border-style: solid;
     border-color: #A6C9E2;
+}
+
+input[type=submit] {
+    margin  : 5px 0 0 0;
+    padding : 1px;
+}
+
+#loginform {
+    width : 240px;
+    margin-top : 10px;
+}
+
+#loginform .buttonBox  {
+    margin-left : 0;
+}
+
+#loginform {
+    margin-left : 0;
 }

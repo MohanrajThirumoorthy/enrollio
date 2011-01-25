@@ -13,8 +13,8 @@
     </head>
     <body>
         <g:render template="/common/messages" />
-        <fieldset class="ui-widget-content" style="float: left;">
-            <legend class="ui-widget-header2 ui-corner-all">Log In</legend>
+        <fieldset id="loginform" class="ui-widget-content ui-corner-all">
+            <legend class="ui-corner-all">Log In</legend>
             <g:form name="loginForm" class="loginForm" action="signIn">
                 <input type="hidden" name="targetUri" value="${targetUri}" />
                     <div class="field">
