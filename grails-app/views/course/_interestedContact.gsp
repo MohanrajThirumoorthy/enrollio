@@ -31,5 +31,6 @@
         </td>
         <td>
         </td>
+        <td class="studentDetails">&nbsp;</td>
     </tr>
     </g:each>
