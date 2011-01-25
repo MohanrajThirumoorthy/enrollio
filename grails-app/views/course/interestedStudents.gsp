@@ -126,12 +126,9 @@
                 <table id="interestedStudents" style="width:100%;float:left;" class="ui-widget ui-widget-content">
                     <thead>
                         <tr class="ui-widget-header2 ">
-                            <th width="40%">Contact</th>
-                            <th>Student</th>
-                            <th>Enrollments</th>
+                            <th colspan="3">Waiting List</th>
                         </tr>
                     </thead>
-                    <tbody>
 
                 <g:each var="con" in="${contactInstanceList}">
                 <g:render template="interestedContact" model="[ users : users,
@@ -145,7 +142,6 @@
 
 
 
-                    </tbody>
                 </table>
                 <div style="float:left;" class="paginateButtons">
                     <g:paginate id="${courseInstance.id}" total="${contactInstanceTotal}"
