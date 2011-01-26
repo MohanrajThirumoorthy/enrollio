@@ -25,7 +25,7 @@
         <td>
             <g:render template="/utility/starredThingy" model="[thingy:stud, hideGreyStar : true]" />
             <!-- <g:link controller="course" params="[studentId:stud.id]" action="enrollStudent" id="${courseInstance.id}"> -->
-            <a href="#" studentId="${stud.id}" class="enrollStudent">    <img border="none" alt="Enroll" src="${resource(dir:'/images/icons', file:'date_add.png')}" />
+            <a href="#" studentId="${stud.id}" studentName="${stud}" class="enrollStudent">    <img border="none" alt="Enroll" src="${resource(dir:'/images/icons', file:'date_add.png')}" />
             </a>
             <!-- </g:link> -->
             <g:link controller="student" action="edit" id="${stud.id}">${stud}</g:link>

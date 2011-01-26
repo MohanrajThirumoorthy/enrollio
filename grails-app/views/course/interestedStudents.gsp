@@ -16,12 +16,12 @@
                         width: 350,
                         modal: true,
                         buttons: {
-                                "Create an account": function() {
+                                "Save": function() {
                                     $( this ).dialog( "close" );
-                                 }
-                        },
-                        Cancel: function() {
-                                $( this ).dialog( "close" );
+                                },
+                                Cancel: function() {
+                                        $( this ).dialog( "close" );
+                                }
                         }
                 });
 
@@ -31,6 +31,7 @@
                         { studentId : $(this).attr('studentid') } , 
                         function(data) { $('#dialog-form').html(data); }
                     );
+                    $( "#dialog-form" ).dialog( "option", 'title', "Enroll " + $(this).attr('studentName'));
                     $( "#dialog-form" ).dialog( "open" );
 
                 });
@@ -57,10 +58,6 @@
     </head>
     <body>
         <div id="dialog-form">
-            <form>
-                <label>Yoru Mom</label>
-                <input type="text" />
-            </form>
         </div>
         <g:render template="/common/messages" />
         <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
