@@ -7,78 +7,34 @@
         <meta name="tabName" content="course" />
         <script type="text/javascript">
              $(document).ready(function(){
-                     $('#changeAllLink').click().toggle(
-                         function() { $('#changeAllDiv').show() },
-                         function() { $('#changeAllDiv').hide() }
-                     );
-                     $('#changeAllSelectBox').change(function() {
-                         var reserveForUser = $(this).val()
-                        $('.reserveContact').each(function() {
-                            $(this).val(reserveForUser).change(); 
-                        });
-                        // hide select box
-                        $('#changeAllDiv').hide()
-                     });
-                $('.enrollStudent').click(function() {
-                    $.post('${createLink(controller:"classSession",
-                                            action:"enrollStudent")}',
-                            { 'enroll' : $(this).attr('checked'), 
-                            'studentId' : $(this).attr("studentId"),
-                            'classSessionId' : $(this).attr("classSessionId") },
-                            function(data) {
-                            // update student count w/results from enrollStudent action
-                                $('#studentCount').html(data);
-                            });
-                    });
-                // When user clicks any entry that has a class of "reserveContact", then
-                // submit a POST to the app, with the contactId and classSessionId, and then
-                // the contact will be "reserved" for the current user.  meow.
-                $('.reserveContact').change(function() {
-                    postReservation($(this), $(this).val());
-                    updatePushPin($(this).parent(), $(this).val())
+
+                var url = "${createLink(action:'foobarform', controller:'course', id:courseInstance.id)}";
+
+                $( "#dialog-form" ).dialog({
+                        autoOpen: false,
+                        height: 300,
+                        width: 350,
+                        modal: true,
+                        buttons: {
+                                "Create an account": function() {
+                                    $( this ).dialog( "close" );
+                                 }
+                        },
+                        Cancel: function() {
+                                $( this ).dialog( "close" );
+                        }
                 });
-                $('.reservationPushPin').click(function() {
-                    var pushPin = $(this);
-                    var userId = pushPin.attr("userId");
-                    postReservation(pushPin, userId);
-                    // Change drop-down to reflect who (if anybody) has
-                    // reserved this contact
-                    updatePushPin(pushPin.parent(), userId)
-                    // Update the select box
-                    pushPin.parent().find('.reserveContact').val(userId)
-                })
-                
-             });
 
-            // generic function to handle sending POSTS to 
-            // reserveContact action
-            function postReservation(element, userId) {
-                $.post('${createLink(controller:"classSession",
-                                        action:"reserveContact")}',
-                    { 'contactId' : $(element).attr("contactId"), 
-                         'userId' : userId,
-                 'courseId' : $(element).attr("courseId") });
-            }
+                $('.enrollStudent').click(function() {
+                    // populate enrollmentform
+                    $.get(url, function(data) {
+                            $('#dialog-form').html(data);
+                    });
+                    $( "#dialog-form" ).dialog( "open" );
 
-            // update the push pin that's in the parent TD
-            function updatePushPin(parent, reservationUserId) {
-                var pushPin = parent.find('.reservationPushPin');
-                // If reservationUserId = this push pin's userId, then show red, and 
-                // DELETE the userId attribute
-                if(reservationUserId != "" && reservationUserId == pushPin.attr("userId")) {
-                    pushPin.attr("src", 
-                        "${resource(dir:'images/icons', file:'push_pin_red.png')}");
-                    pushPin.attr("userId", "")
-                }
-                else {
-                    // Add the current user's ID to this push pin, and make it gray
-                    // when push pin is pressed, this userID is sent to server to reserve the contact
-                    pushPin.attr("src" , 
-                        "${resource(dir:'images/icons', file:'push_pin_gray.png')}"); 
-                    pushPin.attr("userId", "${currentUser.id}")
-                }
-                
-            }
+                });
+            });
+            
 
         </script>
         <title>Interested Students</title>
@@ -99,6 +55,12 @@
 	</style>
     </head>
     <body>
+        <div id="dialog-form">
+            <form>
+                <label>Yoru Mom</label>
+                <input type="text" />
+            </form>
+        </div>
         <g:render template="/common/messages" />
         <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <a href="#"></a>

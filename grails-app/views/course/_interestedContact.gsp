@@ -21,12 +21,13 @@
    </td>
 </tr>
     <g:each var="stud" in="${contactInstance.students}">
-    <tr>
+    <tr id="student${stud.id}">
         <td>
             <g:render template="/utility/starredThingy" model="[thingy:stud, hideGreyStar : true]" />
-            <g:link controller="course" params="[studentId:stud.id]" action="enrollStudent" id="${courseInstance.id}">
-                <img border="none" alt="Enroll" src="${resource(dir:'/images/icons', file:'date_add.png')}" />
-            </g:link>
+            <!-- <g:link controller="course" params="[studentId:stud.id]" action="enrollStudent" id="${courseInstance.id}"> -->
+            <a href="#" class="enrollStudent">    <img border="none" alt="Enroll" src="${resource(dir:'/images/icons', file:'date_add.png')}" />
+            </a>
+            <!-- </g:link> -->
             <g:link controller="student" action="edit" id="${stud.id}">${stud}</g:link>
         </td>
         <td>
