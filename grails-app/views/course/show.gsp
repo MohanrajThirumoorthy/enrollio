@@ -6,9 +6,6 @@
         <title>Course: ${courseInstance} </title>
     </head>
     <body>
-    <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-        <g:link url="${[controller:'course', action:'create']}" id="newCourseLink" class="module_add">&#160;New</g:link>
-    </div>
     <g:if test="${courseInstanceList.size() > 1}">
         <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <ul id="ulSecond" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-bottom">

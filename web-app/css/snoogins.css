@@ -19,7 +19,9 @@ body{
 }
 
 #secondMenu {
-    /* border:none; */
+    border : none;
+    margin-top : 5px;
+    border-top : none;
     padding-bottom : 10px;
 }
 
@@ -92,6 +94,9 @@ fieldset.horizontal input {
     width:50%;
 }
 
+.ui-tabs {
+    border:none;
+}
 .ui-tabs-panel {
     overflow:hidden;
 }
@@ -111,6 +116,7 @@ fieldset.horizontal input {
 
 #contentContainer {
     overflow:hidden;
+    border : none;
 }
 
 /* Left/main column of data */

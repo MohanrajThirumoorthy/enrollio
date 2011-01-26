@@ -32,8 +32,6 @@
                                     </p>
                                 </div>
                             </div>
-        <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-        </div>
         <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <ul id="ulSecond" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-bottom">
                 <g:each var="course" in="${courseInstanceList}">
