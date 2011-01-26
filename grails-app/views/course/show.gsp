@@ -20,7 +20,6 @@
             </ul>
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:render template="individualCourseMenu" />
-                <p class="youhave">${courseInstance.name}</p>
                 <p class="youhave">${courseInstance.description}</p>
                 <p class="youhave">${activeInterestCount} interested Students</p>
                 <div style="width:40%;float:left;" class="ui-widget ui-widget-content ui-corner-all">
