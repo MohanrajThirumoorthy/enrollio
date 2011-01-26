@@ -8,6 +8,7 @@ class CourseController {
     def index = { redirect(action:list,params:params) }
     def userService
     def courseService
+    def classSessionService
 
     static navigation = [
         group:'mainLinks',
@@ -42,8 +43,32 @@ class CourseController {
     }
 
     def saveEnrollments = {
-        println "params are: " + params
-        render("Student ID: " + params.studentId)
+
+        def renderMsg = ""
+        
+
+        def disrollments = params.findAll {
+            it.key =~ /_classSessions\[(\d+)\]/
+        }.collect { (it =~ /\[(\d+)\]/)[0][1] }
+
+        def enrollments = params.findAll {
+            it.key =~ /^classSessions\[(\d+)\]/
+        }.collect { (it =~ /\[(\d+)\]/)[0][1] }
+
+        disrollments = disrollments - enrollments
+
+        def studentInstance = Student.get(params.studentId)
+        def msgs = ""
+        disrollments.each {
+            classSessionService.disrollStudent(studentInstance, ClassSession.get(it))
+        }
+
+        enrollments.each {
+            classSessionService.enrollStudent(studentInstance, ClassSession.get(it))
+        }
+
+        render (template:'studentEnrollments', model:[studentInstance:studentInstance])
+
     }
 
     def foobarform = {

@@ -9,28 +9,31 @@
              $(document).ready(function(){
 
                 var url = "${createLink(action:'foobarform', controller:'course', id:courseInstance.id)}";
-
-                
                 $('.enrollStudent').click(function() {
+                    var studentId = $(this).attr('studentid')
                     // populate enrollmentform
                     $.get(url,
-                        { studentId : $(this).attr('studentid') } , 
-                        function(data) { $('#dialog-form').html(data); }
+                        { studentId : studentId } , function(data) { $('#dialog-form').html(data); }
                     );
                     $( "#dialog-form" ).dialog({
-                        title : $(this).attr('studentid'), 
+                        title : $(this).attr('studentName'), 
+                        position : 'center',
                         height: 300,
                         width: 350,
                         modal: true,
                         buttons: {
-                        "Save": function() {
-                            $(this).children('form').submit();
-                                // $("#studentid" + $(this).attr('studentId')).text(data) 
+                            "Save": function() {
+                                // hack an ajax call by using the form's action
+                                var action = $(this).children('form').attr('action');
+                                var formData = $(this).children('form').serialize();
+                                $.post(action, formData, function(resultData) {
+                                    $("#studentData" + studentId).replaceWith(resultData)
+                                });
                                 $(this).dialog( "close" );
                             },
-                        Cancel: function() {
-                            $( this ).dialog( "close" );
-                        }
+                            Cancel: function() {
+                                $( this ).dialog( "close" );
+                            }
                         }
                     });
                 });

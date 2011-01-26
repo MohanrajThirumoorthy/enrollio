@@ -20,26 +20,6 @@
        </g:each>
    </td>
 </tr>
-    <g:each var="stud" in="${contactInstance.students}">
-    <tr id="student${stud.id}">
-        <td>
-            <g:render template="/utility/starredThingy" model="[thingy:stud, hideGreyStar : true]" />
-            <!-- <g:link controller="course" params="[studentId:stud.id]" action="enrollStudent" id="${courseInstance.id}"> -->
-            <a href="#" studentId="${stud.id}" studentName="${stud}" class="enrollStudent">    <img border="none" alt="Enroll" src="${resource(dir:'/images/icons', file:'date_add.png')}" />
-            </a>
-            <!-- </g:link> -->
-            <g:link controller="student" action="edit" id="${stud.id}">${stud}</g:link>
-        </td>
-        <td>
-            <g:each var="enrollment" in="${stud.enrollments}">
-            <g:if test="${enrollment.classSession.startDate > new Date()}">
-                ${enrollment.classSession}
-            </g:if>
-            <g:else>
-                ${enrollment.classSession} past
-            </g:else>
-            </g:each>
-        </td>
-        <td class="studentDetails">&nbsp;</td>
-    </tr>
-    </g:each>
+<g:each var="stud" in="${contactInstance.students}">
+    <g:render template="/course/studentEnrollments" model="[studentInstance:stud]" />
+</g:each>

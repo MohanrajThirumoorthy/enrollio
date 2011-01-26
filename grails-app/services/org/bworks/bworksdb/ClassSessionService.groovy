@@ -161,6 +161,11 @@ class ClassSessionService {
         
         def enr = Enrollment.findByClassSessionAndStudent(classSessionInstance, studentInstance)
 
+        // If no enrollment exists, bye-bye
+        if (!enr) {
+            return ""
+        }
+
         def attendances = crit.list() {
             eq 'student.id', studentInstance.id
             eq 'status', 'present'
