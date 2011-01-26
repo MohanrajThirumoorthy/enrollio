@@ -21,5 +21,16 @@
    </td>
 </tr>
 <g:each var="stud" in="${contactInstance.students}">
-    <g:render template="/course/studentEnrollments" model="[studentInstance:stud]" />
+<tr >
+    <td>
+        <g:render template="/utility/starredThingy" model="[thingy:stud, hideGreyStar : true]" />
+        <a class="enrollStudent" href="#" studentId="${stud.id}" studentName="${stud}" class="enrollStudent">    <img border="none" alt="Enroll" src="${resource(dir:'/images/icons', file:'date_add.png')}" />
+        </a>
+        <g:link controller="student" action="edit" id="${stud.id}">${stud}</g:link>
+    </td>
+    <td id="studentEnrollmentData${stud.id}">
+        <g:render template="/course/studentEnrollments" model="[studentInstance:stud]" />
+    </td>
+    <td class="studentDetails">&nbsp;</td>
+</tr>
 </g:each>

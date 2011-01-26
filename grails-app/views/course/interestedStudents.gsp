@@ -27,7 +27,7 @@
                                 var action = $(this).children('form').attr('action');
                                 var formData = $(this).children('form').serialize();
                                 $.post(action, formData, function(resultData) {
-                                    $("#studentData" + studentId).replaceWith(resultData)
+                                    $("#studentEnrollmentData" + studentId).html(resultData)
                                 });
                                 $(this).dialog( "close" );
                             },
