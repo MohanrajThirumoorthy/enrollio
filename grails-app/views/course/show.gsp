@@ -14,6 +14,9 @@
                         <g:link id="${course.id}" action="show" controller="course">${course.name}</g:link>
                     </li>
                 </g:each>
+                <li>
+                  <g:link style="padding-left:20px;color:#222222;font-weight:normal;" class="module_add" name="newCourseLink" controller="course" action="create">New Course</g:link>
+                </li>
             </ul>
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:render template="individualCourseMenu" />
