@@ -41,6 +41,12 @@ class CourseController {
         courseInstanceList : courseInstanceList])
     }
 
+    def saveEnrollments = {
+        println "BOINK" * 1000
+        println "params are: " + params
+        render("Cack")
+    }
+
     def foobarform = {
         def courseInstance = Course.get(params.id)
         def courseInstanceList = Course.list()
@@ -51,9 +57,6 @@ class CourseController {
               classSessionInstanceList : classSessionInstanceList,
              studentInstance : studentInstance ]
 
-    }
-
-    def saveEnrollments = {
     }
 
     def saveLessonSort = {

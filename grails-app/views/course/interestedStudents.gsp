@@ -10,30 +10,29 @@
 
                 var url = "${createLink(action:'foobarform', controller:'course', id:courseInstance.id)}";
 
-                $( "#dialog-form" ).dialog({
-                        autoOpen: false,
-                        height: 300,
-                        width: 350,
-                        modal: true,
-                        buttons: {
-                                "Save": function() {
-                                    $( this ).dialog( "close" );
-                                },
-                                Cancel: function() {
-                                        $( this ).dialog( "close" );
-                                }
-                        }
-                });
-
+                
                 $('.enrollStudent').click(function() {
                     // populate enrollmentform
                     $.get(url,
                         { studentId : $(this).attr('studentid') } , 
                         function(data) { $('#dialog-form').html(data); }
                     );
-                    $( "#dialog-form" ).dialog( "option", 'title', "Enroll " + $(this).attr('studentName'));
-                    $( "#dialog-form" ).dialog( "open" );
-
+                    $( "#dialog-form" ).dialog({
+                        title : $(this).attr('studentid'), 
+                        height: 300,
+                        width: 350,
+                        modal: true,
+                        buttons: {
+                        "Save": function() {
+                            $(this).children('form').submit();
+                                // $("#studentid" + $(this).attr('studentId')).text(data) 
+                                $(this).dialog( "close" );
+                            },
+                        Cancel: function() {
+                            $( this ).dialog( "close" );
+                        }
+                        }
+                    });
                 });
             });
             
@@ -58,6 +57,7 @@
     </head>
     <body>
         <div id="dialog-form">
+            <g:form id="saveEnrollmentsForm"></g:form>
         </div>
         <g:render template="/common/messages" />
         <div id="someMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">

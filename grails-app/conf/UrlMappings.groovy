@@ -48,6 +48,7 @@ class UrlMappings {
         "/generateTestContacts"(controller:'configSetting', action:'generateTestContacts')
         "/loadDataFromFile"(controller:'configSetting', action:'loadDataFromFile')
         "/loadDataRequest"(controller:'configSetting', action:'loadDataRequest')
+        "/saveEnrollments"(controller: 'course', action: 'saveEnrollments')
 
         // userSetting controller
         '/userSettings'(controller: 'userSetting', action: 'list')
