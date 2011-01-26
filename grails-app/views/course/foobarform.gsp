@@ -1,4 +1,4 @@
-Snarf
+${courseInstance.name}
 <!--
 <g:each var="classSession" in="${classSessionInstanceList}">
 <label for="classSession${classSession.id}">${classSession.abbrev()}</label>
