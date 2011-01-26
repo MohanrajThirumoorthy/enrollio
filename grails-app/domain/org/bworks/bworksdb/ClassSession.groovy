@@ -18,8 +18,6 @@ class ClassSession implements Commentable {
     }
 
     String abbrev() {
-        "(" + 
         this.course.name?.substring(0,3) + " " + startDate?.format('MM/yyyy') +
-        ")"
     }
 }

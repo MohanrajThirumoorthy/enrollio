@@ -199,13 +199,19 @@ class EnrollioTagLib {
         def todaysDate = new Date()
         out << enrollments.sort { it.classSession.startDate }.reverse().collect { enrollment ->
             def lessonDates = enrollment.classSession.lessonDates
+            def courseAbbrev = enrollment.classSession.course.name.split().collect {
+                it.toCharacter()
+            }.join()
+            
+            courseAbbrev = courseAbbrev + ' ' + enrollment.classSession.startDate.format('MMM d yyyy h:mm')
+
             if ( lessonDates && lessonDates.last().lessonDate >= todaysDate) { 
                 g.link(class:'futureEnrollment', controller:'classSession', action:'show', 
-                       id: enrollment.classSession.id, enrollment.classSession.abbrev())
+                       id: enrollment.classSession.id, courseAbbrev)
             }
             else {
                 g.link(class:'pastEnrollment', controller:'classSession', action:'show', 
-                       id: enrollment.classSession.id, enrollment.classSession.abbrev())
+                       id: enrollment.classSession.id, courseAbbrev)
             }
         }.join(',')
     }
