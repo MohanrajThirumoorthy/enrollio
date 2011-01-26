@@ -43,12 +43,13 @@ class CourseController {
 
     def foobarform = {
         def courseInstance = Course.get(params.id)
-        // def courseInstanceList = Course.list()
-        // def studentInstance = Student.get(params.studentId)
-        // def classSessionInstanceList = courseInstance.classSessions
-        // [ classSessionInstanceList : classSessionInstanceList,
-          // studentInstance : studentInstance]
-        [ courseInstance : courseInstance ]
+        def courseInstanceList = Course.list()
+        def classSessionInstanceList = courseInstance.classSessions
+        def studentInstance = Student.get(params.studentId)
+          
+            [ courseInstance : courseInstance, 
+              classSessionInstanceList : classSessionInstanceList,
+             studentInstance : studentInstance ]
 
     }
 

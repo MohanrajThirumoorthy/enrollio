@@ -27,9 +27,10 @@
 
                 $('.enrollStudent').click(function() {
                     // populate enrollmentform
-                    $.get(url, function(data) {
-                            $('#dialog-form').html(data);
-                    });
+                    $.get(url,
+                        { studentId : $(this).attr('studentid') } , 
+                        function(data) { $('#dialog-form').html(data); }
+                    );
                     $( "#dialog-form" ).dialog( "open" );
 
                 });
