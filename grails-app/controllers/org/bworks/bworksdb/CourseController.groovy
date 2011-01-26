@@ -42,9 +42,8 @@ class CourseController {
     }
 
     def saveEnrollments = {
-        println "BOINK" * 1000
         println "params are: " + params
-        render("Cack")
+        render("Student ID: " + params.studentId)
     }
 
     def foobarform = {
