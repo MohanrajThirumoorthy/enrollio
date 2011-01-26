@@ -8,14 +8,9 @@
         <title>Create Course:</title>
     </head>
     <body>
-         <div id="wrapper">
-            <div id="content">
-                <g:hasErrors bean="${courseInstance}">
-                    <div class="errors">
-                        <g:renderErrors bean="${courseInstance}" as="list" />
-                    </div>
-                </g:hasErrors>
-                <div class="box">
+        <g:render template="/common/messages" />
+        <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+            <fieldset>
                     <h3 id="adduser">Create Course</h3>
                     <g:form action="save" name="newCourseForm" method="post">
                         <label for="name">Name : </label> 
@@ -38,7 +33,7 @@
                             or&nbsp;
                         <g:link name="cancelLink" class="cancelLink" action="list" >Cancel</g:link>
                     </g:form>
-                </div>
+            </fieldset>
             </div>
         </div>
     </body>
