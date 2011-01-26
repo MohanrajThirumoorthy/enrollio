@@ -187,5 +187,27 @@ class EnrollioTagLib {
         def existingAmPm = attrs['date']?.format('a')
         out << g.select(name: fieldNamePrefix + 'AmPm', from:['PM', 'AM'], value: existingAmPm ?: 'PM')
     }
+
+    def studentEnrollments = { attrs ->
+        def student = attrs['studentInstance']
+        def enrollments = Enrollment.findAllByStudent(student)
+        enrollments.each { 
+            if (it.classSession.lessonDates) { 
+                println it.classSession.lessonDates.last() 
+            }
+        }
+        def todaysDate = new Date()
+        out << enrollments.sort { it.classSession.startDate }.reverse().collect { enrollment ->
+            def lessonDates = enrollment.classSession.lessonDates
+            if ( lessonDates && lessonDates.last().lessonDate >= todaysDate) { 
+                g.link(class:'futureEnrollment', controller:'classSession', action:'show', 
+                       id: enrollment.classSession.id, enrollment.classSession.abbrev())
+            }
+            else {
+                g.link(class:'pastEnrollment', controller:'classSession', action:'show', 
+                       id: enrollment.classSession.id, enrollment.classSession.abbrev())
+            }
+        }.join(',')
+    }
 }
 

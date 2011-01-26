@@ -63,11 +63,15 @@ class CourseController {
             classSessionService.disrollStudent(studentInstance, ClassSession.get(it))
         }
 
+        def courseInstance
         enrollments.each {
-            classSessionService.enrollStudent(studentInstance, ClassSession.get(it))
+            def classSessionInstance = ClassSession.get(it)
+            if (!courseInstance) { courseInstance = classSessionInstance.course }
+            classSessionService.enrollStudent(studentInstance, classSessionInstance )
         }
 
-        render (template:'studentEnrollments', model:[studentInstance:studentInstance])
+        render (template:'studentEnrollments', 
+            model:[ courseInstance : courseInstance, studentInstance:studentInstance ])
 
     }
 

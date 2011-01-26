@@ -199,3 +199,10 @@ input[type=submit] {
 }
 
 
+.ui-widget-content a.futureEnrollment {
+    color : blue;
+}
+
+.ui-widget-content a.pastEnrollment {
+    color : gray;
+}
