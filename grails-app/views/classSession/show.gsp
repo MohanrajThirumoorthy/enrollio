@@ -11,7 +11,7 @@
         <g:render template="/common/messages" />
         <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <g:render template="/course/coursesHeader"
-                         model="[courseInstanceList : courseInstanceList, currentCourse : classSessionInstance.course]" />
+                         model="[ currentCourse : classSessionInstance.course]" />
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:render template="/classSession/individualClassSessionMenu" model="[ classSessionInstance : classSessionInstance ]"/>
                 <h4 class="mainInfo">${classSessionInstance.name} - <enrollio:formatDate date="${classSessionInstance.startDate}" /></h3>

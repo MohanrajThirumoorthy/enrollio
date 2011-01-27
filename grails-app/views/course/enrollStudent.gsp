@@ -34,7 +34,7 @@
         </div>
         <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <g:render template="/course/coursesHeader"
-                model="[showNewCourseLink : true, courseInstanceList : courseInstanceList, currentCourse : courseInstance ]" />
+                model="[showNewCourseLink : true, currentCourse : courseInstance ]" />
 
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <table id="interestedStudents" style="width:100%;float:left;" class="ui-widget ui-widget-content">

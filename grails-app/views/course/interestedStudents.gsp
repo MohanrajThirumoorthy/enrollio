@@ -51,7 +51,7 @@
         <g:render template="/common/messages" />
         <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <g:render template="/course/coursesHeader"
-                model="[ courseInstanceList : courseInstanceList, currentCourse : courseInstance ]" />
+                model="[ currentCourse : courseInstance ]" />
 
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <h4 style="float:left;" class="mainInfo">Waiting List (${activeInterests.size() + ' students'})</h4>

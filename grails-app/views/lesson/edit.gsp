@@ -13,6 +13,8 @@
             <span class="menuButton"><g:link class="list" action="list">Lesson List</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New Lesson</g:link></span>
         </div>
+            <g:render template="/course/coursesHeader"
+                model="[ currentCourse : lessonInstance.course ]" />
         <div class="body">
             <h1>Edit Lesson:</h1>
             <g:if test="${flash.message}">

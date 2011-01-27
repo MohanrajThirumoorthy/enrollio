@@ -10,7 +10,7 @@
         <g:render template="/common/messages" />
         <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content">
             <g:render template="/course/coursesHeader"
-            model="[showNewCourseLink : true, courseInstanceList : courseInstanceList, currentCourse : courseInstance ]" />
+                model="[showNewCourseLink : true, currentCourse : courseInstance ]" />
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:render template="individualCourseMenu" model="[interestedStudents:activeInterestCount]" />
                 <h4 class="mainInfo">${courseInstance.description}</h4>

@@ -13,7 +13,7 @@
         <g:render template="/common/messages" />
         <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content">
             <g:render template="/course/coursesHeader"
-                model="[ courseInstanceList : courseInstanceList, currentCourse : lessonInstance.course ]" />
+                model="[ currentCourse : lessonInstance.course ]" />
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:form action="save" method="post" name="newLessonForm">
                 <div class="box">

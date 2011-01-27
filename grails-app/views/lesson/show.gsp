@@ -8,24 +8,20 @@
         <title>Show Lesson</title>
     </head>
     <body>
-        <div id="wrapper">
-            <div id="content">
-            <g:if test="${flash.message}">
-                <div class="message">${flash.message}</div>
-            </g:if>
-            <div class="box">
-            <h3>Lesson: ${lessonInstance}</h3>
+        <g:render template="/common/messages" />
+        <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content">
+            <g:render template="/course/coursesHeader"
+                model="[ currentCourse : lessonInstance.course ]" />
+            <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+            <ul class="menuList">
+                <li>
+                    <g:link class="book_edit" controller="lesson" action="edit" id="${lessonInstance.id}">Edit</g:link>
+                </li>
+            </ul>
+            <h4 class="mainInfo">Lesson: ${lessonInstance}</h4>
                 <table>
                     <tbody>
-                    
                         <enrollio:textField model="${lessonInstance}" fieldName="description" />
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Course:</td>
-                            
-                            <td valign="top" class="value"><g:link controller="course" action="show" id="${lessonInstance?.course?.id}">${lessonInstance?.course?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
                         <enrollio:textField model="${lessonInstance}" fieldName="sequence" />
                     </tbody>
                 </table
