@@ -118,7 +118,7 @@ class StudentController {
                                             signupDates)
                 studentInstance.save()
                 flash.message = "Student ${studentInstance} updated"
-                redirect(action:show,id:studentInstance.id)
+                redirect(controller:'contact', action:'show', params:[studentId:studentInstance.id])
             }
             else {
                 render(view:'edit',model:[studentInstance:studentInstance])

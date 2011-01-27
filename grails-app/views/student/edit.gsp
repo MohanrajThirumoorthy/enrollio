@@ -142,7 +142,7 @@
                 <input class="save" type="submit" value="Save" />
             </span>
             or&nbsp;
-            <g:link name="cancelLink" class="cancelLink" action="show" id="${studentInstance.id}" >Cancel</g:link>
+            <g:link name="cancelLink" class="cancelLink" controller="contact" action="show" params="[studentId:studentInstance.id]" >Cancel</g:link>
         </div>
     </div>
             </g:form>
