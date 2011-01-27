@@ -226,3 +226,8 @@ input[type=submit] {
 table {
     margin: 10px 0 0 0;
 }
+
+.headerSelected {
+    background: #55AD77;
+    color : black;
+}

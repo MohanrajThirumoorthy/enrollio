@@ -109,7 +109,7 @@
             </h3>
             <g:if test="${contactInstance.students}">
                 <g:each var="stu" in="${contactInstance.students}">
-                    <g:render template="/student/studentQuickView" model="[studentInstance:stu]" />
+                    <g:render template="/student/studentQuickView" model="[ selected : stu.id == studentInstance?.id, studentInstance:stu]" />
                 </g:each>
             </g:if>
             <g:else>
