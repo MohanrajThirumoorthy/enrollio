@@ -26,18 +26,6 @@
                 
             </li>
 <li>
-                <g:link class="printer" name="printableCallListLink" 
-                    controller="course"
-                    action="printableCallList" 
-                    id="${courseInstance.id}" 
-                    params="[ pdf:true,
-                              reservedForUser : reservedForUserId,
-                              q : q ]">Call list (PDF)
-                    
-                    <g:if test="${reservedForUserId || q }">(filter)</g:if>
-                    
-                    
-                    </g:link>
                 
             </li>
 -->

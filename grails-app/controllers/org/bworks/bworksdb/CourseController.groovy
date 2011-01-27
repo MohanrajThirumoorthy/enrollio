@@ -314,6 +314,8 @@ class CourseController {
         PagedResultList contactInstanceList = 
             courseService.callList(params.id.toLong(), options) 
 
+        def interests = courseService.activeInterests(courseInstance)
+
         def data = 
         [ courseInstanceList : Course.list(),
         contactInstanceList : contactInstanceList,
@@ -322,6 +324,7 @@ class CourseController {
             courseInstance : courseInstance,
             callListContacts : callListContacts,
             currentUser : userService.loggedInUser(),
+            activeInterests : interests,
             users : ShiroUser.list(), 
             classSessionInstance : classSessionInstance ]
 

@@ -74,16 +74,23 @@
             </ul>
 
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
-                <g:form controller="course" action="interestedStudents" id="${courseInstance.id}" method="GET">
-                <fieldset id="waitingListSearch">
-                <legend>Waiting List</legend>
-                    <label for="q">Contact Name:</label>
-
-                    <g:textField name="q" value="${params.q}" size="20" />
-                    <g:submitButton name="submitFilter" value="Search" />
-                    <g:link action="interestedStudents" controller="course" id="${courseInstance.id}"> Clear </g:link>
-                </g:form>
-            </fieldset>
+                <h4 style="float:left;" class="mainInfo">Waiting List (${activeInterests.size() + ' students'})</h4>
+                    <g:link class="printer" name="printableCallListLink" 
+                        controller="course"
+                        action="printableCallList" 
+                        id="${courseInstance.id}" 
+                        params="[ pdf:true,
+                                  reservedForUser : reservedForUserId,
+                                  q : q ]">Printable list (PDF)
+                        
+                        </g:link>
+                <div style="float:right;width:auto;margin-top:0;">
+                    <g:form controller="course" action="interestedStudents" id="${courseInstance.id}" method="GET">
+                        <g:textField name="q" value="${params.q}" size="20" />
+                        <g:submitButton name="submitFilter" value="Search Contact Names" />
+                        <g:link action="interestedStudents" controller="course" id="${courseInstance.id}"> Clear </g:link>
+                    </g:form>
+                </div>
                 <table id="interestedStudents" style="width:100%;float:left;" class="ui-widget ui-widget-content">
                     <thead>
                         <tr class="ui-widget-header2 ">
