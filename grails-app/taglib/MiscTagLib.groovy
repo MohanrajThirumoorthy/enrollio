@@ -60,7 +60,7 @@ class MiscTagLib {
                              name="signupDate_${course.id}"
                              type="text"
                              class="hasDatePicker"
-                             value="${studentService.signupDateForInterest(student, course).format('MM/dd/yyyy')}"
+                             value="${studentService.signupDateForInterest(student, course).format('MM/dd/yyyy')}" />
                          </li>
                      </ul>
                 </div>
