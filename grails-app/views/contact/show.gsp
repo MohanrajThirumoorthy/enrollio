@@ -38,7 +38,7 @@
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <table style="width:100%" class="ui-widget ui-widget-content ui-corner-all">
             <tr class="ui-widget-header2">
-                <th colspan="2">Parent - ${contactInstance}</th>
+                <th colspan="3">Parent - ${contactInstance}</th>
             </tr>
             <tbody>
                 <g:if test="${contactInstance.cannotReach}">
@@ -47,28 +47,28 @@
                     </tr>
                 </g:if>
                 <tr>
-                    <td>${contactInstance.address1} 
-                        <br />
+                    <td>
+                        ${contactInstance.address1} <br />
                         <g:if test="${contactInstance.address2}">
-                        ${contactInstance.address2} 
-                        <br /></g:if>
+                            ${contactInstance.address2} <br />
+                        </g:if>
                         <g:if test="${contactInstance.city}">
-                        ${contactInstance.city},&#160;&#160;</g:if>
+                            ${contactInstance.city},&#160;&#160;</g:if>
                         <g:if test="${contactInstance.state}">
-                        ${contactInstance.state} 
-                        <br /></g:if>
+                            ${contactInstance.state}
+                        </g:if>
                         <g:if test="${contactInstance.zipCode}">
-                        ${contactInstance.zipCode}&#160;&#160;</g:if>
-                        <br /></td>
-                    <td>Email:</td>
-                    <td>${contactInstance.emailAddress}</td>
-                </tr>
-                <g:each var="phone" in="${contactInstance.phoneNumbers}">
-                <tr>
-                    <td>${phone.label}</td>
-                    <td>${phone.phoneNumber}</td>
-                </tr>
-                </g:each>
+                            ${contactInstance.zipCode}&#160;&#160; <br />
+                        </g:if>
+                        <g:if test="${contactInstance.emailAddress}">
+                            ${contactInstance.emailAddress}
+                        </g:if>
+                    </td>
+                    <td>
+                        <g:each var="phone" in="${contactInstance.phoneNumbers}">
+                            ${phone.label} - ${phone.phoneNumber}<br />
+                        </g:each>
+                    </td>
                 <g:if test="${contactInstance.comments}">
                     <g:form id="${contactInstance.id}" controller="contact" action="addNote">
                             <comments:each bean="${contactInstance}">
@@ -107,7 +107,7 @@
                 </g:each>
             </g:if>
             <g:else>
-                <tr><td>No Students</td></tr>
+                <tr><td>No Students<ktd></tr>
             </g:else>
         </table>
         <table style="width:100%;">
