@@ -7,7 +7,7 @@
     </head>
     <body>
     <g:if test="${courseInstanceList.size() > 1}">
-        <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content">
             <ul id="ulSecond" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-bottom">
                 <g:each var="course" in="${courseInstanceList}">
                 <li class="ui-state-default ui-corner-top ${course.id == courseInstance.id ? 'ui-tabs-selected ui-state-active' : ''}">
@@ -22,11 +22,10 @@
                 <g:render template="individualCourseMenu" />
                 <p class="youhave">${courseInstance.description}</p>
                 <p class="youhave">${activeInterestCount} interested Students</p>
-                <div style="width:40%;float:left;" class="ui-widget ui-widget-content ui-corner-all">
-                    <div class="ui-widget-header ui-corner-all ui-helper-clearfix">
-                        <span class="ui-dialog-title" id="ui-dialog-title-dialog">Lessons</span>
+                <div style="padding:1px;width:50%;float:left;" class="ui-widget ui-widget-content">
+                    <div class="ui-widget-header2">
+                        <span class="ui-dialog-title">Lessons</span>
                     </div>
-                    <div id="dialog" style="border-right:none;" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 101.6px; height: auto;">
                         <ul>
                                 <g:each var="lesson" in="${courseInstance.lessons}">
                                 <li>
@@ -36,13 +35,11 @@
                                 </li>
                                 </g:each>
                         </ul>
-                    </div>
                 </div>
-                <div style="width:40%;float:left;" class="ui-widget ui-widget-content ui-corner-all">
-                    <div class="ui-widget-header ui-corner-all ui-helper-clearfix">
-                        <span class="ui-dialog-title" id="ui-dialog-title-dialog">Sessions</span>
+                <div style="padding:1px;margin-left:1px;width:40%;float:left;" class="ui-widget ui-widget-content">
+                    <div class="ui-widget-header2">
+                        <span class="ui-dialog-title">Sessions</span>
                     </div>
-                    <div id="dialog" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 101.6px; height: auto;">
                         <ul>
                                 <g:each var="session" in="${courseInstance.classSessions}">
                                 <li>
@@ -52,7 +49,6 @@
                                 </li>
                                 </g:each>
                         </ul>
-                    </div>
                 </div>
             </div>
         </div>
