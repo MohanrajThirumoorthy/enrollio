@@ -5,15 +5,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <meta name="tabName" content="course" />
-        <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-        <script type="text/javascript" src="${resource(dir:'js', file:'jquery-ui-1.7.2.custom.min.js')}"></script>
 	<script type="text/javascript" src="${resource(dir:'js', file:'lessonSort.js')}"></script>
 	<script type="text/javascript" src="${resource(dir:'js', file:'lessonCreate.js')}"></script>
         <title>Create Lesson:</title>         
     </head>
     <body>
-         <div id="wrapper">
-            <div id="content">
+        <g:render template="/common/messages" />
+        <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content">
+            <g:render template="/course/coursesHeader"
+                model="[ courseInstanceList : courseInstanceList, currentCourse : lessonInstance.course ]" />
+            <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:form action="save" method="post" name="newLessonForm">
                 <div class="box">
                 <h3>Create Lesson</h3>
@@ -25,10 +26,8 @@
                     <label for="name">Name : </label> 
                     <input name="id" id="id" type="hidden" value="${lessonInstance.id}" />
                     <input type="text" id="name" name="name" value="${fieldValue(bean:lessonInstance,field:'name')}"/><br />
-                    
-                    <label for="course">Course:</label>
-                    <g:select optionKey="id" from="${org.bworks.bworksdb.Course.list()}" name="course.id" value="${lessonInstance?.course?.id}" ></g:select><br />
                     <input type="hidden" id="sequence" class="value ${hasErrors(bean:lessonInstance,field:'sequence','errors')}" name="sequence" value="${fieldValue(bean:lessonInstance,field:'sequence')}" /><br />
+                    <input type="hidden" name="course.id" id="course.id" value="${lessonInstance.course.id}" />
                     <label for="description">Description:</label>
                         <g:textArea name="description" 
                             value="${fieldValue(bean:lessonInstance,field:'description')}"
@@ -52,7 +51,5 @@
                         id="${lessonInstance.course?.id}" action="show" >Cancel</g:link>
                         </g:else>
             </g:form>
-        </div>
-    </div>
     </body>
 </html>

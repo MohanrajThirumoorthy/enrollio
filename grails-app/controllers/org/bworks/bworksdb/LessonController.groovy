@@ -85,18 +85,12 @@ class LessonController {
     }
 
     def create = {
-        // If no course is specified, then pick the first Course in the list.
-        // Also, link back to lesson/list if user Cancels
-        def cancelLink
-        if (!params.course?.id) {
-            params.course = Course.list(maxResults:1)[0]
-            cancelLink = g.createLink(action:'list')
-        }
-        def p = Course.get(params.course.id)
-        def newSeq = courseService.nextAvailSequence(p)
-        def lessonInstance = new Lesson(sequence:newSeq)
+        // Course must be specified.  No drop-down list for courses.
+        def courseInstance = Course.get(params.course.id)
+        def lessonInstance = new Lesson(course:courseInstance,
+            sequence : courseService.nextAvailSequence(courseInstance))
         lessonInstance.properties = params
-        return ['lessonInstance':lessonInstance, cancelLink : cancelLink ]
+        ['lessonInstance':lessonInstance ]
     }
 
     def save = {
@@ -110,7 +104,7 @@ class LessonController {
             courseService.sortLessons(courseInstance, params)
 
             flash.message = "Lesson \"${lessonInstance.name}\" created"
-            redirect(controller:'course', action:'lessons' ,id:courseInstance.id)
+            redirect(controller:'course', action:'show' ,id:courseInstance.id)
         }
         else {
             render(view:'create',model:[lessonInstance:lessonInstance])
