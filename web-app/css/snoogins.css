@@ -218,6 +218,11 @@ input[type=submit] {
     padding : 0 0 10px 0;
 }
 
+.mainInfo + a {
+    margin-left  : 5px;
+    padding-left : 20px;
+}
+
 table {
     margin: 10px 0 0 0;
 }
