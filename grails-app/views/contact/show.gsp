@@ -86,8 +86,7 @@
                     </g:form>
                 </g:if>
             </tbody>
-            </table>
-        </div>
+        </table>
         <table id="studentInfo" style="width:100%;float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
             <tr class="ui-widget-header2">
                 <th colspan="4">Students</th>
@@ -96,7 +95,6 @@
             <g:if test="${contactInstance.students}">
                 <tr class="ui-widget-header2">
                     <th>Name</th>
-                    <th>Info</th>
                     <th>Interests</th>
                     <th>Enrollments</th>
                 </tr>
@@ -110,8 +108,8 @@
                 <tr><td>No Students<ktd></tr>
             </g:else>
         </table>
-        <table style="width:100%;">
-            <tr><th>Add Student</th></tr>
+        <table style="width:100%;" style="width:100%;float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
+            <tr class="ui-widget-header2"><th>Add Student</th></tr>
             <tr>
                 <td>
                     <g:form action="saveStudent" controller="contact" method="POST" name="newStudentForm">
@@ -124,5 +122,6 @@
                 </td>
             </tr>
         </table>
+        </div>
     </body>
 </html>

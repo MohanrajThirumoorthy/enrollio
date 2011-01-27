@@ -5,45 +5,20 @@
     <g:link action="edit" name="editStudentLink${studentInstance.id}" 
     id="${studentInstance.id}" controller="student"
     title="${studentInstance}">
-        ${studentInstance}
+    ${studentInstance}<br />
     </g:link>
-</td>
-<td>
-    <table>
         <g:if test="${studentInstance.birthDate}">
-            <tr class="prop">
-                <td valign="top" class="name">Birth Date:</td>
-
-                <td valign="top" class="value">
-                    <enrollio:formatDate date="${studentInstance.birthDate}" />
-                </td>
-
-            </tr>
+        Birth Date: <enrollio:formatDate date="${studentInstance.birthDate}" /><br />
         </g:if>
         <g:if test="${studentInstance.grade}">
-        <tr class="prop">
-            <td valign="top" class="name">Grade:</td>
-
-            <td valign="top" class="value">${fieldValue(bean:studentInstance, field:'grade')}</td>
-
-        </tr>
+            Grade: ${fieldValue(bean:studentInstance, field:'grade')}<br />
+        </g:if>
+        <g:if test="${studentInstance.emailAddress}">
+            Email Address: ${fieldValue(bean:studentInstance, field:'emailAddress')}<br />
         </g:if>
         <g:if test="${studentInstance.gender}">
-            <td valign="top" class="name">Gender:</td>
-
-            <td valign="top" class="value">${fieldValue(bean:studentInstance, field:'gender')}</td>
+           Gender: ${fieldValue(bean:studentInstance, field:'gender')}<br />
         </g:if>
-
-
-            <g:if test="${studentInstance.emailAddress}">
-            <tr class="prop">
-                <td valign="top" class="name">Email Address:</td>
-
-                <td valign="top" class="value">${fieldValue(bean:studentInstance, field:'emailAddress')}</td>
-
-            </tr>
-            </g:if>
-    </table>
 </td>
 <td>
     <table>
