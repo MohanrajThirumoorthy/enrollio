@@ -1,7 +1,7 @@
 <ul class="menuList">
     <li>
         <g:link class="waiting_list" action="interestedStudents" controller="course" id="${courseInstance.id}">
-        Waiting List
+        Waiting List (${interestedStudents})
         </g:link>
     </li>
     <li>
