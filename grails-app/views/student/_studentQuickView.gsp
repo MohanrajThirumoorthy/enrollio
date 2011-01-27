@@ -1,15 +1,15 @@
-<div class="ui-widget ui-widget-content ui-corner-all">
-    <h1 class="ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all ${selected ? 'headerSelected':''}">
-        <span starId="${studentInstance.id}" class="star">
-            <g:render template="/utility/starredThingy" model="[thingy:studentInstance]" />
-        </span>
-        <g:link action="edit" name="editStudentLink${studentInstance.id}" 
-        id="${studentInstance.id}" controller="student"
-        title="${studentInstance}">
-            ${studentInstance}
-        </g:link>
-    </h1>
-        <table>
+<td>
+    <span starId="${studentInstance.id}" class="star">
+        <g:render template="/utility/starredThingy" model="[thingy:studentInstance]" />
+    </span>
+    <g:link action="edit" name="editStudentLink${studentInstance.id}" 
+    id="${studentInstance.id}" controller="student"
+    title="${studentInstance}">
+        ${studentInstance}
+    </g:link>
+</td>
+<td>
+    <table>
         <g:if test="${studentInstance.birthDate}">
             <tr class="prop">
                 <td valign="top" class="name">Birth Date:</td>
@@ -43,38 +43,26 @@
 
             </tr>
             </g:if>
-
-            <tr class="prop">
-                <td valign="top" class="name">Interests:</td>
-
-                <td  valign="top" style="text-align:left;" class="value">
-                    <g:activeInterestLinks student="${studentInstance}"
-                    contactCallListPositions="${contactCallListPositions}"/>
+    </table>
+</td>
+<td>
+    <table>
+        <tr class="prop">
+            <td  valign="top" style="text-align:left;" class="value">
+                <g:activeInterestLinks student="${studentInstance}"
+                contactCallListPositions="${contactCallListPositions}"/>
+            </td>
+        </tr>
+    </table>
+</td>
+<td>
+    <table>
+        <g:each var="enr" in="${studentInstance.enrollments}">
+            <tr>
+                <td>
+                ${enr.classSession.course.name} <g:link controller="classSession" action="show" id="${enr.classSession.id}"> <enrollio:formatDate date="${enr.classSession.startDate}" /> </g:link>
                 </td>
-
             </tr>
-
-            <g:if test="${studentInstance.enrollments}">
-            <tr class="prop">
-                <td valign="top" class="name">Enrollments:</td>
-
-                <td  valign="top" style="text-align:left;" class="value">
-                <ul class="basicList">
-                    <g:each var="enr" in="${studentInstance.enrollments}">
-                    <li>
-                    ${enr.classSession.course.name}
-                    <g:link controller="classSession"
-                            action="show"
-                            id="${enr.classSession.id}">
-                    <enrollio:formatDate date="${enr.classSession.startDate}" />
-                    </g:link>
-                    </g:each>
-                    </li>
-                </ul>
-                </td>
-
-            </tr>
-            </g:if>
-
-        </table>
-    </div>
+        </g:each>
+    </table>
+</td>

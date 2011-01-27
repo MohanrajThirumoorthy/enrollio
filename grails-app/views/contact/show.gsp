@@ -13,7 +13,7 @@
                   // toggle students' starred status, depending on students current starred status                
                   // We have to use a <span></span> to hold the image, because we
                   // replace the contents of the span with the result of this POST.
-                  // if we used only an image w/o a parent <span> it doesn't work
+                  // if we used only an image w/o a parent span it doesn't work
                   // NOTE: THIS BREAKS if it's in its own .js file.
                   // (the createLink method doesn't execute successfully, and you get a garbage URL back
                   $(".star").click(function(){
@@ -36,96 +36,93 @@
     <g:render template="/common/messages" />
     <g:render template="/contact/contactMenu" />
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-        <div id="mainContent" style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
-            <div class="ui-widget ui-widget-content ui-corner-all">
-                <h3 style="padding:0.5em 1em;" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header2 ui-corner-all">
-                    Parent Info <g:link class="useredit" action="edit" id="${contactInstance.id}">Edit</g:link>
-                </h3>
-                <table width="100%">
-                    <tbody>
-                        <g:if test="${contactInstance.cannotReach}">
-                        <tr>
-                            <td colspan="4" class="ui-corner-all ui-state-error">Cannot Reach</td>
-                        </tr>
-                        </g:if>
-                        <tr>
-                            <td>${contactInstance}</td>
-                            <td>${contactInstance.address1} 
-                                <br />
-                                <g:if test="${contactInstance.address2}">
-                                ${contactInstance.address2} 
-                                <br /></g:if>
-                                <g:if test="${contactInstance.city}">
-                                ${contactInstance.city},&#160;&#160;</g:if>
-                                <g:if test="${contactInstance.state}">
-                                ${contactInstance.state} 
-                                <br /></g:if>
-                                <g:if test="${contactInstance.zipCode}">
-                                ${contactInstance.zipCode}&#160;&#160;</g:if>
-                                <br /></td>
-                        </tr>
-                        <tr>
-                            <td>Email:</td>
-                            <td>${contactInstance.emailAddress}</td>
-                        </tr>
-                        <g:each var="phone" in="${contactInstance.phoneNumbers}">
-                        <tr>
-                            <td>${phone.label}</td>
-                            <td>${phone.phoneNumber}</td>
-                        </tr>
-                        </g:each>
-                        <g:if test="${contactInstance.comments}">
-                        </g:if>
-                    </tbody>
-                </table>
-                <table width="100%" class="ui-widget ui-widget-content">
-                    <thead>
-                        <tr class="ui-widget-header2">
-                            <th colspan="2">Notes</th>
-                        </tr>
-                    </thead> 
+        <table style="width:100%" class="ui-widget ui-widget-content ui-corner-all">
+            <tr class="ui-widget-header2">
+                <th colspan="2">Parent - ${contactInstance}</th>
+            </tr>
+            <tbody>
+                <g:if test="${contactInstance.cannotReach}">
+                    <tr>
+                        <td colspan="4" class="ui-corner-all ui-state-error">Cannot Reach</td>
+                    </tr>
+                </g:if>
+                <tr>
+                    <td>${contactInstance.address1} 
+                        <br />
+                        <g:if test="${contactInstance.address2}">
+                        ${contactInstance.address2} 
+                        <br /></g:if>
+                        <g:if test="${contactInstance.city}">
+                        ${contactInstance.city},&#160;&#160;</g:if>
+                        <g:if test="${contactInstance.state}">
+                        ${contactInstance.state} 
+                        <br /></g:if>
+                        <g:if test="${contactInstance.zipCode}">
+                        ${contactInstance.zipCode}&#160;&#160;</g:if>
+                        <br /></td>
+                    <td>Email:</td>
+                    <td>${contactInstance.emailAddress}</td>
+                </tr>
+                <g:each var="phone" in="${contactInstance.phoneNumbers}">
+                <tr>
+                    <td>${phone.label}</td>
+                    <td>${phone.phoneNumber}</td>
+                </tr>
+                </g:each>
+                <g:if test="${contactInstance.comments}">
                     <g:form id="${contactInstance.id}" controller="contact" action="addNote">
-                        <tbody>
                             <comments:each bean="${contactInstance}">
                                 <g:render template="/common/showNote"
                                           model="[ noteInstance : comment ]"/>
                             </comments:each>
                             <tr>
                                 <td>
-                                <g:textField name="noteText" />
-                            </td>
-                            <td>
-                                <input id="addNote" type="submit" value="Add Note" />
+                                    <g:textField name="noteText" />
                                 </td>
-                                  </tr>
-                        </tbody>
+                                <td>
+                                    <input id="addNote" type="submit" value="Add Note" />
+                                </td>
+                            </tr>
                     </g:form>
-                </table>
-            </div>
+                </g:if>
+            </tbody>
+            </table>
         </div>
-        <div style="float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
-            <h3 style="padding:0.5em 1em;" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header2 ui-corner-all">
-                Students
-            </h3>
+        <table id="studentInfo" style="width:100%;float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
+            <tr class="ui-widget-header2">
+                <th colspan="4">Students</th>
+            </tr>
+            
             <g:if test="${contactInstance.students}">
+                <tr class="ui-widget-header2">
+                    <th>Name</th>
+                    <th>Info</th>
+                    <th>Interests</th>
+                    <th>Enrollments</th>
+                </tr>
                 <g:each var="stu" in="${contactInstance.students}">
+                <tr>
                     <g:render template="/student/studentQuickView" model="[ selected : stu.id == studentInstance?.id, studentInstance:stu]" />
+                </tr>
                 </g:each>
             </g:if>
             <g:else>
-                <h3>Students</h3>
-                <p>No students</p>
+                <tr><td>No Students</td></tr>
             </g:else>
-        </div>
-    <div class="ui-corner-all ui-widget-content ui-corner-bottom">
-        <g:form action="saveStudent" controller="contact" method="POST" name="newStudentForm">
-            <g:render template='/contact/createStudent' 
-                         model="[contactInstance:contactInstance, possibleInterests : possibleInterests, studentInstance : newStudentInstance]" />
-             <div class="buttonBox">
-                 <g:submitButton name="saveStudent" value="Save" />
-             </div>
-        </g:form>
-    </div>
-    </div>
+        </table>
+        <table style="width:100%;">
+            <tr><th>Add Student</th></tr>
+            <tr>
+                <td>
+                    <g:form action="saveStudent" controller="contact" method="POST" name="newStudentForm">
+                        <g:render template='/contact/createStudent' 
+                                     model="[contactInstance:contactInstance, possibleInterests : possibleInterests, studentInstance : newStudentInstance]" />
+                         <div class="buttonBox">
+                             <g:submitButton name="saveStudent" value="Save" />
+                         </div>
+                    </g:form>
+                </td>
+            </tr>
+        </table>
     </body>
 </html>
