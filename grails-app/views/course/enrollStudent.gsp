@@ -24,22 +24,17 @@
     </head>
     <body>
         <g:render template="/common/messages" />
-                            <div id="messageBox" style="display:none;" class="info ui-widget">
-                                <div style="margin-top: 20px; padding: 0pt 0.7em;" class="ui-state-default ui-corner-all"> 
-                                    <p>
-                                        <span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-info"></span>
-                                        <span id="message"></span>
-                                    </p>
-                                </div>
-                            </div>
+        <div id="messageBox" style="display:none;" class="info ui-widget">
+            <div style="margin-top: 20px; padding: 0pt 0.7em;" class="ui-state-default ui-corner-all"> 
+                <p>
+                    <span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-info"></span>
+                    <span id="message"></span>
+                </p>
+            </div>
+        </div>
         <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-            <ul id="ulSecond" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-bottom">
-                <g:each var="course" in="${courseInstanceList}">
-                <li class="ui-state-default ui-corner-top ${course.id == courseInstance.id ? 'ui-tabs-selected ui-state-active' : ''}">
-                <g:link id="${course.id}" action="show" controller="course">${course.name}</g:link>
-                </li>
-                </g:each>
-            </ul>
+            <g:render template="/course/coursesHeader"
+                model="[showNewCourseLink : true, courseInstanceList : courseInstanceList, currentCourse : courseInstance ]" />
 
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <table id="interestedStudents" style="width:100%;float:left;" class="ui-widget ui-widget-content">

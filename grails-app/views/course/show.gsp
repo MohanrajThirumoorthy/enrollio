@@ -8,16 +8,8 @@
     <body>
     <g:if test="${courseInstanceList.size() > 1}">
         <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content">
-            <ul id="ulSecond" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-bottom">
-                <g:each var="course" in="${courseInstanceList}">
-                <li class="ui-state-default ui-corner-top ${course.id == courseInstance.id ? 'ui-tabs-selected ui-state-active' : ''}">
-                        <g:link id="${course.id}" action="show" controller="course">${course.name}</g:link>
-                    </li>
-                </g:each>
-                <li>
-                  <g:link style="padding-left:20px;color:#222222;font-weight:normal;" class="module_add" name="newCourseLink" controller="course" action="create">New Course</g:link>
-                </li>
-            </ul>
+            <g:render template="/course/coursesHeader"
+            model="[showNewCourseLink : true, courseInstanceList : courseInstanceList, currentCourse : courseInstance ]" />
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:render template="individualCourseMenu" model="[interestedStudents:activeInterestCount]" />
                 <h4 class="mainInfo">${courseInstance.description}</h4>
