@@ -55,9 +55,9 @@
                         in="${classSessionInstance.enrollments}">
                         <tr>
                             <td>
-                                <g:link controller="student"
-                                action="show"
-                                id="${enr.student.id}">${enr.student}</g:link>
+                                <g:link controller="contact"
+                                        action="show"
+                                        params="[studentId:enr.student.id]">${enr.student}</g:link>
                             </td>
                             <td>${enr.status.name}</td>
                         </tr>

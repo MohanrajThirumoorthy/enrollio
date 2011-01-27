@@ -49,24 +49,6 @@ class StudentController {
           contactInstanceTotal: contactInstanceTotal ]
     }
 
-    def show = {
-        def studentInstance = Student.get( params.id )
-        def contactInstance = studentInstance.contact
-
-        def newStudentInstance = contactService.createStudentStub(contactInstance)
-        if(!studentInstance) {
-            flash.message = "Student not found with id ${params.id}"
-            redirect(action:list)
-        }
-        else { 
-            render (view:'/contact/show',
-                    model : [ studentInstance : studentInstance, 
-                              contactInstance : contactInstance,
-                              newStudentInstance : newStudentInstance] )
-        }
-
-    }
-
     def delete = {
         def studentInstance = Student.get( params.id )
         if(studentInstance) {

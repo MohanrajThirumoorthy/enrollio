@@ -29,17 +29,19 @@ class ContactController {
     }
 
     def show = {
-        def contactInstance = Contact.get( params.id )
+        def studentInstance = Student.get( params.studentId )
+        def contactInstance = Contact.get( params.id ) ?: studentInstance?.contact
 
-        if(!contactInstance) {
+        if(!contactInstance && !studentInstance) {
             flash.message = "Contact not found with id ${params.id}"
             redirect(action:list)
         }
         else { 
-            def studentInstance = contactService.createStudentStub(contactInstance)
+            def newStudentInstance = contactService.createStudentStub(contactInstance)
             def contactCallListPositions = courseService.contactCallListPositions(contactInstance)
             return [ contactInstance : contactInstance, 
-                     newStudentInstance : studentInstance,
+                     studentInstance : studentInstance,
+                     newStudentInstance : newStudentInstance,
                      contactCallListPositions : contactCallListPositions ] 
         }
     }

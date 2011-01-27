@@ -34,8 +34,8 @@ class EnrollioTagLib {
     def contactStudentList = { attrs ->
         def c = attrs['contact']
         out << c.students.collect {
-            g.link(controller:'student', action:'show',
-                         id:it.id, it.fullName())
+            g.link(controller:'contact', action:'show',
+                         params:[studentId:it.id], it.fullName())
         }.join(', ')
     }
 
