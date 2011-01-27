@@ -100,7 +100,7 @@ class CourseController {
 
             flash.message = "Lessons successfully sorted."
 
-            redirect(action:lessons,id:courseInstance.id)
+            redirect(action:'show',id:courseInstance.id)
         }
     }
 
@@ -239,11 +239,6 @@ class CourseController {
             render(template:"printableCallList", model:model, filename:filename)
         }
         
-    }
-
-    def lessons = {
-        def courseInstance = Course.get(params.id)
-        [ 'courseInstance' : courseInstance ]
     }
 
     // Fetches new lesson dates from course specified in params.id

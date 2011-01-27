@@ -71,10 +71,6 @@ class UrlMappingsTests extends GrailsUrlMappingsTestCase {
                                                   action: 'edit')
         }
 
-        assertUrlMapping("/courseLessons/1", controller:'course', action:'lessons') {
-            id = 1
-        }
-
         assertUrlMapping("/sortLessons/1", controller:'course', action:'sortLessons') {
             id = "1"
         }
