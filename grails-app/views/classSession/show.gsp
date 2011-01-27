@@ -18,6 +18,14 @@
                 </g:each>
             </ul>
             <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+        <h3>
+            <g:link class="calendar" controller="classSession" action="show" id="$classSessionInstance.id">
+            ${classSessionInstance.name}
+            </g:link>
+            
+        </h3>
+                    <g:render template="/classSession/individualClassSessionMenu"
+                    model="[ classSessionInstance : lessonDateInstance.classSession ]"/>
                 <h3>${classSessionInstance.name}, <enrollio:formatDate date="${classSessionInstance.startDate}" /></h3>
                 <table id="lessonDates" style="width:50%;float:left;" class="ui-widget ui-widget-content">
                     <thead>
