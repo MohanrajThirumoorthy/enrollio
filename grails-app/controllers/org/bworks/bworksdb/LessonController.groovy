@@ -16,14 +16,17 @@ class LessonController {
         [ courseInstanceList : Course.list(), lessonInstanceList: Lesson.list( params ), lessonInstanceTotal: Lesson.count() ]
     }
 
+    // TODO: Remove courseInstanceList getting all over the place in controllers
     def show = {
         def lessonInstance = Lesson.get( params.id )
+        def courseInstanceList = Course.list()
 
         if(!lessonInstance) {
             flash.message = "Lesson not found with id ${params.id}"
             redirect(action:list)
         }
-        else { return [ lessonInstance : lessonInstance ] }
+        else { return [ lessonInstance : lessonInstance, 
+                    courseInstanceList : courseInstanceList ] }
     }
 
     def delete = {
