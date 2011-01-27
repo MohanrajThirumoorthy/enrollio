@@ -156,7 +156,7 @@ ul.basicList > li {
 }
 
 
-h3.ui-widget-header a, h3.ui-widget-header2 a, th.ui-widget-header2 a {
+.ui-widget-header2 a, h3.ui-widget-header a, h3.ui-widget-header2 a, th.ui-widget-header2 a {
     float:right;
     padding-left:20px;
     padding-right:5px;

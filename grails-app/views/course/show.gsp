@@ -15,7 +15,17 @@
                 <h4 class="mainInfo">${courseInstance.description}</h4>
                 <div style="padding:1px;width:50%;float:left;" class="ui-widget ui-widget-content">
                     <div class="ui-widget-header2">
-                        <span class="ui-dialog-title">Lessons</span>
+                        Lessons
+                        <g:link class="book_next" name="newLessonLink" action="create" controller="lesson" 
+                                        params="[ 'course.id' : courseInstance.id ]">New</g:link>
+                        
+                    <g:link class="number_list" 
+                            name="sortLessonsLink" 
+                            action="sortLessons" 
+                            controller="course" 
+                            params="[ 'id' : courseInstance.id ]">Sort</g:link>
+                        
+                        
                     </div>
                         <ul>
                                 <g:each var="lesson" in="${courseInstance.lessons}">
