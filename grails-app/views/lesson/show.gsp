@@ -52,10 +52,5 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-        </div>
-            <div id="sidebar">
-                <g:render template="lessonMenu" />
-            </div>
     </body>
 </html>

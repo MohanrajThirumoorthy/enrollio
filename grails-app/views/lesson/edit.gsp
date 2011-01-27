@@ -1,5 +1,4 @@
 
-<%@ page import="org.bworks.bworksdb.Lesson" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -8,13 +7,16 @@
         <title>Edit Lesson:</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Lesson List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Lesson</g:link></span>
-        </div>
+        <g:render template="/common/messages" />
+        <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content">
             <g:render template="/course/coursesHeader"
                 model="[ currentCourse : lessonInstance.course ]" />
+            <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+            <ul class="menuList">
+                <li>
+                    <g:link class="book_edit" controller="lesson" action="edit" id="${lessonInstance.id}">Edit</g:link>
+                </li>
+            </ul>
         <div class="body">
             <h1>Edit Lesson:</h1>
             <g:if test="${flash.message}">
