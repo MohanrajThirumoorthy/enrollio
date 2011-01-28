@@ -3,6 +3,10 @@ body{
     font-size:85%;
 }
 
+table {
+    border-collapse:collapse;
+}
+
 /* Remove line(s) between header and nav. tabs */
 #header.ui-widget-header, #header + .ui-widget-header {
     border-top : none;
