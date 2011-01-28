@@ -40,7 +40,7 @@
     <g:render template="/contact/contactMenu" />
     <div id="newContactNoteForm" style="display:none;">
         <g:form controller="contact" action="addNote" id="${contactInstance.id}">
-            <g:textArea style="margin:auto;" rows="5" cols="40" name="noteText" class="text ui-widget-content ui-corner-all"/> 
+            <g:textArea style="margin:auto;" rows="5" cols="30" name="noteText" class="text ui-widget-content ui-corner-all"/> 
         </g:form>
     </div>
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
@@ -84,10 +84,10 @@
                         </g:if>
                         </ul>
                     </td>
-                    <td>
-                        <comments:each bean="${contactInstance}">
-                            <g:render template="/common/showNote" model="[ noteInstance : comment ]"/>
-                        </comments:each>
+                    <td id="contactNotes">
+                        <ul>
+                            <g:render template="/contact/contactNotes" model="[contactInstance: contactInstance]" />
+                        </ul>
                     </td>
                 </tr>
             </tbody>

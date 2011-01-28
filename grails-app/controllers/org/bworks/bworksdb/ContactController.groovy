@@ -245,21 +245,15 @@ class ContactController {
         def contactInstance = Contact.get( params.id )
 
         if(!contactInstance) {
-            flash.message = "Contact not found with id ${params.id}"
-            redirect(action:list)
+            render "Contact not found with id ${params.id}"
         }
         else {
             if (params.noteText) {
-                contactInstance.addComment(userService.loggedInUser(), params.noteText)
+                def commentInstance = contactInstance.addComment(userService.loggedInUser(), params.noteText)
                 contactInstance.save()
-                flash.message = "Note saved."
+                render(template:'/contact/contactNotes', model:[contactInstance: contactInstance])
             }
-            else {
-                flash.error = "Blank notes are not allowed.  Meow."
-            }
-        
         }
-        redirect(action:'show', id:contactInstance.id)
     }
 
     def updateNote = {

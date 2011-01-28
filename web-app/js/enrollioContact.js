@@ -68,13 +68,12 @@
           $("[saveNoteId=" + noteId + "]").toggle();
       }
 
-      var url = "${createLink(action:'foobarform', controller:'course', id:courseInstance.id)}";
       $( "#newContactNoteForm" ).dialog({
           title : 'New Note',
           position : 'center',
           autoOpen : false,
           height: 300,
-          width: 335,
+          width: 350,
           modal: true,
           buttons: {
               "Save": function() {
@@ -82,8 +81,7 @@
                   var action = $(this).children('form').attr('action');
                   var formData = $(this).children('form').serialize();
                   $.post(action, formData, function(resultData) {
-                      // $("#contactNotes").html(resultData)
-                      alert(resultData);
+                      $("#contactNotes").html(resultData)
                   });
                   $(this).dialog( "close" );
               },
@@ -93,6 +91,7 @@
           }
       });
       $('#createContactNote').click(function() {
+          $("#noteText").val("");
           $("#newContactNoteForm").dialog("open");
           return false;
       });
