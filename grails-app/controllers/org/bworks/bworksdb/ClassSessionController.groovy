@@ -1,6 +1,7 @@
 package org.bworks.bworksdb
 import org.bworks.bworksdb.auth.ShiroUser
 import org.apache.shiro.SecurityUtils
+import grails.converters.JSON
 
 class ClassSessionController {
 
@@ -42,6 +43,24 @@ class ClassSessionController {
           contactInstanceList : contactInstanceList ]
     }
 
+    // Provide data for awesome fullcalendar plugin
+    def lessonDateData = {
+        // TODO filter by params
+        def classSessionInstance = ClassSession.get(params.id)
+        def lds = []
+        classSessionInstance.lessonDates.each { lessonDate ->
+            
+            lds << [ title : lessonDate.lesson.name.toString().split()[0],
+             // give unix-timestamp (seconds since epoch), which Javascript likes
+              start : lessonDate.lessonDate.getTime().intdiv(1000),
+              url   : createLink(action:'attendance', controller:'classSession', 
+                      id:lessonDate.classSession.id, 
+                      params: [ 'lessonDateId':lessonDate.id ])
+            ]
+        }
+
+        render lds as JSON
+    }
 
 
     def reserveContact = {
@@ -98,12 +117,15 @@ class ClassSessionController {
 
     def show = {
         def classSessionInstance = ClassSession.get( params.id )
+        println "Clas ss " + classSessionInstance
+
+        def lessonDateInstance = classSessionService.closestLessonDate(classSessionInstance)
 
         if(!classSessionInstance) {
             flash.message = "ClassSession not found with id ${params.id}"
             redirect(action:list)
         }
-        else { return [ classSessionInstance : classSessionInstance, courseInstanceList : Course.list() ] }
+        else { return [ classSessionInstance : classSessionInstance, lessonDateInstance : lessonDateInstance ] }
     }
 
     def delete = {

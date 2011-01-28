@@ -1,4 +1,5 @@
 class UrlMappings {
+<<<<<<< HEAD
 	static mappings = {
 
         // admin controller

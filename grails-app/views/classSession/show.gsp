@@ -6,6 +6,27 @@
         <meta name="layout" content="main" />
         <meta name="tabName" content="classSession" />
         <title>Class Session: ${classSessionInstance.name}</title>
+        <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'fullcalendar.css')}" />
+        <g:javascript src="fullcalendar.min.js" />
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#lessonDates').fullCalendar({
+                    buttonText: {
+                        prev: '<',
+                        next: '>'                    },
+                    header: {
+                        left: 'prev',
+                        center: 'title',
+                        right: 'next'
+                    },
+                    // put your options and callbacks here
+                    events: "${createLink(controller:'classSession', action:'lessonDateData', id:classSessionInstance.id)}",
+                    dayClick: function(date) {
+                    }
+                });
+                $('#lessonDates').fullCalendar('gotoDate', ${lessonDateInstance.lessonDate.year + 1900}, ${lessonDateInstance.lessonDate.month});
+            });
+        </script>
     </head>
     <body>
         <g:render template="/common/messages" />
@@ -14,56 +35,8 @@
                          model="[ currentCourse : classSessionInstance.course]" />
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:render template="/classSession/individualClassSessionMenu" model="[ classSessionInstance : classSessionInstance ]"/>
-                <h4 class="mainInfo">${classSessionInstance.name} - <enrollio:formatDate date="${classSessionInstance.startDate}" /></h3>
-                <table id="lessonDates" style="width:50%;float:left;" class="ui-widget ui-widget-content">
-                    <thead>
-                        <tr><th colspan="2" class="ui-widget-header2">Dates</th></tr>
-                    </thead>
-                    <tbody>
-                        <g:each var="lessonDate"
-                        in="${classSessionInstance.lessonDates}">
-                            <tr>
-                                <td>
-                                    <g:link controller="classSession"
-                                    action="attendance" 
-                                    id="${lessonDate.classSession.id}"
-                                    params="['lessonDateId':lessonDate.id]"
-                                    >
-                                    ${lessonDate.lesson.name}</g:link>
-                                </td>
-                                <td>
-                                    <enrollio:formatDate date="${lessonDate.lessonDate}" />
-                                </td>
-                            </tr>
-                        </g:each>
-                    </tbody>
-                </table>
-                <table id="enrollments" style="width:50%;float:left;" class="ui-widget ui-widget-content">
-                    <thead>
-                        <tr>
-                            <th colspan="2" class="ui-widget-header2">Enrollments
-
-                                <g:link name="editEnrollmentsLink" class="groupadd"
-                                controller="course"
-                                action="interestedStudents" id="${classSessionInstance.course.id}"
-                                params="[ classSessionId :classSessionInstance.id ]">Add</g:link>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <g:each var="enr"
-                        in="${classSessionInstance.enrollments}">
-                        <tr>
-                            <td>
-                                <g:link controller="contact"
-                                        action="show"
-                                        params="[studentId:enr.student.id]">${enr.student}</g:link>
-                            </td>
-                            <td>${enr.status.name}</td>
-                        </tr>
-                        </g:each>
-                    </tbody>
-                </table>
+                <div id="lessonDates" style="width:40%;float:left;" class="ui-widget ui-widget-content">
+                </div>
                 <g:if test="${lessonDateInstance}">
                     <g:render template="/classSession/attendance" model="[ lessonDateInstance : lessonDateInstance ]" />
                 </g:if>
