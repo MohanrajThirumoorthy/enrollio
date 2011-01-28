@@ -38,8 +38,7 @@
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <table style="width:100%" class="ui-widget ui-widget-content ui-corner-all">
             <tr class="ui-widget-header2">
-                <th colspan="1">Contact - ${contactInstance}</th>
-                <th colspan="1">Phone</th>
+                <th colspan="2">Contact - ${contactInstance}</th>
                 <th colspan="1">Notes</th>
             </tr>
             <tbody>
@@ -83,7 +82,7 @@
         </table>
         <table id="studentInfo" style="width:100%;float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
             <tr class="ui-widget-header2">
-                <th>Student</th>
+                <th width="40%">Student</th>
                 <th>Interests</th>
                 <th>Enrollments</th>
             </tr>
