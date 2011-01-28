@@ -30,6 +30,9 @@
                  });
                 $("#saveContact").button();
                 $(".phoneNumber").mask("(999) 999-9999")
+                $("#lastName").live('change', function() {
+                    $("input[name=student.lastName]").val($(this).val());
+                });
              });
         
         </script>
