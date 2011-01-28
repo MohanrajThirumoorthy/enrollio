@@ -22,23 +22,14 @@
 
     });
 </script>
-<div id="contentContainer" style="float:left;" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-    <div class="ui-widget-header2 ui-widget-content">
-        Attendance
-    </div>
-    <ul id="ulSecond" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-bottom">
-        <g:each var="lessonDate" in="${lessonDateInstance.classSession.lessonDates}">
-        <li class="ui-state-default ui-corner-top ${lessonDateInstance.id == lessonDate.id ? 'ui-tabs-selected ui-state-active' : ''}">
-        <g:link id="${lessonDateInstance.classSession.id}" action="attendance" 
-        params="['lessonDateId':lessonDate.id]"
-        controller="classSession">${lessonDate}</g:link>
-        </li>
-        </g:each>
-    </ul>
+<div style="padding:1px;margin-left:1px;width:40%;float:left;" class="ui-widget ui-widget-content">
+<h3 class="ui-widget-header2 ui-widget-content ui-tabs-selected">
+    ${lessonDateInstance.lesson.name}
     <div class="linksdiv" style="float:right;">
         <a href="#" id="selectNone" class="delete">None</a>
         <a href="#" id="selectAll" class="tick">All</a>
     </div>
+</h3>
     <table>
         <tbody>
             <g:each var="attendance" in="${lessonDateInstance.attendees}">
@@ -69,7 +60,7 @@
                 </td>
             </tr>
             </g:each>
-            <g:if test="${!lessonDateInstance.attendees}" /
+            <g:if test="${!lessonDateInstance.attendees}" >
             <tr>
                 <td>
                     No students are enrolled.
