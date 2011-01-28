@@ -31,16 +31,24 @@
 
         </script>
         <title>${studentInstance ? "Student: " + studentInstance : "Contact:" + contactInstance}</title>
+        <style>
+            input.text { margin-bottom:12px; width:95%; padding: .4em; }
+        </style>
     </head>
     <body>
     <g:render template="/common/messages" />
     <g:render template="/contact/contactMenu" />
+    <div id="newContactNoteForm" style="display:none;">
+        <g:form controller="contact" action="addNote" id="${contactInstance.id}">
+            <g:textArea width="100%" name="noteText" class="text ui-widget-content ui-corner-all"/> 
+        </g:form>
+    </div>
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <table style="width:100%" class="ui-widget ui-widget-content ui-corner-all">
             <tr class="ui-widget-header2">
                 <th colspan="2">Contact</th>
                 <th colspan="1">
-                    Notes <a href="#"><img src="${resource(dir:'/images/icons', file:'note.png')}" /></a>
+                    Notes <a href="#" id="createContactNote" contactId="${contactInstance.id}"><img src="${resource(dir:'/images/icons', file:'note.png')}" /></a>
                 </th>
             </tr>
             <tbody>
@@ -91,7 +99,7 @@
                 <th>Enrollments</th>
             </tr>
             <g:each var="stu" in="${contactInstance.students}">
-            <tr class="studentInfo">
+            <tr class="studentInfo ${studentInstance?.id == stu.id ? 'selected' : ''} ">
                 <g:render template="/student/studentQuickView" model="[ selected : stu.id == studentInstance?.id, studentInstance:stu]" />
             </tr>
             </g:each>

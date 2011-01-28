@@ -68,4 +68,32 @@
           $("[saveNoteId=" + noteId + "]").toggle();
       }
 
+      var url = "${createLink(action:'foobarform', controller:'course', id:courseInstance.id)}";
+      $( "#newContactNoteForm" ).dialog({
+          title : 'New Note',
+          position : 'center',
+          autoOpen : false,
+          height: 300,
+          width: 350,
+          modal: true,
+          buttons: {
+              "Save": function() {
+                  // hack an ajax call by using the form's action
+                  var action = $(this).children('form').attr('action');
+                  var formData = $(this).children('form').serialize();
+                  $.post(action, formData, function(resultData) {
+                      // $("#contactNotes").html(resultData)
+                      alert(resultData);
+                  });
+                  $(this).dialog( "close" );
+              },
+              Cancel: function() {
+                  $( this ).dialog( "close" );
+              }
+          }
+      });
+      $('#createContactNote').click(function() {
+          $("#newContactNoteForm").dialog("open");
+          return false;
+      });
 });
