@@ -38,7 +38,9 @@
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <table style="width:100%" class="ui-widget ui-widget-content ui-corner-all">
             <tr class="ui-widget-header2">
-                <th colspan="3">Contact - ${contactInstance}</th>
+                <th colspan="1">Contact - ${contactInstance}</th>
+                <th colspan="1">Phone</th>
+                <th colspan="1">Notes</th>
             </tr>
             <tbody>
                 <g:if test="${contactInstance.cannotReach}">
@@ -60,31 +62,23 @@
                         <g:if test="${contactInstance.zipCode}">
                             ${contactInstance.zipCode}&#160;&#160; <br />
                         </g:if>
-                        <g:if test="${contactInstance.emailAddress}">
-                            ${contactInstance.emailAddress}
-                        </g:if>
                     </td>
                     <td>
+                        <ul>
                         <g:each var="phone" in="${contactInstance.phoneNumbers}">
-                            ${phone.label} - ${phone.phoneNumber}<br />
+                            <li>${phone.label} - ${phone.phoneNumber}</li>
                         </g:each>
+                        <g:if test="${contactInstance.emailAddress}">
+                            <li>${contactInstance.emailAddress}</li>
+                        </g:if>
+                        </ul>
                     </td>
-                <g:if test="${contactInstance.comments}">
-                    <g:form id="${contactInstance.id}" controller="contact" action="addNote">
-                            <comments:each bean="${contactInstance}">
-                                <g:render template="/common/showNote"
-                                          model="[ noteInstance : comment ]"/>
-                            </comments:each>
-                            <tr>
-                                <td>
-                                    <g:textField name="noteText" />
-                                </td>
-                                <td>
-                                    <input id="addNote" type="submit" value="Add Note" />
-                                </td>
-                            </tr>
-                    </g:form>
-                </g:if>
+                    <td>
+                        <comments:each bean="${contactInstance}">
+                            <g:render template="/common/showNote" model="[ noteInstance : comment ]"/>
+                        </comments:each>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table id="studentInfo" style="width:100%;float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
