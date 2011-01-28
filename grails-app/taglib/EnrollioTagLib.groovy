@@ -218,12 +218,14 @@ class EnrollioTagLib {
 
     def commentList = { attrs ->
         def thingy = attrs['thingy']
+        def limit = attrs['limit']?.toInteger()
+        if (!limit) { limit = -1 }
         def comments = thingy.getComments()
         if (comments) {
-            def last_comment = [ 2, comments.size() - 1 ].min()
+            def last_comment_index = [ limit - 1, comments.size() - 1 ].min()
             out << '<ul>'
 
-            comments.sort({it.dateCreated}).reverse()[ 0 .. last_comment ].each { comment ->
+            comments.sort({it.dateCreated}).reverse()[ 0 .. last_comment_index ].each { comment ->
                 out << """
                 <li>${comment.body} <small>( ${comment.poster} ${comment.lastUpdated.format('MM/dd/yyyy')})</small></li>
                 """

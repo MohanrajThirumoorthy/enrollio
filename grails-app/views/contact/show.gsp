@@ -86,7 +86,7 @@
                     </td>
                     <td id="contactNotes">
                         <ul>
-                            <g:render template="/contact/contactNotes" model="[contactInstance: contactInstance]" />
+                            <enrollio:commentList limit="3" thingy="${contactInstance}" />
                         </ul>
                     </td>
                 </tr>

@@ -1,1 +1,0 @@
-<enrollio:commentList thingy="${contactInstance}" />

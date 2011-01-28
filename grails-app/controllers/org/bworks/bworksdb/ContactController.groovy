@@ -251,7 +251,7 @@ class ContactController {
             if (params.noteText) {
                 def commentInstance = contactInstance.addComment(userService.loggedInUser(), params.noteText)
                 contactInstance.save()
-                render(template:'/contact/contactNotes', model:[contactInstance: contactInstance])
+                render enrollio.commentList(limit:3, thingy:contactInstance)
             }
         }
     }
