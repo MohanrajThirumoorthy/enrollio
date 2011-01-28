@@ -201,12 +201,12 @@ class ContactController {
             }
 
             studentService.saveInterests(studentInstance, params['interestInCourse'], signupDates)
-            flash.studentMessage = "Successfully added '${studentInstance.fullName()}'"
+            flash.message = "Successfully added '${studentInstance.fullName()}'"
             // render(template:'studentList', model:[contactInstance:contactInstance])
-            redirect(action:'show', id:contactInstance.id)
+            redirect(action:'show', id:contactInstance.id, params: [ studentId : studentInstance.id ])
         }
         else {
-            def possibleInterests = params['interestInCourse'].flatten()
+            def possibleInterests = params['interestInCourse']?.flatten()
             render(view:'show',
                   model:[ newStudentInstance:studentInstance, possibleInterests : possibleInterests, contactInstance:contactInstance ])
         }

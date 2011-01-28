@@ -50,7 +50,7 @@
             <g:checkBox style="display:inline;" 
                          name="interestInCourse" 
                          value="${course.id}" 
-                         checked="${possibleInterests?.indexOf(course.id.toString()) != -1}"/>
+                         checked="${possibleInterests ? possibleInterests.indexOf(course.id.toString()) != -1 : false}"/>
         </div>
         </g:each>
 </div>

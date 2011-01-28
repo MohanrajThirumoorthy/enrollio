@@ -119,22 +119,13 @@
             </tr>
             </g:each>
         </table>
-        <!--
-        <table style="width:100%;" style="width:100%;float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
-            <tr class="ui-widget-header2"><th>Add Student</th></tr>
-            <tr>
-                <td>
-                    <g:form action="saveStudent" controller="contact" method="POST" name="newStudentForm">
-                        <g:render template='/contact/createStudent' 
-                                     model="[contactInstance:contactInstance, possibleInterests : possibleInterests, studentInstance : newStudentInstance]" />
-                         <div class="buttonBox">
-                             <g:submitButton name="saveStudent" value="Save" />
-                         </div>
-                    </g:form>
-                </td>
-            </tr>
-        </table>
-        -->
+        <g:form action="saveStudent" controller="contact" method="POST" name="newStudentForm">
+            <g:render template='/contact/createStudent' 
+                         model="[contactInstance:contactInstance, possibleInterests : possibleInterests, studentInstance : newStudentInstance]" />
+             <div class="buttonBox">
+                 <g:submitButton name="saveStudent" value="Save" />
+             </div>
+        </g:form>
         </div>
     </body>
 </html>
