@@ -99,6 +99,7 @@
             </tr>
             </g:each>
         </table>
+        <!--
         <table style="width:100%;" style="width:100%;float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
             <tr class="ui-widget-header2"><th>Add Student</th></tr>
             <tr>
@@ -113,6 +114,7 @@
                 </td>
             </tr>
         </table>
+        -->
         </div>
     </body>
 </html>
