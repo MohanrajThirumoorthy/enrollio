@@ -239,3 +239,7 @@ table {
     background: #55AD77;
     color : black;
 }
+
+img {
+    border : 0;
+}
