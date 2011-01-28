@@ -248,6 +248,10 @@ tr.selected {
     background-color : #B6E0FE;
 }
 
+td ul {
+    padding:0;
+}
+
 img {
     border : 0;
 }

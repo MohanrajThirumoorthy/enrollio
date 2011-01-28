@@ -27,6 +27,11 @@
                  });
                  $('.hasDatePicker').datepicker({changeYear:true});
                 $("#saveStudent,  #addNote").button();
+
+                $("#showMoreNotes").click(function() {
+                    $("#moreNotes").toggle();
+                    return false;
+                });
               });
 
         </script>
@@ -57,7 +62,7 @@
                         <td colspan="4" class="ui-corner-all ui-state-error">Cannot Reach</td>
                     </tr>
                 </g:if>
-                <tr>
+                <tr id="contactInfo">
                     <td><g:link controller="contact" action="edit" id="${contactInstance.id}">
                         ${contactInstance}
                         </g:link><br />
@@ -84,9 +89,19 @@
                         </g:if>
                         </ul>
                     </td>
-                    <td id="contactNotes">
-                        <ul>
+                    <td>
+                        <div id="contactNotes">
                             <enrollio:commentList limit="3" thingy="${contactInstance}" />
+                        </div>
+                        <g:if test="${contactInstance.getTotalComments() > 3}">
+                            <small style="float:right;"><a href="#" id="showMoreNotes">(...more)</a></small>
+                        </g:if>
+                    </td>
+                </tr>
+                <tr id="moreNotes" style="display:none;">
+                    <td colspan="2">
+                        <ul>
+                            <enrollio:commentList thingy="${contactInstance}" />
                         </ul>
                     </td>
                 </tr>
