@@ -38,7 +38,7 @@
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <table style="width:100%" class="ui-widget ui-widget-content ui-corner-all">
             <tr class="ui-widget-header2">
-                <th colspan="3">Parent - ${contactInstance}</th>
+                <th colspan="3">Contact - ${contactInstance}</th>
             </tr>
             <tbody>
                 <g:if test="${contactInstance.cannotReach}">
@@ -89,24 +89,15 @@
         </table>
         <table id="studentInfo" style="width:100%;float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
             <tr class="ui-widget-header2">
-                <th colspan="4">Students</th>
+                <th>Student</th>
+                <th>Interests</th>
+                <th>Enrollments</th>
             </tr>
-            
-            <g:if test="${contactInstance.students}">
-                <tr class="ui-widget-header2">
-                    <th>Name</th>
-                    <th>Interests</th>
-                    <th>Enrollments</th>
-                </tr>
-                <g:each var="stu" in="${contactInstance.students}">
-                <tr>
-                    <g:render template="/student/studentQuickView" model="[ selected : stu.id == studentInstance?.id, studentInstance:stu]" />
-                </tr>
-                </g:each>
-            </g:if>
-            <g:else>
-                <tr><td>No Students<ktd></tr>
-            </g:else>
+            <g:each var="stu" in="${contactInstance.students}">
+            <tr class="studentInfo">
+                <g:render template="/student/studentQuickView" model="[ selected : stu.id == studentInstance?.id, studentInstance:stu]" />
+            </tr>
+            </g:each>
         </table>
         <table style="width:100%;" style="width:100%;float:left;" class="ui-corner-all ui-widget-content ui-corner-bottom">
             <tr class="ui-widget-header2"><th>Add Student</th></tr>
