@@ -74,7 +74,7 @@
           position : 'center',
           autoOpen : false,
           height: 300,
-          width: 350,
+          width: 335,
           modal: true,
           buttons: {
               "Save": function() {

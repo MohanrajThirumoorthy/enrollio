@@ -40,7 +40,7 @@
     <g:render template="/contact/contactMenu" />
     <div id="newContactNoteForm" style="display:none;">
         <g:form controller="contact" action="addNote" id="${contactInstance.id}">
-            <g:textArea width="100%" name="noteText" class="text ui-widget-content ui-corner-all"/> 
+            <g:textArea style="margin:auto;" rows="5" cols="40" name="noteText" class="text ui-widget-content ui-corner-all"/> 
         </g:form>
     </div>
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
