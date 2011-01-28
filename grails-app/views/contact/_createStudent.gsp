@@ -19,6 +19,7 @@
          <g:checkBox name="newStudentOption" class="enrollStudent" value="${true}" />
     </g:if>
     </legend>
+    <div>
     <div class="field">
         <label for="student.firstName">First Name : </label> 
         <g:textField name="student.firstName" value="${studentInstance.firstName}" />
@@ -34,15 +35,23 @@
         <g:textField name="student.lastName" value="${studentInstance.lastName}" />
     </div>                                
     <div class="field">
-        <label for="studentSignupDate">Signup Date</label>
+        <label for="studentSignupDate">Signup Date:</label>
         <input class="hasDatePicker" type="text" 
                     id="studentSignupDate" 
                     name="studentSignupDate" 
                     value="${studentSignupDate ?: new Date().format('MM/dd/yyyy')}" />
     </div>
-    <div class="field">
-        <label for="lastName">Interests</label> 
-        <enrollio:courseDropDown studentInstance="${studentInstance}" 
-                               possibleInterests="${possibleInterests}" />
-    </div>
+</div>
+<div style="margin-top:10px;float:left;">
+        <g:each var="course" in="${Course.list()}">
+        <div class="field" 
+            style="padding:2px;margin:2px;border:1px solid;background-color:#F5F5F5">
+            <label style="display:inline;" for="interestInCourse[${course.id}]">${course}</label>
+            <g:checkBox style="display:inline;" 
+                         name="interestInCourse" 
+                         value="${course.id}" 
+                         checked="${possibleInterests?.indexOf(course.id)}"/>
+        </div>
+        </g:each>
+</div>
 </fieldset>

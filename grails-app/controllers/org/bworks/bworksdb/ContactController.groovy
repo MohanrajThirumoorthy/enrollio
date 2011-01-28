@@ -206,7 +206,7 @@ class ContactController {
             redirect(action:'show', id:contactInstance.id)
         }
         else {
-            def possibleInterests = [params['interestInCourse']].flatten()
+            def possibleInterests = params['interestInCourse'].flatten()
             render(view:'show',
                   model:[ newStudentInstance:studentInstance, possibleInterests : possibleInterests, contactInstance:contactInstance ])
         }
