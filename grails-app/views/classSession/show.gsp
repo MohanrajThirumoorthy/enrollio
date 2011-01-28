@@ -11,6 +11,7 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#lessonDates').fullCalendar({
+                    theme : true,
                     buttonText: {
                         prev: '<',
                         next: '>'                    },
