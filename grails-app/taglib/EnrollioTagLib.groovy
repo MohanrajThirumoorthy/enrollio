@@ -215,5 +215,21 @@ class EnrollioTagLib {
             }
         }.join(',')
     }
+
+    def commentList = { attrs ->
+        def thingy = attrs['thingy']
+        def comments = thingy.getComments()
+        if (comments) {
+            def last_comment = [ 2, comments.size() - 1 ].min()
+            out << '<ul>'
+
+            comments.sort({it.dateCreated}).reverse()[ 0 .. last_comment ].each { comment ->
+                out << """
+                <li>${comment.body} <small>( ${comment.poster} ${comment.lastUpdated.format('MM/dd/yyyy')})</small></li>
+                """
+            }
+        }
+    }
+
 }
 
