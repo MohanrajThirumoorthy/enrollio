@@ -14,7 +14,7 @@ class ClassSession implements Commentable {
     }
 
     String toString() {
-        course.name + ", " + name
+        name
     }
 
     String abbrev() {

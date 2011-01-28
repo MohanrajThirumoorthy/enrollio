@@ -22,14 +22,14 @@
 
     });
 </script>
-<div style="padding:1px;margin-left:1px;width:40%;float:left;" class="ui-widget ui-widget-content">
-<h3 class="ui-widget-header2 ui-widget-content ui-tabs-selected">
-    ${lessonDateInstance.lesson.name}
+<div style="padding:1px;margin-left:1px;width:50%;float:left;" class="ui-widget ui-widget-content">
+<div class="ui-widget-header2 ui-widget-content ui-tabs-selected">
+    Attendance - ${lessonDateInstance.lesson.name}
     <div class="linksdiv" style="float:right;">
         <a href="#" id="selectNone" class="delete">None</a>
         <a href="#" id="selectAll" class="tick">All</a>
     </div>
-</h3>
+</div>
     <table>
         <tbody>
             <g:each var="attendance" in="${lessonDateInstance.attendees}">
@@ -67,6 +67,15 @@
                 </td>
             </tr>
             </g:if>
+            <tr><td>
+
+        <g:link class="waiting_list" action="interestedStudents" controller="course" id="${classSessionInstance.course.id}">
+            Add Students
+        </g:link>
+                </td>
+            
+
+            </tr>
         </tbody>
     </table>
 </div>

@@ -35,8 +35,14 @@
                          model="[ currentCourse : classSessionInstance.course]" />
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:render template="/classSession/individualClassSessionMenu" model="[ classSessionInstance : classSessionInstance ]"/>
-                <div id="lessonDates" style="width:40%;float:left;" class="ui-widget ui-widget-content">
+                <h4 class="mainInfo">${classSessionInstance}</h4>
+
+                <div class="ui-widget ui-widget-content" style="padding: 1px; margin-left: 1px; width: 40%; float: left;">
+                    <div class="ui-widget-header2"> Lesson Dates </div>
+                    <div id="lessonDates">
+                    </div>
                 </div>
+
                 <g:if test="${lessonDateInstance}">
                     <g:render template="/classSession/attendance" model="[ lessonDateInstance : lessonDateInstance ]" />
                 </g:if>
