@@ -47,15 +47,19 @@ class ClassSessionController {
     def lessonDateData = {
         // TODO filter by params
         def classSessionInstance = ClassSession.get(params.id)
+        def highlightLesson
         def lds = []
         classSessionInstance.lessonDates.each { lessonDate ->
             
-            lds << [ title : lessonDate.lesson.name.toString().split()[0],
+            lds << [ 
+              title : lessonDate.lesson.name.toString().split()[0],
              // give unix-timestamp (seconds since epoch), which Javascript likes
               start : lessonDate.lessonDate.getTime().intdiv(1000),
               url   : createLink(action:'attendance', controller:'classSession', 
                       id:lessonDate.classSession.id, 
-                      params: [ 'lessonDateId':lessonDate.id ])
+                      params: [ 'lessonDateId':lessonDate.id ]),
+              className : 'buph'
+
             ]
         }
 

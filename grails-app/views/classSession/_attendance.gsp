@@ -23,8 +23,8 @@
     });
 </script>
 <div style="padding:1px;margin-left:1px;width:50%;float:left;" class="ui-widget ui-widget-content">
-<div class="ui-widget-header2 ui-widget-content ui-tabs-selected">
-    Attendance - ${lessonDateInstance.lesson.name}
+<div class="ui-widget-header2 ui-widget-content ui-state-default">
+    <span class="highlighted-header">${lessonDateInstance.lesson.name} - Attendance</span>
     <div class="linksdiv" style="float:right;">
         <a href="#" id="selectNone" class="delete">None</a>
         <a href="#" id="selectAll" class="tick">All</a>

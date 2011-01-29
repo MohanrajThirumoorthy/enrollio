@@ -3,10 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'fullcalendar.css')}" />
         <meta name="layout" content="main" />
         <meta name="tabName" content="classSession" />
         <title>Class Session: ${classSessionInstance.name}</title>
-        <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'fullcalendar.css')}" />
         <g:javascript src="fullcalendar.min.js" />
         <script type="text/javascript">
             $(document).ready(function() {
@@ -22,7 +22,13 @@
                     },
                     // put your options and callbacks here
                     events: "${createLink(controller:'classSession', action:'lessonDateData', id:classSessionInstance.id)}",
+                    eventRender : function(event, element) {
+                        if ($.fullCalendar.formatDate(event.start, 'yyyy/MM/dd') == '${lessonDateInstance.lessonDate.format("yyyy/MM/dd")}') {
+                            element.addClass("fc-highlighted");
+                        }
+                    },
                     dayClick: function(date) {
+                    alert(date.format('dd/mm/yyyy'))
                     }
                 });
                 $('#lessonDates').fullCalendar('gotoDate', ${lessonDateInstance.lessonDate.year + 1900}, ${lessonDateInstance.lessonDate.month});

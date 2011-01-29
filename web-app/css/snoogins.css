@@ -170,6 +170,12 @@ ul.basicList > li {
     padding-right:5px;
 }
 
+a.waiting_list {
+    margin-top : 10px;
+    padding-left:20px;
+    padding-right:5px;
+}
+
 /* Divs with this class are like a "newline"
  * and are usually used to hold submit buttons */
 .buttonBox {
@@ -235,7 +241,7 @@ table {
 }
 
 .headerSelected {
-    background: #55AD77;
+    background: #55AD77; 
     color : black;
 }
 
@@ -255,3 +261,12 @@ td ul {
 img {
     border : 0;
 }
+
+.fc-event.fc-highlighted a {
+    background-color : #E17009;
+}
+
+.highlighted-header {
+    color : #E17009;
+}
+
