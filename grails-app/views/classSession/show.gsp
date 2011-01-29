@@ -23,7 +23,7 @@
                     // put your options and callbacks here
                     events: "${createLink(controller:'classSession', action:'lessonDateData', id:classSessionInstance.id)}",
                     eventRender : function(event, element) {
-                        if ($.fullCalendar.formatDate(event.start, 'yyyy/MM/dd') == '${lessonDateInstance.lessonDate.format("yyyy/MM/dd")}') {
+                        if ($.fullCalendar.formatDate(event.start, 'yyyy/MM/dd') == '${lessonDateInstance?.lessonDate?.format("yyyy/MM/dd")}') {
                             element.addClass("fc-highlighted");
                         }
                     },
@@ -31,7 +31,9 @@
                     alert(date.format('dd/mm/yyyy'))
                     }
                 });
-                $('#lessonDates').fullCalendar('gotoDate', ${lessonDateInstance.lessonDate.year + 1900}, ${lessonDateInstance.lessonDate.month});
+                <g:if test="${lessonDateInstance}">
+                    $('#lessonDates').fullCalendar('gotoDate', ${lessonDateInstance?.lessonDate?.year + 1900}, ${lessonDateInstance?.lessonDate?.month});
+                </g:if>
             });
         </script>
     </head>
