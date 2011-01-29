@@ -225,10 +225,12 @@ class ClassSessionController {
         }
        
         def dateFormat = 'MM/dd/yyyy'
-        def startDate = params.remove('startDate')
+        def startDate = miscService.parseDate(params.remove('startDate'),
+                                                params.remove('startTime'),
+                                                params.remove('startAmPm'))
         def classSessionInstance = new ClassSession(params)
         try {
-            classSessionInstance.startDate = Date.parse(dateFormat, startDate)
+            classSessionInstance.startDate = startDate
         } catch (Exception e) {
         }
  

@@ -102,6 +102,9 @@
                                     class="value ${hasErrors(bean:classSessionInstance,field:'startDate','errors')}">
 
                                         <input type="text" id="startDate" name="startDate" id="startDate"></input>
+                                Time
+                                <enrollio:timeSelectors date="${classSessionInstance.startDate}"
+                                fieldNamePrefix="start" />
                                     </td>
                                 </tr>
                             </tbody>

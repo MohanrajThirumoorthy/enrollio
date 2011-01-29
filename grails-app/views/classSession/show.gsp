@@ -42,7 +42,8 @@
                          model="[ currentCourse : classSessionInstance.course]" />
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:render template="/classSession/individualClassSessionMenu" model="[ classSessionInstance : classSessionInstance ]"/>
-                <h4 class="mainInfo">${classSessionInstance}</h4>
+                <h4 class="mainInfo">${classSessionInstance} - (${classSessionInstance.enrollments.size()} enrolled )</h4>
+                <h4><enrollio:formatDate showTime="true" date="${classSessionInstance.startDate}" /></h4>
 
                 <div class="ui-widget ui-widget-content" style="padding: 1px; margin-left: 1px; width: 40%; float: left;">
                     <div class="ui-widget-header2"> Lesson Dates </div>
