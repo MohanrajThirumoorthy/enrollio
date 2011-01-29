@@ -17,7 +17,7 @@
     </head>
     <body>
         <g:render template="/contact/contactMenu" />
-        <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <div class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <div class="float-container ui-tabs-panel ui-widget-content ui-corner-bottom">
                 <g:hasErrors bean="${contactInstance}">
                     <div class="ui-widget">

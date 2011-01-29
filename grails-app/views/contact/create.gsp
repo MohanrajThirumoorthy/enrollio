@@ -39,7 +39,7 @@
     </head>
     <body>
         <g:render template="/contact/contactMenu" />
-        <div id="secondMenu" class="float-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <div class="float-container ui-tabs ui-widget ui-widget-content ui-corner-all">
             <g:hasErrors bean="${contactInstance}">
             <div class="ui-widget">
                 <div style="" class="ui-state-error ui-corner-all"> 

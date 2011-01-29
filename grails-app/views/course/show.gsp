@@ -8,7 +8,7 @@
     <body>
     <g:if test="${courseInstanceList.size() > 1}">
         <g:render template="/common/messages" />
-        <div id="secondMenu" class="ui-tabs ui-widget ui-widget-content">
+        <div class="ui-tabs ui-widget ui-widget-content">
             <g:render template="/course/coursesHeader"
                 model="[showNewCourseLink : true, currentCourse : courseInstance ]" />
             <div style="overflow:hidden;" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
