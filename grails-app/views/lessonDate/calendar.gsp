@@ -8,7 +8,6 @@
         <meta name="layout" content="main" />
         <meta name="tabName" content="classSession" />
         <link rel="stylesheet" type="text/css" href="${resource(dir:'css', file:'fullcalendar.css')}" />
-        <meta name="layout" content="main" />
         <title>Calendar</title>
         <g:javascript src="fullcalendar.min.js" />
 
