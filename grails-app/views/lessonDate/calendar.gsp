@@ -38,7 +38,6 @@
                 </g:if>
             });
         </script>
-        <title>Calendar - ${lessonDateInstance}</title>
     </head>
     <body>
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
