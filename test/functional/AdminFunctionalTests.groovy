@@ -18,7 +18,7 @@ class AdminFunctionalTests extends functionaltestplugin.FunctionalTestCase {
     // The settings list test could be refactored
     // later to a SettingsFunctionalTests.groovy file
     void testSettingsPage() {
-        loginAdmin()
+        loginAs("admin", "admin0")
         click('Admin')
         click('Settings')
         assertStatus 200
