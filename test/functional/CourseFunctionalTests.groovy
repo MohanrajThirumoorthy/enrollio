@@ -9,7 +9,7 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
         click("Courses")
         // Go to Children's prog, and ensure that we
         // see the start date of the first session in our awesome format
-        click(TestKeys.PROGRAM_KIDS_AEC)
+        click(TestKeys.SESSION_KIDS_NAME)
 
     }
 
@@ -72,7 +72,7 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
         loginAs('bob', 'bobbobbob0')
         click("Courses")
         assertStatus 200
-        click(TestKeys.PROGRAM_KIDS_AEC)
+        click(TestKeys.SESSION_KIDS_NAME)
         assertContentContains TestKeys.SESSION_KIDS_DATE_FORMATTED
 
     }
