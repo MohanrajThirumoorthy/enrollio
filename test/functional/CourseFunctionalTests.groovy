@@ -82,7 +82,7 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
         loginAs('bob', 'bobbobbob0')
         click("Courses")
         assertStatus 200
-        click(TestKeys.PROGRAM_KIDS_AEC)
+        click(TestKeys.SESSION_KIDS_NAME)
         assertContentContains TestKeys.SESSION_KIDS_DATE_FORMATTED
 
     }
