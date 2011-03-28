@@ -7,10 +7,6 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
     void gotoCourseShow() {
         loginAs('bob', 'bobbobbob0')
         click("Courses")
-        // Go to Children's prog, and ensure that we
-        // see the start date of the first session in our awesome format
-        click(TestKeys.SESSION_KIDS_NAME)
-
     }
 
     void gotoAdultEACCourse() {
@@ -45,7 +41,6 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
 
     void testGotoCourseLessonShow() {
         gotoCourseShow()
-        click('Lessons')
         click(TestKeys.LESSON_KIDS_AEC_INTRO)
         assertStatus 200
         assertTitleContains('Show Lesson')
@@ -54,10 +49,8 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
     void testGotoCourseLessonsList() {
         gotoCourseShow()
         assertContentContains(TestKeys.LESSON_KIDS_AEC_INTRO)
-        click('Lessons')
         assertStatus 200
         assertContentContains(TestKeys.LESSON_KIDS_AEC_INTRO)
-        assertContentContains(TestKeys.LESSON_KIDS_AEC_INTRO_DESCRIPTION)
     }
 
     void testCourseList() {
