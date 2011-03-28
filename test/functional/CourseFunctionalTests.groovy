@@ -64,8 +64,11 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
         loginAs('bob', 'bobbobbob0')
         click("Courses")
         assertStatus 200
-        assertTitleContains("Courses")
-        assertContentContains("Children's EAC")
+        assertTitleContains("Course")
+        assertContentContains(TestKeys.PROGRAM_ADULT_AEC)
+        assertContentContains(TestKeys.PROGRAM_KIDS_AEC)
+        assertContentContains(TestKeys.PROGRAM_MENTORSHIP)
+        assertContentContains(TestKeys.PROGRAM_EARN_A_BIKE)
     }
 
     void testCourseShow() {
