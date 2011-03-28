@@ -1,15 +1,5 @@
 import org.bworks.bworksdb.util.TestKeys
 class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
-    // TODO loginAs should be refactored into a
-    // common method -- it's also used in SecurityFiltersFunctionalTests
-    void loginAs(userName, pass) {
-        get('/login')
-        form('loginForm') {
-            username = userName
-            password = pass
-            click "Sign in"
-        }
-    }
 
     // method: gotoCourseShow
     //         utility method to do all the clicky stuff
@@ -82,7 +72,7 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
         loginAs('bob', 'bobbobbob0')
         click("Courses")
         assertStatus 200
-        click(TestKeys.SESSION_KIDS_NAME)
+        click(TestKeys.PROGRAM_KIDS_AEC)
         assertContentContains TestKeys.SESSION_KIDS_DATE_FORMATTED
 
     }
