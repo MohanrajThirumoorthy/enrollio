@@ -72,20 +72,12 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
         assertContentContains TestKeys.SESSION_KIDS_DATE_FORMATTED
 
     }
-    // Ensure that we can create a new Course
-    void testCourseMenu() {
-        loginAs('bob', 'bobbobbob0')
-        click("Courses")
-        assertStatus 200
-        assertNotNull byName('courseMenu')
-
-    }
 
     void testNewCourse() {
         loginAs('bob', 'bobbobbob0')
         click("Courses")
         assertStatus 200
-        click("newCourseLink")
+        click("New Course")
         assertStatus 200
         assertTitleContains("Create Course")
         form('newCourseForm') {
@@ -95,8 +87,6 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
         }
         assert 200
         assertTitleContains "Course: Ricky's Course"
-        assertContentContains "Only for Ricky (and maybe Bubbles)"
-            
     }
 
     void testNewCourseFailed() {
