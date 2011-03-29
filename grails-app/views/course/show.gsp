@@ -28,15 +28,13 @@
                         
                         
                     </div>
-                        <ul>
-                                <g:each var="lesson" in="${courseInstance.lessons}">
-                                <li>
-                                            <g:link controller="lesson" action="show"
-                                            id="${lesson.id}">
-                                            ${lesson?.encodeAsHTML()}</g:link>
-                                </li>
-                                </g:each>
-                        </ul>
+                    <ul>
+                        <g:each var="lesson" in="${courseInstance.lessons}">
+                            <li>
+                                <g:link name="lessonLink${lesson.id}" controller="lesson" action="show" id="${lesson.id}"> ${lesson?.encodeAsHTML()}</g:link>
+                            </li>
+                        </g:each>
+                    </ul>
                 </div>
                 <div style="padding:1px;margin-left:1px;width:40%;float:left;" class="ui-widget ui-widget-content">
                     <div class="ui-widget-header2">
