@@ -4,38 +4,11 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
     // method: gotoCourseShow
     //         utility method to do all the clicky stuff
     //         to get to a course/show page
-    void gotoCourseShow() {
+    void gotoCourseShow(anotherCourseName = null) {
         loginAs('bob', 'bobbobbob0')
         click("Courses")
-    }
-
-    void gotoAdultEACCourse() {
-        loginAs('bob', 'bobbobbob0')
-        click("Courses")
-        // Go to Children's prog, and ensure that we
-        // see the start date of the first session in our awesome format
-        click(TestKeys.PROGRAM_ADULT_AEC)
-        
-
-    }
-    // ensure there's two links on course/show that create a new
-    // lesson for that course.
-    // Ensure that the default course of the new Lesson
-    // is same course whose 'New Lesson' link we clicked.
-    void testNewLessonForCourse() {
-        gotoAdultEACCourse()
-        assertStatus 200
-        def addLessonLinks = byName('newLessonLink')
-        if (addLessonLinks instanceof com.gargoylesoftware.htmlunit.html.HtmlElement) {
-            addLessonLinks = [ addLessonLinks ]
-        }
-
-        addLessonLinks.each {
-            it.click()
-            assertStatus 200
-            // Make sure the Adult EAC prog is the def. prog
-            def p = byXPath('//select[@id="course.id"]/option[@selected="selected"]')
-            assertEquals TestKeys.PROGRAM_ADULT_AEC, p.getText()
+        if (anotherCourseName) {
+            click(anotherCourseName)
         }
     }
 
