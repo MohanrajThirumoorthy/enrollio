@@ -38,11 +38,17 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
     }
 
     void testCourseShow() {
-        loginAs('bob', 'bobbobbob0')
-        click("Courses")
+        gotoCourseShow()
         assertStatus 200
+        // course show should have links to prev. sessions
         click(TestKeys.SESSION_KIDS_NAME)
-        assertContentContains TestKeys.SESSION_KIDS_DATE_FORMATTED
+        assertStatus 200
+
+        // Try adult course
+        gotoCourseShow(TestKeys.PROGRAM_ADULT_AEC)
+        assertStatus 200
+        click(TestKeys.SESSION_ADULT_NAME)
+        assertStatus 200
 
     }
 
