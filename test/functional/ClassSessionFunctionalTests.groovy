@@ -37,10 +37,7 @@ class ClassSessionFunctionalTests extends functionaltestplugin.FunctionalTestCas
 
     void testAttendancePage() {
         gotoClassSessionPage(TestKeys.PROGRAM_KIDS_AEC, TestKeys.SESSION_KIDS_NAME)
-        def link = byName('attendanceLink')
-        link.click()
-        assertStatus 200
-        assertTitleContains 'Attendance'
+        assertContentContains(TestKeys.STUDENT2)
         assertContentContains 'Attendance'
         assertContentContains 'Present'
         assertContentContains 'Absent'
