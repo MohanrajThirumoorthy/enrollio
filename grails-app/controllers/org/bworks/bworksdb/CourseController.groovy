@@ -121,6 +121,7 @@ class CourseController {
 
         if(!courseInstance && params.id) {
             flash.message = "Course not found with id ${params.id}"
+            redirect(action:'list')
         }
         else { 
             return [ courseInstance : courseInstance, 

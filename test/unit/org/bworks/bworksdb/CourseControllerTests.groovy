@@ -38,7 +38,7 @@ class CourseControllerTests extends grails.test.ControllerUnitTestCase {
         mockDomain(Course, [new Course(name:'p1'), new Course(name:'p2')] )
         mockParams.max = 3
         
-        // test
+        controller.metaClass.courseService = [ activeInterests : { return [ 'blurp' ] } ]
         def model = controller.list()
         
         assertEquals 2, model.courseInstanceList.size()
@@ -49,7 +49,7 @@ class CourseControllerTests extends grails.test.ControllerUnitTestCase {
         mockDomain(Course, [new Course(name:'p1'), new Course(name:'p2'), new Course(name:'p3')] )
         mockParams.max = 2
         
-        // test
+        controller.metaClass.courseService = [ activeInterests : { return [ 'blurp' ] } ]
         def model = controller.list()
         
         assertEquals 2, model.courseInstanceList.size()
@@ -76,6 +76,6 @@ class CourseControllerTests extends grails.test.ControllerUnitTestCase {
         def model = controller.show()
         
         assertNotNull mockFlash.message 
-        assertEquals controller.list, redirectArgs.action
+        assertEquals 'list', redirectArgs.action
     }
 }
