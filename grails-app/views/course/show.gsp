@@ -18,7 +18,7 @@
                     <div class="ui-widget-header2">
                         Lessons
                         <g:link class="book_next" name="newLessonLink" action="create" controller="lesson" 
-                                        params="[ 'course.id' : courseInstance.id ]">New</g:link>
+                                        params="[ 'course.id' : courseInstance.id ]">New Lesson</g:link>
                         
                     <g:link class="number_list" 
                             name="sortLessonsLink" 
