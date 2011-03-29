@@ -112,20 +112,10 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
     }
 
     void testWaitingList() {
-        loginAs('bob', 'bobbobbob0')
-        click("Courses")
-        assertStatus 200
-        // find first a>href that starts with courseLink
-        // -- it's a link to a Course.
-        def progLink = byXPath("//a[starts-with(@name,'courseLink')]")
-        assertNotNull progLink
-        // if we get > 1 link back, we have to pick 1st one.
-        progLink = progLink instanceof ArrayList ? progLink[0] : progLink
-        // click the link to go to course/show
-        progLink.click()
-        assertStatus 200
+        gotoCourseShow()
         click('Waiting List')
-        assertContentContains('Waiting List for')
+        assertTitleContains('Waiting List')
+        assertContentContains('Waiting List')
     }
 
     void ztestPDFCallList() {
