@@ -3,18 +3,8 @@ class ConfigSettingFunctionalTests extends functionaltestplugin.FunctionalTestCa
 
     def testDataService
 
-    void loginAdmin() {
-        get('/login')
-        form('loginForm') {
-            username = 'admin'
-            password = 'admin0'
-            click "Sign in"
-        }
-    }
-    
-
     void testShowSettingPage() {
-        loginAdmin()
+        loginAs("admin", "admin0")
         click('Admin')
         click('Settings')
         def settingLink = byName('settingLink_1')
@@ -27,8 +17,8 @@ class ConfigSettingFunctionalTests extends functionaltestplugin.FunctionalTestCa
     }
     
     void testEditSettingPage() {
-        loginAdmin()
-        click('Admin')
+        loginAs("admin", "admin0")
+        click("Admin")
         click('Settings')
         def settingLink = byName('settingLink_1')
         assertNotNull settingLink
