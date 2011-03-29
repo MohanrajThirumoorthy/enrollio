@@ -1,4 +1,3 @@
-
 <%@ page import="org.bworks.bworksdb.Course" %>
 <html>
     <head>
@@ -9,6 +8,7 @@
     </head>
     <body>
         <g:render template="/common/messages" />
+        <g:render template="/common/errors" model="[bean:courseInstance]" />
         <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
             <fieldset>
                     <h3 id="adduser">Create Course</h3>

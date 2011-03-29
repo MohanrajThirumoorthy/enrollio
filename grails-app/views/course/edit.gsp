@@ -9,13 +9,9 @@
     <body>
          <div id="wrapper">
             <div id="content">
-                <g:hasErrors bean="${courseInstance}">
-                    <div class="errors">
-                        <g:renderErrors bean="${courseInstance}" as="list" />
-                    </div>
-                </g:hasErrors>
+                <g:render template="/common/errors" model="[bean:courseInstance]" />
                 <div class="box">
-                    <h3 id="adduser">Edit Course: ${courseInstance}</h3>
+                    <h3 id="adduser"> Course: ${courseInstance}</h3>
                     <g:form action="update" name="editCourseForm" method="post">
                         <label for="name">Name : </label> 
                         <input name="id" id="id" type="hidden" 
