@@ -35,25 +35,6 @@ class ClassSessionFunctionalTests extends functionaltestplugin.FunctionalTestCas
         assertContentContains TestKeys.STUDENT
     }
 
-    void testLessonDatesShown() {
-        gotoClassSessionPage(TestKeys.PROGRAM_KIDS_AEC, TestKeys.SESSION_KIDS_NAME)
-
-        def lessonDates = byXPath("//table[@id='lessonDates']/tbody/tr")
-        assertNotNull lessonDates
-
-        // Test the ones we know will be there.
-        // Don't rely on TestKeys.LESSON_KIDS_AEC_TEST_CHANGE to be in
-        // this list
-        assertContentContains TestKeys.LESSON_KIDS_AEC_INTRO
-        assertContentContains 'Scratch Programming' 
-        assertContentContains 'Presentations'
-        assertContentContains 'Email and WWW'
-        assertContentContains 'Graduation'
-        // Ensure that STUDENT2 is enrolled in this course
-        assertContentContains TestKeys.STUDENT2
-    }
-
-
     void testAttendancePage() {
         gotoClassSessionPage(TestKeys.PROGRAM_KIDS_AEC, TestKeys.SESSION_KIDS_NAME)
         def link = byName('attendanceLink')
