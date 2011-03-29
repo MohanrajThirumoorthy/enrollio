@@ -1,9 +1,8 @@
-
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
+        <meta name="tabName" content="admin" />    
         <title>Users</title>
     </head>
     <body>
@@ -11,6 +10,7 @@
             <div id="content">
                 <div class="box">
             <h3>Users</h3>
+            <g:link class="useradd" controller="shiroUser" action="create">Create</g:link>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -62,9 +62,6 @@
                 <g:paginate total="${shiroUserInstanceTotal}" />
             </div>
         </div>
-        </div>
-        <div id="sidebar">
-            <g:render template="/admin/adminMenu" />
         </div>
     </body>
 </html>

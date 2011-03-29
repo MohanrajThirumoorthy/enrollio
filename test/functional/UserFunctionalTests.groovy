@@ -7,20 +7,19 @@ class UserFunctionalTests extends functionaltestplugin.FunctionalTestCase {
     def testDataService
 
     void loginAdmin() {
-        get('/login')
-        form('loginForm') {
-            username = 'admin'
-            password = 'admin0'
-            click "Sign in"
-        }
+        loginAs("admin", "admin0")
+    }
+
+    void gotoUsersPageAsAdmin() {
+        loginAdmin()
+        click('Admin')
+        click('Users')
     }
 
     // The settings list test could be refactored
     // later to a SettingsFunctionalTests.groovy file
     void testListUsersPage() {
-        loginAdmin()
-        click('Admin')
-        click('Users')
+        gotoUsersPageAsAdmin()
         assertStatus 200
 
         assertTitleContains 'Users'
@@ -31,10 +30,7 @@ class UserFunctionalTests extends functionaltestplugin.FunctionalTestCase {
     // The settings list test could be refactored
     // later to a SettingsFunctionalTests.groovy file
     void testEditUser() {
-        loginAdmin()
-        click('Admin')
-        click('Users')
-        assertStatus 200
+        gotoUsersPageAsAdmin()
 
         def bobLink = byName('editUserLink_bob')
         assertNotNull bobLink
@@ -46,9 +42,7 @@ class UserFunctionalTests extends functionaltestplugin.FunctionalTestCase {
     }
 
     void testShowUserPage() {
-        loginAdmin()
-        click('Admin')
-        click('Users')
+        gotoUsersPageAsAdmin()
 
         def adminLink = byName('userLink_admin')
         assertNotNull adminLink
@@ -77,9 +71,8 @@ class UserFunctionalTests extends functionaltestplugin.FunctionalTestCase {
 
 
     void testCreateUserPage() {
-        loginAdmin()
-        click('Admin')
-        click('Create User')
+        gotoUsersPageAsAdmin()
+        click('Create')
         assertStatus 200
 
         assertTitleContains 'Create User'
