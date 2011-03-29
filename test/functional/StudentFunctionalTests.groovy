@@ -28,15 +28,17 @@ class StudentFunctionalTests extends functionaltestplugin.FunctionalTestCase {
     // utility method for going to student/edit page
     void gotoStudentEdit(studentName = null) {
         gotoStudentShow(studentName)
-        def searchResults = byXPath("//a[starts-with(@name,'editStudentLink')]")
-        def studentLink
-        if(! (searchResults instanceof ArrayList)) { searchResults = [ searchResults ] }
+        def searchResults
         if (studentName) {
-            studentLink = searchResults.find { it.asText() == studentName }
+            searchResults = byXPath("//a[starts-with(@title, '${studentName}')]")
         }
         else {
-            studentLink = searchResults[0]
+            searchResults = byXPath("//a[starts-with(@name,'editStudentLink')]")
         }
+
+        if(! (searchResults instanceof ArrayList)) { searchResults = [ searchResults ] }
+        def studentLink = searchResults[0]
+        assertNotNull studentLink
         studentLink.click()
     }
 
@@ -53,7 +55,8 @@ class StudentFunctionalTests extends functionaltestplugin.FunctionalTestCase {
         assertStatus 200
 
         assertTitleContains('student:')
-        assertContentContains('interests:')
+        assertContentContains('interests')
+        assertContentContains('enrollments')
     }
 
     void testEditStudentName() {
