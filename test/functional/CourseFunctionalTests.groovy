@@ -74,9 +74,7 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
     }
 
     void testNewCourse() {
-        loginAs('bob', 'bobbobbob0')
-        click("Courses")
-        assertStatus 200
+        gotoCourseShow()
         click("New Course")
         assertStatus 200
         assertTitleContains("Create Course")
@@ -90,12 +88,8 @@ class CourseFunctionalTests extends functionaltestplugin.FunctionalTestCase {
     }
 
     void testNewCourseFailed() {
-        loginAs('bob', 'bobbobbob0')
-        click("Courses")
-        assertStatus 200
-        click("newCourseLink")
-        assertStatus 200
-        assertTitleContains("Create Course")
+        gotoCourseShow()
+        click("New Course")
         form('newCourseForm') {
             name = "Invalid Course"
             description = ''
