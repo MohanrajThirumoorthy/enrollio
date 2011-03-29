@@ -26,17 +26,6 @@ class ClassSessionFunctionalTests extends functionaltestplugin.FunctionalTestCas
         assertStatus 200
     }
 
-    // Make sure we can get to the add/edit enrollments page
-    // for a Class Session
-    void testAddEnrollments() {
-        gotoClassSessionPage(TestKeys.PROGRAM_KIDS_AEC, TestKeys.SESSION_KIDS_NAME)
-        def addEnrollmentsLink = byName('editEnrollmentsLink')
-        assertNotNull addEnrollmentsLink
-        addEnrollmentsLink.click()
-        assertStatus 200
-
-    }
-
     void testClassSessionShow() {
         gotoClassSessionPage(TestKeys.PROGRAM_ADULT_AEC, TestKeys.SESSION_ADULT_NAME)
 
