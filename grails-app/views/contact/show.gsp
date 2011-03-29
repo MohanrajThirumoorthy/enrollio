@@ -51,7 +51,8 @@
     <div id="contentContainer" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
         <table style="width:100%" class="ui-widget ui-widget-content ui-corner-all">
             <tr class="ui-widget-header2">
-                <th colspan="2">Contact</th>
+                        
+                <th colspan="2">Contact Info</th>
                 <th colspan="1">
                     Notes <a href="#" id="createContactNote" contactId="${contactInstance.id}"><img src="${resource(dir:'/images/icons', file:'note.png')}" /></a>
                 </th>
@@ -63,9 +64,8 @@
                     </tr>
                 </g:if>
                 <tr id="contactInfo">
-                    <td><g:link controller="contact" action="edit" id="${contactInstance.id}">
-                        ${contactInstance}
-                        </g:link><br />
+                    <td>
+                        <g:link name="editContactLink" class="useredit" controller="contact" action="edit" id="${contactInstance.id}">${contactInstance}</g:link><br />
                         ${contactInstance.address1} <br />
                         <g:if test="${contactInstance.address2}">
                             ${contactInstance.address2} <br />

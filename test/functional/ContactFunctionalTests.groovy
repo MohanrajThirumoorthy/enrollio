@@ -28,7 +28,9 @@ class ContactFunctionalTests extends functionaltestplugin.FunctionalTestCase {
 
     void testRegularUserEditsContact() {
         gotoSomeContactShow() 
-        click("Edit Contact Info")
+        def editContactLink = byName('editContactLink')
+        assertNotNull(editContactLink)
+        editContactLink.click()
         assertTitleContains('Edit Contact')
         assertStatus 200
         shouldFail() { assertContentContains('Frodo') }
