@@ -21,7 +21,7 @@
 .helpBullet{background:transparent url(../images/icons/bullet_black.png) no-repeat left;}
 .user{background:transparent url(../images/icons/user.png) no-repeat left;}
 .user_add{background:transparent url(../images/icons/user_add.png) no-repeat left;}
-.useredit{background:transparent url(../images/icons/user_edit.png) no-repeat left;}
+.useredit{background:transparent url(../images/icons/user_edit.png) no-repeat left; padding-left:20px;}
 .group{background:transparent url(../images/icons/group.png) no-repeat left;}
 .groupadd{background:transparent url(../images/icons/group_add.png) no-repeat left;}
 .groupedit{background:transparent url(../images/icons/group_edit.png) no-repeat left;}
