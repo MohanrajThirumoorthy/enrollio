@@ -138,7 +138,9 @@ class EnrollioTagLib {
                   value="${phoneNumber.phoneNumber}"
                   class="phoneNumber" />
             """
-            out << hiddenField(name:"phoneNumbers[${i}].id", value:"${phoneNumber.id}")
+            if (phoneNumber.id) {
+                out << hiddenField(name:"phoneNumbers[${i}].id", value:"${phoneNumber.id}")
+            }
             out << "</td>"
             out << "</tr>"
         }
