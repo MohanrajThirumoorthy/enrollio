@@ -33,13 +33,12 @@ class StudentController {
         params.max = 10
         if(params.q){
             // TODO: Total kludge, but works for now :-/
-            searchableService.reindex()
             def search = Contact.search("*" + params.q + "*",
-                             [ offset:params.offset, max:params.max ] )
-            
-                contactInstanceList = search.results
-                contactInstanceTotal = search.total
-            }
+            [ offset:params.offset, max:params.max ] )
+
+            contactInstanceList = search.results
+            contactInstanceTotal = search.total
+        }
         else {
             contactInstanceList = Contact.list( params )
             contactInstanceTotal = Contact.count()
