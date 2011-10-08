@@ -49,6 +49,7 @@ class UrlMappings {
         "/loadDataFromFile"(controller:'configSetting', action:'loadDataFromFile')
         "/loadDataRequest"(controller:'configSetting', action:'loadDataRequest')
         "/saveEnrollments"(controller: 'course', action: 'saveEnrollments')
+        "/enrollmentForm/$id"(controller: 'course', action: 'enrollmentForm')
 
         // userSetting controller
         '/userSettings'(controller: 'userSetting', action: 'list')

@@ -75,7 +75,7 @@ class CourseController {
 
     }
 
-    def foobarform = {
+    def enrollmentForm = {
         def courseInstance = Course.get(params.id)
         def courseInstanceList = Course.list()
         def classSessionInstanceList = courseInstance.classSessions

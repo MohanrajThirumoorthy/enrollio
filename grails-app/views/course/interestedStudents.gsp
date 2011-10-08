@@ -8,7 +8,7 @@
         <script type="text/javascript">
              $(document).ready(function(){
 
-                var url = "${createLink(action:'foobarform', controller:'course', id:courseInstance.id)}";
+                var url = "${createLink(action:'enrollmentForm', controller:'course', id:courseInstance.id)}";
                 $('.enrollStudent').click(function() {
                     var studentId = $(this).attr('studentid')
                     // populate enrollmentform
