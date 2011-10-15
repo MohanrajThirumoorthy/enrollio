@@ -4,7 +4,7 @@ class NumberSuffix {
 
         def numString = number.toString()
 
-        if ( numString[-1] == '1' ) {
+        if ( numString =~ /.*1$/ ) {
             return number+"st"
         }
         else if (numString[-1] == "3") {
