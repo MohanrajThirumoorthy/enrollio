@@ -20,6 +20,8 @@ class NumberSuffixTests extends GrailsUnitTestCase {
         assertEquals '33rd', numberSuffix.render(33)
         assertEquals '122nd', numberSuffix.render(122)
         assertEquals '100th', numberSuffix.render(100)
+        assertEquals '13th', numberSuffix.render(13)
+        assertEquals '3rd', numberSuffix.render(3)
 
     }
 }
