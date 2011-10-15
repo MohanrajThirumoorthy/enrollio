@@ -7,6 +7,9 @@ class NumberSuffix {
         if ( numString =~ /.*1$/ ) {
             return number+"st"
         }
+        else if (numString =~ /13$/) {
+            return number + "th"
+        }
         else if (numString =~ /3$/) {
             return number + "rd"
         }
