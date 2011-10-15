@@ -7,10 +7,10 @@ class NumberSuffix {
         if ( numString =~ /.*1$/ ) {
             return number+"st"
         }
-        else if (numString[-1] == "3") {
+        else if (numString =~ /3$/) {
             return number + "rd"
         }
-        else if (numString[-1] == "2") {
+        else if (numString =~ /2$/) {
             return number + "nd"
         }
         else{
