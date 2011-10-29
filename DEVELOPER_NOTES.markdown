@@ -69,39 +69,11 @@ I just ran the following hack:
   sudo mkdir /usr/share/tomcat6/.grails 
   sudo chmod 777 /usr/share/tomcat6/.grails
 
-## Remove jasperreports-2.0.5
-
-After Grails installs the necessary plugins, it's a wise move to remove the troublesome
-jasperreports-2.0.5.jar file from your ~/.grails directory.  See below for details.
-
 # Building War File
 
 Run the tests and the application itself before building the .war file.
 
 Also, see the jasperreports-2.0.5 kludge below.
-
-## Remove outdated jasperreports-2.0.5.jar when building War file
-
-The jasper reports plugin (0.9.7) is shipped with two jasperreports-X-X-X.jar files.
-
-Grails puts both .jar files into the .war, and the outdated .jar file might be used
-when generating the Call List report or the Graduation Report.  This will produce an error
-like this one:
-
-    Parse Error at line 2 column 412: Document root element "jasperReport", must match DOCTYPE root "null".
-    org.xml.sax.SAXParseException: Document root element "jasperReport", must match DOCTYPE root "null".
-    <snip>
-    Caused by: net.sf.jasperreports.engine.JRException: org.xml.sax.SAXParseException: Document root element "jasperReport", must match DOCTYPE root "null".
-	at net.sf.jasperreports.engine.xml.JRXmlLoader.loadXML(JRXmlLoader.java:243)
-	at net.sf.jasperreports.engine.xml.JRXmlLoader.loadXML(JRXmlLoader.java:226)
-
-The solution is to DELETE the older jasperreports-X-X-X file from your ~/.grails directory
-before building the war file.  Example:
-
-  cd ~/.grails
-  find . -name 'jasperreports*jar'
-  # Zap the one with the older version number
-	
 
 # Upgrading Enrollio
 

@@ -13,35 +13,35 @@
 			<staticText>
 				<reportElement x="216" y="27" width="492" height="80"/>
 				<textElement textAlignment="Center">
-					<font fontName="Tlwg Typist" size="58" isBold="true"/>
+					<font fontName="SansSerif" size="58" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Byte WORKS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="160" y="107" width="605" height="54"/>
 				<textElement textAlignment="Center">
-					<font fontName="Sawasdee" size="32" isBold="true"/>
+					<font fontName="SansSerif" size="32" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CERTIFICATE OF EXCELLENCE]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="160" y="161" width="605" height="54"/>
 				<textElement textAlignment="Center">
-					<font fontName="Sawasdee" size="24" isBold="true"/>
+					<font fontName="SansSerif" size="24" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Is Hereby Granted To:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="104" y="438" width="717" height="73"/>
 				<textElement textAlignment="Center">
-					<font fontName="Sawasdee" size="20" isBold="true"/>
+					<font fontName="SansSerif" size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[For Completing Byte WORKS Earn-A-Computer Program through Dedication, Imagination, and Respect of Fellow Classmates and Instructors]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="103" y="567" width="368" height="79"/>
 				<textElement markup="html">
-					<font fontName="Sawasdee" size="24" isBold="true" isItalic="true"/>
+					<font fontName="SansSerif" size="24" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Nathan Neff, <br />Vice President, BWORKS]]></text>
 			</staticText>
@@ -62,7 +62,7 @@
 			<textField>
 				<reportElement x="471" y="527" width="294" height="38"/>
 				<textElement textAlignment="Right">
-					<font fontName="Sawasdee" size="24" isBold="true" isUnderline="false"/>
+					<font fontName="SansSerif" size="24" isBold="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{graduationDateParam}]]></textFieldExpression>
 			</textField>
