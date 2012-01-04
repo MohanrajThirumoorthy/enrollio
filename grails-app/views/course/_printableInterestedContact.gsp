@@ -20,11 +20,11 @@
                 <g:if test="${contactInstance.state}">${contactInstance.state}&#160;</g:if>
                 <g:if test="${contactInstance.zipCode}">${contactInstance.zipCode}&#160;&#160;</g:if>
             </li>
-            <g:if test="${contactInstance.emailAddress}"> <li> ${contactInstance.emailAddress}</li> </g:if>
+            
         <g:if test="${contactInstance.comments}">
         <li><b>Note:</b>
         <comments:each bean="${contactInstance}">
-            <b>*</b> ${comment.body}
+            <b>*</b> ${comment.body.encodeAsHTML()}
         </comments:each></li>
         </g:if>
         </ul>
