@@ -1,31 +1,34 @@
 import org.bworks.bworksdb.*
 import org.bworks.bworksdb.auth.*
 import org.apache.shiro.crypto.hash.Sha1Hash
+import org.codehaus.groovy.grails.commons.ApplicationHolder
 
 class BootStrap {
     def testDataService
     def searchableService
     def shiroSecurityService
+    def grailsApplication
 
     def init = { servletContext ->
         def totalUsers = ShiroUser.count()
 
+
         if (totalUsers == 0) {
             loadUserRoles()
-
             // loadDevData will load test users, so make sure that
             // admin user is already created before you call loadDevData
             loadAdminUser()
         }
-
 
         environments {
             production {
                 testDataService.loadDefaultConfigSettings()
             }
             development {
+                if (grailsApplication.config.enrollio.loadDummyData) {
+                    testDataService.loadDevData(30)
+                }
                 searchableService.stopMirroring()
-                testDataService.loadDevData(30)
                 searchableService.startMirroring()
             }
             test {
