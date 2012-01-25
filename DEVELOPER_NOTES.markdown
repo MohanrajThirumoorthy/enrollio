@@ -1,3 +1,4 @@
+Foo.
 # Developer Notes
 
 Enrollio requires Grails 1.2.

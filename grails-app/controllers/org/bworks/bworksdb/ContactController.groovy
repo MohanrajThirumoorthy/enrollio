@@ -29,10 +29,18 @@ class ContactController {
     }
 
     def show = {
-        def studentInstance = Student.get( params.studentId )
-        def contactInstance = Contact.get( params.id ) ?: studentInstance?.contact
+        def studentInstance
+        def contactInstance
 
-        if(!contactInstance && !studentInstance) {
+        if (params.studentId) {
+            studentInstance = Student.get( params.studentId )
+            contactInstance = studentInstance.contact
+        }
+        else {
+            contactInstance = Contact.get(params.id)
+        }
+
+        if(!contactInstance) {
             flash.message = "Contact not found with id ${params.id}"
             redirect(action:list)
         }
