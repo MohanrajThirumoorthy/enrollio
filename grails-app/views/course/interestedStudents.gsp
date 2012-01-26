@@ -7,6 +7,14 @@
         <meta name="tabName" content="course" />
         <script type="text/javascript">
              $(document).ready(function(){
+                $('.cannotReach').change(function(){
+                    $.post('${createLink(controller:"contact", action:"cannotReach")}',
+                        { 'cannotReach' : $(this).attr('checked'), 
+                        'id' : $(this).attr("data-contact-id") }, function(data) {
+                            if(data == 'success') {
+                            }
+                        });
+                });
 
                 var url = "${createLink(action:'enrollmentForm', controller:'course', id:courseInstance.id)}";
                 $('.enrollStudent').click(function() {

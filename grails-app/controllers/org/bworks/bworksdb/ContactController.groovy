@@ -54,6 +54,13 @@ class ContactController {
         }
     }
 
+    def cannotReach = {
+        def contactInstance = Contact.get(params.id)
+        contactInstance.cannotReach = params.cannotReach
+        contactInstance.save()
+        render 'success'
+    }
+
     def delete = {
         def contactInstance = Contact.get( params.id )
         if(contactInstance) {

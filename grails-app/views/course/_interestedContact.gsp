@@ -5,6 +5,17 @@
            action="show" id="${contactInstance.id}">${callListContacts[contactInstance.id]?.callListPosition}) ${contactInstance}</g:link>
    </td>
    <td>
+       <g:each var="phone" in="${contactInstance.phoneNumbers}">
+           <div style="margin-top:5px;">${phone.label} - ${phone.phoneNumber}</div>
+       </g:each>
+       <div class="field">
+           <label for="cannotReach">Drop - Cannot Reach</label>
+           <g:checkBox name="cannotReach_${contactInstance.id}" class="cannotReach"
+               value="${contactInstance?.cannotReach}"
+               data-contact-id="${contactInstance.id}"></g:checkBox>
+       </div>
+   </td>
+   <td>
            <!-- ${contactInstance.abbrevPhoneNumbers()} -->
             <g:if test="${contactInstance.address1}"> ${contactInstance.address1}</g:if>
             <g:if test="${contactInstance.address2}"> ${contactInstance.address2}</g:if>
@@ -12,12 +23,6 @@
             <g:if test="${contactInstance.state}">${contactInstance.state}&#160;</g:if>
             <g:if test="${contactInstance.zipCode}">${contactInstance.zipCode}&#160;&#160;</g:if>
             <g:if test="${contactInstance.emailAddress}"> ${contactInstance.emailAddress} </g:if>
-    </td>
-   <td>
-       <g:each var="phone" in="${contactInstance.phoneNumbers}">
-       <div>
-           ${phone.label} - ${phone.phoneNumber}</div>
-       </g:each>
    </td>
 </tr>
 <g:each var="stud" in="${contactInstance.students}">

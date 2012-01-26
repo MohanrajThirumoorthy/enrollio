@@ -66,6 +66,7 @@ class UrlMappings {
         "/updateContact"(controller: 'contact', action: 'update')
         "/addContactNote/$id"(controller:'contact', action: 'addNote')
         "/updateContactNote"(controller: 'contact', action: 'updateNote')
+        "/updateCannotReach"(controller: 'contact', action: 'cannotReach')
 
         // help controller
         "/"(controller:"help", action:'about')
