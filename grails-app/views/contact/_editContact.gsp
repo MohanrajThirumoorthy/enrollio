@@ -34,12 +34,15 @@
         <label for="emailAddress">Email Address:</label>
         <input type="text" id="emailAddress" name="emailAddress" value="${fieldValue(bean:contactInstance,field:'emailAddress')}"/>
     </div>
-
+    <g:if test="${showDrop}">
+        <label for="cannotReach">Drop - Cannot Reach</label>
+        <g:checkBox name="cannotReach" value="${contactInstance?.cannotReach}" ></g:checkBox>
+    </g:if>
     <g:if test="${showNote}">
-        <div class="field">
-            <label for="noteText">Note:</label>
-            <g:textArea name="noteText" value="${noteText}" rows="2" cols="30"/>
-        </div>
+    <div class="field">
+        <label for="noteText">Note:</label>
+        <g:textArea name="noteText" value="${noteText}" rows="2" cols="30"/>
+    </div>
     </g:if>
 </fieldset>
 
