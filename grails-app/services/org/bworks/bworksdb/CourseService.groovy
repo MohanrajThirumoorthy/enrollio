@@ -88,7 +88,18 @@ class CourseService {
    }
 
     def activeInterests(Course p) {
-        return Interest.findAllByCourseAndActive(p, true)
+        // return Interest.findAllByCourseAndActive(p, true)
+
+        def c = Interest.createCriteria()
+        return c.list {
+            eq('active', true)
+            eq('course', p)
+            student {
+                contact {
+                    eq('cannotReach', false)
+                }
+            }
+        }
     }
 
     // Utility method to make sure we have lesson sequences
