@@ -3,11 +3,13 @@
         <g:link name='graduationLink' class="graduation_cap" action="graduation"
         id="${ classSessionInstance.id }" controller="classSession">Grad</g:link>
     </li>
+    %{--
     <li>
         <g:link name='certificatesLink' class="certificate" 
         action="certificates" id="${ classSessionInstance.id }"
         controller="classSession">Certs</g:link>
     </li>
+    --}%
     <li>
     <g:link name='editClassSessionLink' class="calendar_edit" 
         action="edit" controller="classSession" id="${ classSessionInstance.id }">Edit</g:link>
