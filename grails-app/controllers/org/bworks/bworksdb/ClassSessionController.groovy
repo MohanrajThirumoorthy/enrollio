@@ -23,12 +23,57 @@ class ClassSessionController {
         [ classSessionInstanceList: ClassSession.list( params ), classSessionInstanceTotal: ClassSession.count() ]
     }
 
+    def attendanceSheet = {
+        def classSessionInstance = ClassSession.get(params.id)
+        def attendanceContacts = attendanceMapForSession(classSessionInstance)
+
+        def model = [ classSessionInstance: classSessionInstance,
+          attendanceContacts: attendanceContacts,
+          lessonDates: classSessionInstance.lessonDates ]
+
+          def renderHash = [ template:"attendanceSheet", 
+              model:model, 
+              filename:'attendance.pdf']
+
+          if(params.html) {
+              render(renderHash)
+          }
+          else {
+              renderPdf(renderHash)
+          }
+    }
+
+    def attendanceMapForSession(classSessionInstance) {
+
+        def attendanceContacts = []
+
+        def sessionStudents = classSessionInstance.enrollments.collect { 
+            it.student
+        }
+
+        def contacts = sessionStudents.collect {
+            it.contact
+        }.unique().sort { it.lastName + ":" + it.firstName }
+
+        contacts.each { contact ->
+            def data = [ contact: contact, info: contact.abbrevPhoneNumbers() ]
+            data['students'] = sessionStudents.findAll { sessionStudent ->
+                contact.students.find { contactStudent ->
+                    contactStudent.id == sessionStudent.id
+                }
+            }
+            attendanceContacts << data
+        }
+
+        return attendanceContacts
+    }
+
     def quickCallList = {
         def classSessionInstance = ClassSession.get(params.id)
         def contactInstanceList = classSessionInstance.enrollments.collect {
             it.student.contact
         }.unique()
-        
+
         [ classSessionInstance: classSessionInstance, 
           contactInstanceList : contactInstanceList ]
     }
@@ -38,7 +83,7 @@ class ClassSessionController {
         def contactInstanceList = classSessionInstance.enrollments.collect {
             it.student.contact
         }.unique()
-        
+
         [ classSessionInstance: classSessionInstance, 
           contactInstanceList : contactInstanceList ]
     }
@@ -50,7 +95,7 @@ class ClassSessionController {
         def highlightLesson
         def lds = []
         classSessionInstance.lessonDates.each { lessonDate ->
-            
+
             lds << [ 
               title : lessonDate.lesson.name.toString().split()[0],
              // give unix-timestamp (seconds since epoch), which Javascript likes
@@ -176,6 +221,7 @@ class ClassSessionController {
                     return
                 }
             }
+
             def startDate = miscService.parseDate(params.remove('startDate'),
                                                 params.remove('startTime'),
                                                 params.remove('startAmPm'))
@@ -201,12 +247,12 @@ class ClassSessionController {
         if (!classSessionInstance.course) {
             classSessionInstance.course = Course.list([sort:'id', max:1, order:'asc'])[0]
         }
-        
+
         def nac = courseService.nextAvailableLessonDates(classSessionInstance.course, new Date())
         nac.each {
             classSessionInstance.addToLessonDates(it)
         }
-            
+
         return ['classSessionInstance':classSessionInstance]
     }
 
@@ -223,7 +269,7 @@ class ClassSessionController {
         params.findAll { it.key.startsWith('lesson_') }.each {
             params.remove(it.key)
         }
-       
+
         def dateFormat = 'MM/dd/yyyy'
         def startDate
         def classSessionInstance 
@@ -235,7 +281,7 @@ class ClassSessionController {
         }
         classSessionInstance = new ClassSession(params)
         classSessionInstance.startDate = startDate
- 
+
         if(!classSessionInstance.hasErrors() && classSessionInstance.save()) {
             lessonDates.each {
                 classSessionInstance.addToLessonDates(new LessonDate(lesson : Lesson.get(it.key),
@@ -258,7 +304,7 @@ class ClassSessionController {
             redirect(action:list)
         }
         else { 
-            
+
            def attendancesForSession =  classSessionService.attendancesForSession(classSessionInstance)
            def interestsInCourse     =  classSessionService.enrolledStudentsInterests(classSessionInstance)
             return [    interestsInCourse     : interestsInCourse,
@@ -307,7 +353,7 @@ class ClassSessionController {
             redirect(action:list)
         }
         else { 
-            
+
            def attendancesForSession =  classSessionService.attendancesForSession(classSessionInstance)
             return [ attendancesForSession : attendancesForSession,
                          classSessionInstance : classSessionInstance ] }
@@ -396,7 +442,7 @@ class ClassSessionController {
                 if (closestLessonDate) {
                     // Init. attendances if need be.
                     attendanceService.initializeAttendees(closestLessonDate)
-                    
+
                     render(view:'show', model:[ courseInstanceList : Course.list(), classSessionInstance : classSessionInstance, lessonDateInstance : closestLessonDate ])
                 }
                 else {
@@ -415,7 +461,7 @@ class ClassSessionController {
             // params hash, and pass params to our report
             // forwardParams has single parameters like TITLE of report
             // params.add reportData.remove('forwardParams')
-            
+
             params['PROGRAM_NAME'] = 'foo'
             reportData = reportData['contacts']
             println "report data is: " + reportData

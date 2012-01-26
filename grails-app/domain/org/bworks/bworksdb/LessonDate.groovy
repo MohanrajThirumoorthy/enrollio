@@ -20,4 +20,8 @@ class LessonDate implements Comparable {
     String toString() {
         this.lesson.toString() + ' ' + lessonDate.format('MMM. d, yyyy')
     }
+
+    String shortInfo() {
+        this.lesson.toString().split()[0] + ' ' + lessonDate.format('MMM d')
+    }
 }
