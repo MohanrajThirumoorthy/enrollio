@@ -251,25 +251,6 @@ class ClassSessionController {
     }
 
 
-    // Renders a PDF report of students/lesson dates for the
-    // Class Session ID == params.id
-    def attendanceSheet = {
-        def classSessionInstance = ClassSession.get( params.id )
-        if (classSessionInstance.enrollments?.size() > 0) {
-            def reportWriter = classSessionService.getBlankAttendanceSheet(params.id)
-            def fileName = "attendance_" + 
-                           classSessionInstance.name.substring(0,4) +
-                           classSessionInstance.startDate.format('yyyy_MM_dd') + '.pdf'
-
-            response.addHeader('content-disposition', "attachment; filename=${fileName}")
-            reportWriter.writeTo(response)
-        }
-        else {
-            flash.message = "Nobody's enrolled in this session."
-            redirect(action:show, id:classSessionInstance.id)
-        }
-    }
-
     def graduation = {
         def classSessionInstance = ClassSession.get( params.id )
         if(!classSessionInstance) {
