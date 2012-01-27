@@ -30,33 +30,44 @@
         <a href="#" id="selectAll" class="tick">All</a>
     </div>
 </div>
-    <table>
+    <table id="attendance-table">
+        <thead>
+            <tr>
+            	<th>Student</th>
+            	<th>Present</th>
+            	<th>Absent</th>
+            	<th>Late</th>
+            </tr>
+        </thead>
         <tbody>
             <g:each var="attendance" in="${lessonDateInstance.attendees}">
             <tr>
-                <td width="40%">
+                <td>
                     <g:link controller="contact" action="show" 
                     params="[studentId:attendance.student.id]">${attendance.student}</g:link>
-
                 </td>
-                <td width="60%">
+                <td>
                     <g:radio class="statusSwitcher" 
                     attendanceId="${attendance.id}" 
                     attendanceStatus="present" 
                     name="status${attendance.id}" 
                     value="present" 
-                    checked="${attendance.status == 'present'}"/>&nbsp;Present
+                    checked="${attendance.status == 'present'}"/>
+                </td>
+                <td>
                     <g:radio class="statusSwitcher" 
                     attendanceId="${attendance.id}" attendanceStatus="absent" 
                     name="status${attendance.id}" 
                     value="absent" 
-                    checked="${attendance.status == 'absent'}" />&nbsp;Absent
+                    checked="${attendance.status == 'absent'}" />
+                </td>
+                <td>
                     <g:radio class="statusSwitcher" 
                     attendanceId="${attendance.id}" 
                     attendanceStatus="late" 
                     name="status${attendance.id}" 
                     value="late" 
-                    checked="${attendance.status == 'late'}"/>&nbsp;Late
+                    checked="${attendance.status == 'late'}"/>
                 </td>
             </tr>
             </g:each>
