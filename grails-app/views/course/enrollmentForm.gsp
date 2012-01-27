@@ -1,12 +1,10 @@
 <g:form action="saveEnrollments" controller="course">
-<g:hiddenField name="studentId" value="${studentInstance.id}" />
+<g:hiddenField name="studentId" value="${studentId}" />
 <g:each var="classSession" in="${classSessionInstanceList}">
 <div class="field">
-<label for="classSession${classSession.id}">${classSession.name} <enrollio:formatDate date="${classSession.startDate}" /></label>
-<g:checkBox id="enrollInSession${classSession.id}"
-    name="classSessions[${classSession.id}]"
-    class="enrollStudent"
-    value="${classSession.enrollments.find { it.student.id == studentInstance.id }}" />
+    <label for="classSession${classSession.id}">${classSession.course.name}: ${classSession.name}</label>
+    <enrollio:classSessionCheckbox studentId="${studentId}" 
+        classSession="${classSession}" />
 </div>
 </g:each> 
 </g:form>

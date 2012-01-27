@@ -443,5 +443,14 @@ class ClassSessionController {
         }
     }
 
+    def quickEnroll = {
+        def classSessionInstanceList = classSessionService.nearClassSessions()
+          
+        def model = [ classSessionInstanceList : classSessionInstanceList, 
+                      studentId : params.studentId ]
+
+        render(view:'/course/enrollmentForm',  model: model)
+    }
+
 }
 

@@ -216,6 +216,10 @@ class ClassSessionService {
     }
 
 
+    // retrieve class sessions starting after [Date]
+    def nearClassSessions(startDate = new Date() - 30) {
+        ClassSession.findAllByStartDateGreaterThan(startDate)
+    }
 
 
 }

@@ -51,6 +51,7 @@ class UrlMappings {
         "/loadDataRequest"(controller:'configSetting', action:'loadDataRequest')
         "/saveEnrollments"(controller: 'course', action: 'saveEnrollments')
         "/enrollmentForm/$id"(controller: 'course', action: 'enrollmentForm')
+        "/quickEnroll"(controller:'classSession', action:'quickEnroll')
 
         // userSetting controller
         '/userSettings'(controller: 'userSetting', action: 'list')

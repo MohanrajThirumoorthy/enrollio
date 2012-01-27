@@ -32,6 +32,38 @@
                     $("#moreNotes").toggle();
                     return false;
                 });
+
+                var url = "${createLink(action:'quickEnroll', controller:'classSession')}";
+                $('.enrollStudent').click(function() {
+                    var studentId = $(this).attr('data-student-id')
+                    // populate enrollmentform
+                    $.get(url, { studentId : studentId } , function(data) { 
+                            $('#dialog-form').html(data); 
+                    });
+                    $( "#dialog-form" ).dialog({
+                        title : 'Quick Enroll: ' + $(this).attr('data-student-name'), 
+                        position : 'center',
+                        height: 300,
+                        width: 350,
+                        modal: true,
+                        buttons: {
+                            "Save": function() {
+                                // hack an ajax call by using the form's action
+                                var action = $(this).children('form').attr('action');
+                                var formData = $(this).children('form').serialize();
+                                $.post(action, formData, function(resultData) {
+                                    $("#studentEnrollmentData" + studentId).html(resultData)
+                                });
+                                $(this).dialog( "close" );
+                            },
+                            Cancel: function() {
+                                $( this ).dialog( "close" );
+                            }
+                        }
+                    });
+                    return false;
+                });
+
               });
 
         </script>
@@ -127,5 +159,7 @@
              </div>
         </g:form>
         </div>
+        <div id="dialog-form" ></div>
+
     </body>
 </html>

@@ -31,6 +31,15 @@ class EnrollioTagLib {
         return formattedFieldName
     }
 
+    def classSessionCheckbox = { attrs ->
+        def cs = attrs['classSession']
+        def studentId = attrs['studentId']
+        out << g.checkBox(id:"enrollInSession${cs.id}", 
+            name:"classSessions[${cs.id}]",
+            class:"enrollStudent",
+            value: cs.enrollments.find { it.student.id.toString() == studentId.toString() })
+    }
+
     def contactStudentList = { attrs ->
         def c = attrs['contact']
         out << c.students.collect {
