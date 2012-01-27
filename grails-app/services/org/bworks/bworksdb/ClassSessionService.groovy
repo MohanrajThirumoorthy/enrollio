@@ -5,23 +5,6 @@ class ClassSessionService {
 
     boolean transactional = true
 
-    def attendanceMapForSession(classSessionInstance) {
-        def enrolledStudents = []
-
-        def students = classSessionInstance.enrollments.each { enr ->
-            def row = [:]
-            def phonez = enr.student.contact.phoneNumbers?.collect{
-                it.phoneNumber
-            }.join(", ")
-            row.studentName = enr.student.toString() + phonez
-            classSessionInstance.lessonDates.each { ld ->
-               row["attended_${ld.id}"] = " "
-            }
-            enrolledStudents << row
-        }
-        return enrolledStudents
-    }
-
     // returns a map like this:
     // <studentId> : [ attendanceCount:6, totalLessons:6, 
     //                         missed : [lessonDate1, lessonDate2] ]
@@ -206,4 +189,33 @@ class ClassSessionService {
         }
         return interests
     }
+
+    def attendanceMapForSession(classSessionInstance) {
+
+        def attendanceContacts = []
+
+        def sessionStudents = classSessionInstance.enrollments.collect { 
+            it.student
+        }
+
+        def contacts = sessionStudents.collect {
+            it.contact
+        }.unique().sort { it.lastName + ":" + it.firstName }
+
+        contacts.each { contact ->
+            def data = [ contact: contact, info: contact.abbrevPhoneNumbers() ]
+            data['students'] = sessionStudents.findAll { sessionStudent ->
+                contact.students.find { contactStudent ->
+                    contactStudent.id == sessionStudent.id
+                }
+            }
+            attendanceContacts << data
+        }
+
+        return attendanceContacts
+    }
+
+
+
+
 }

@@ -40,7 +40,7 @@
                 </tr>
             </thead>
             <tbody>
-                <g:each status="i" var="contact" in="${attendanceContacts}">
+                <g:each status="i" var="contact" in="${enrollmentData}">
                     <g:each status="s" var="student" in="${contact.students}">
                         <tr class="${ i%2 == 0 ? 'contact-even' : 'contact-odd'}">
                             <g:if test="${s == 0}">

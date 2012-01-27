@@ -25,47 +25,18 @@ class ClassSessionController {
 
     def attendanceSheet = {
         def classSessionInstance = ClassSession.get(params.id)
-        def attendanceContacts = attendanceMapForSession(classSessionInstance)
+        def enrollmentData = classSessionService.attendanceMapForSession(classSessionInstance)
 
-        def model = [ classSessionInstance: classSessionInstance,
-          attendanceContacts: attendanceContacts,
-          lessonDates: classSessionInstance.lessonDates ]
+        def model = [ classSessionInstance: classSessionInstance, enrollmentData: enrollmentData]
 
-          def renderHash = [ template:"attendanceSheet", 
-              model:model, 
-              filename:'attendance.pdf']
+        def renderHash = [ template:"attendanceSheet", model:model, filename:'attendance.pdf']
 
-          if(params.html) {
-              render(renderHash)
-          }
-          else {
-              renderPdf(renderHash)
-          }
-    }
-
-    def attendanceMapForSession(classSessionInstance) {
-
-        def attendanceContacts = []
-
-        def sessionStudents = classSessionInstance.enrollments.collect { 
-            it.student
+        if(params.html) {
+            render(renderHash)
         }
-
-        def contacts = sessionStudents.collect {
-            it.contact
-        }.unique().sort { it.lastName + ":" + it.firstName }
-
-        contacts.each { contact ->
-            def data = [ contact: contact, info: contact.abbrevPhoneNumbers() ]
-            data['students'] = sessionStudents.findAll { sessionStudent ->
-                contact.students.find { contactStudent ->
-                    contactStudent.id == sessionStudent.id
-                }
-            }
-            attendanceContacts << data
+        else {
+            renderPdf(renderHash)
         }
-
-        return attendanceContacts
     }
 
     def quickCallList = {
