@@ -75,15 +75,15 @@ class CourseController {
 
     }
 
+    // TODO this is almost the same as /coursecontroller/quickenroll
     def enrollmentForm = {
         def courseInstance = Course.get(params.id)
         def courseInstanceList = Course.list()
         def classSessionInstanceList = courseInstance.classSessions
-        def studentInstance = Student.get(params.studentId)
           
             [ courseInstance : courseInstance, 
               classSessionInstanceList : classSessionInstanceList,
-             studentInstance : studentInstance ]
+              studentId : params.studentId ]
 
     }
 

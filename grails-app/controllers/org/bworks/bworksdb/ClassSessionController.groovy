@@ -450,6 +450,7 @@ class ClassSessionController {
         }
     }
 
+    // TODO this is almost the same as course/enrollmentForm
     def quickEnroll = {
         def classSessionInstanceList = classSessionService.nearClassSessions()
           
