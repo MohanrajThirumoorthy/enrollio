@@ -31,13 +31,12 @@
     </table>
 </td>
 <td>
-    <table>
-        <g:each var="enr" in="${studentInstance.enrollments}">
-            <tr>
-                <td>
-                ${enr.classSession.course.name} <g:link controller="classSession" action="show" id="${enr.classSession.id}"> <enrollio:formatDate date="${enr.classSession.startDate}" /> </g:link>
-                </td>
-            </tr>
-        </g:each>
-    </table>
+    <div id="studentEnrollmentData${studentInstance.id}">
+        <enrollio:studentEnrollments studentInstance="${studentInstance}" />
+    </div>
+    <div>
+        <a href="#" class="enrollStudent" 
+            data-student-id="${studentInstance.id}"
+            data-student-name="${studentInstance}">Quick Add</a>
+    </div>
 </td>

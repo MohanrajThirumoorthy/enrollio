@@ -200,29 +200,25 @@ class EnrollioTagLib {
     def studentEnrollments = { attrs ->
         def student = attrs['studentInstance']
         def enrollments = Enrollment.findAllByStudent(student)
+            .sort { it.classSession.startDate }
+            .reverse()
+            
+        // TODO REALLY what is this?
         enrollments.each { 
             if (it.classSession.lessonDates) { 
                 println it.classSession.lessonDates.last() 
             }
         }
-        def todaysDate = new Date()
-        out << enrollments.sort { it.classSession.startDate }.reverse().collect { enrollment ->
-            def lessonDates = enrollment.classSession.lessonDates
-            def courseAbbrev = enrollment.classSession.course.name.split().collect {
-                it.toCharacter()
-            }.join()
-            
-            courseAbbrev = courseAbbrev + ' ' + enrollment.classSession.startDate.format('MMM d yyyy h:mm')
 
-            if ( lessonDates && lessonDates.last().lessonDate >= todaysDate) { 
-                g.link(class:'futureEnrollment', controller:'classSession', action:'show', 
-                       id: enrollment.classSession.id, courseAbbrev)
-            }
-            else {
-                g.link(class:'pastEnrollment', controller:'classSession', action:'show', 
-                       id: enrollment.classSession.id, courseAbbrev)
-            }
-        }.join(',')
+        def todaysDate = new Date()
+
+        
+        out << "<ul>"
+        enrollments*.classSession.each { cs ->
+            out << "<li>" + 
+                g.link(controller:'classSession', action:'show', id:cs.id, cs.name + " - " + cs.course.name) + "</li>"
+        }
+        out << "</ul>"
     }
 
     def commentList = { attrs ->
