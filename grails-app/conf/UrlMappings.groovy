@@ -31,6 +31,7 @@ class UrlMappings {
         "/welcomeLetters/$id"(controller: 'classSession', action: 'welcomeLetters')
         "/quickCallList/$id"(controller: 'classSession', action: 'quickCallList')
         "/envelopes/$id"(controller: 'classSession', action: 'envelopes')
+        "/classSession/lessonDateData/$id"(controller: 'classSession', action: 'lessonDateData')
 
         // attendance controller
         "/updateStatus"(controller: 'attendance', action: 'updateStatus')
