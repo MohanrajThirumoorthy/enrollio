@@ -137,7 +137,6 @@ class ClassSessionController {
 
     def show = {
         def classSessionInstance = ClassSession.get( params.id )
-        println "Clas ss " + classSessionInstance
 
         def lessonDateInstance = classSessionService.closestLessonDate(classSessionInstance)
         if (lessonDateInstance) attendanceService.initializeAttendees(lessonDateInstance);
@@ -146,7 +145,10 @@ class ClassSessionController {
             flash.message = "ClassSession not found with id ${params.id}"
             redirect(action:list)
         }
-        else { return [ classSessionInstance : classSessionInstance, lessonDateInstance : lessonDateInstance ] }
+        else { 
+            return [ classSessionInstance : classSessionInstance, 
+                lessonDateInstance : lessonDateInstance ] 
+        }
     }
 
     def delete = {
