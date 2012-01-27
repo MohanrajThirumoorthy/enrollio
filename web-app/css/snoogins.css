@@ -262,16 +262,25 @@ img {
 .highlighted-header {
     color : #E17009;
 }
-
 #attendance-table a {
     text-decoration: none;
 }
+
+#attendance-table tr.contact-odd {
+    background-color: #DFEFFC;
+}
+
+#attendance-table td {
+    vertical-align: super;
+}
+
 #attendance-table {
     margin-left: 10px;
 }
+
 #attendance-table th, #attendance-table td {
     /* border-left: 1px solid #A6C9E2; */
     border-bottom: 1px solid #A6C9E2;
-    padding: 5px 20px 5px 20px;
+    padding: 5px 10px 5px 10px;
 
 }
