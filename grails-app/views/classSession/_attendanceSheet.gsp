@@ -28,12 +28,15 @@
         </style>
     </head>
     <body>
+        <div>
         <h3>Attendance: ${classSessionInstance.course.name} - ${classSessionInstance.name}</h3>
+        
+        </div>
         <table>
             <thead>
                 <tr>
-                    <th>Contact</th>
-                    <th style="width:300px; !important">Student</th>
+                    <th>Contacts: ${enrollmentData.size()}</th>
+                    <th style="width:300px; !important">Students: ${classSessionInstance.enrollments.size()}</th>
                     <g:each var="lessonDate" in="${classSessionInstance.lessonDates}">
                         <th>${lessonDate.shortInfo()}</th>
                     </g:each>
