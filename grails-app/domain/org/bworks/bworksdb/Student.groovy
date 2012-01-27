@@ -41,6 +41,14 @@ class Student implements Commentable {
         return names?.join(' ') ?: ''
     }
 
+    String sortableName() {
+        def names = [ lastName, firstName, middleName  ].findAll {
+            it != null
+        }
+
+        return names?.join(' ') ?: ''
+    }
+
     String toString(){
         fullName()
     }

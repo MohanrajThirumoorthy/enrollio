@@ -40,6 +40,14 @@ class Contact implements Commentable {
         lastName(blank:false)
     }
 
+    String sortableName() {
+        def names = [ lastName, firstName ].findAll {
+            it != null
+        }
+
+        return names?.join(' ') ?: ''
+    }
+
     String toString(){
         return firstName + ' ' + lastName
     }

@@ -16,7 +16,12 @@ class Attendance implements Comparable {
     }
 
     int compareTo(obj) {
-        this.student.toString() <=> obj.student.toString()
+        def contactCompare = this.student.contact.sortableName() <=> 
+            obj.student.contact.sortableName()
+        if (contactCompare != 0) {
+            return contactCompare
+        }
+        return this.student.sortableName() <=> obj.student.sortableName()
     }
 }
 
