@@ -19,5 +19,10 @@ class AttendanceService {
                 ld.save()
             }
         }
+
+        // return map of attendences w/studentID as key
+        return ld.attendees.inject([ : ]) { map, attendance ->
+           map[ attendance.student.id ] = attendance; map
+        }
     }
 }

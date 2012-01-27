@@ -33,6 +33,8 @@
     <table id="attendance-table">
         <thead>
             <tr>
+
+            	<th>Contact</th>
             	<th>Student</th>
             	<th>Present</th>
             	<th>Absent</th>
@@ -40,11 +42,18 @@
             </tr>
         </thead>
         <tbody>
-            <g:each var="attendance" in="${lessonDateInstance.attendees}">
-            <tr>
+            <g:each var="contact" in="${enrollmentData}" status="c">
+            <g:each var="student" in="${contact.students}" status="s">
+            <g:set var="attendance" value="${attendances[student.id]}" />
+            <tr class="${ c%2 == 0 ? 'contact-even' : 'contact-odd'}">
+                <g:if test="${s == 0}">
+                <td rowspan="${contact.students.size()}">
+                    <g:link controller="contact" action="show" id="${contact.contact.id}">${contact.contact.toString()}</g:link>
+                </td>
+                </g:if>
                 <td>
                     <g:link controller="contact" action="show" 
-                    params="[studentId:attendance.student.id]">${attendance.student}</g:link>
+                    params="[studentId:student.id]">${student}</g:link>
                 </td>
                 <td>
                     <g:radio class="statusSwitcher" 
@@ -70,6 +79,7 @@
                     checked="${attendance.status == 'late'}"/>
                 </td>
             </tr>
+            </g:each>
             </g:each>
             <g:if test="${!lessonDateInstance.attendees}" >
             <tr>

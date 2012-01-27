@@ -139,7 +139,10 @@ class ClassSessionController {
         def classSessionInstance = ClassSession.get( params.id )
 
         def lessonDateInstance = classSessionService.closestLessonDate(classSessionInstance)
-        if (lessonDateInstance) attendanceService.initializeAttendees(lessonDateInstance);
+        def attendances
+        if (lessonDateInstance) {
+            attendances = attendanceService.initializeAttendees(lessonDateInstance);
+        }
 
         if(!classSessionInstance) {
             flash.message = "ClassSession not found with id ${params.id}"
@@ -147,7 +150,9 @@ class ClassSessionController {
         }
         else { 
             return [ classSessionInstance : classSessionInstance, 
-                lessonDateInstance : lessonDateInstance ] 
+                enrollmentData: classSessionService.attendanceMapForSession(classSessionInstance),
+                lessonDateInstance : lessonDateInstance,
+                attendances: attendances ] 
         }
     }
 
