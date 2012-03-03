@@ -137,18 +137,30 @@ class ClassSessionController {
 
     def show = {
         def classSessionInstance = ClassSession.get( params.id )
-
-        def lessonDateInstance = classSessionService.closestLessonDate(classSessionInstance)
-        def attendances
-        if (lessonDateInstance) {
-            attendances = attendanceService.initializeAttendees(lessonDateInstance);
-        }
-
         if(!classSessionInstance) {
             flash.message = "ClassSession not found with id ${params.id}"
             redirect(action:list)
         }
-        else { 
+        else {
+            def lessonDateInstance
+            def attendances
+
+            // If user wants a specific lessonDate, then give it to 'em
+            if (params.lessonDateId) {
+                lessonDateInstance = LessonDate.get(params.lessonDateId)
+                if (!lessonDateInstance) {
+                    flash.message = "Lesson date not found with id: ${params.lessonDateId}"
+                }
+            }
+            else {
+                // Find closest class to highlight/show in attendance sheet.
+                lessonDateInstance = classSessionService.closestLessonDate(classSessionInstance) 
+            }
+
+            if (lessonDateInstance) {
+                attendances = attendanceService.initializeAttendees(lessonDateInstance)
+            }
+
             return [ classSessionInstance : classSessionInstance, 
                 enrollmentData: classSessionService.attendanceMapForSession(classSessionInstance),
                 lessonDateInstance : lessonDateInstance,
