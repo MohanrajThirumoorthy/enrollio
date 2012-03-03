@@ -26,7 +26,6 @@ class UrlMappings {
         "/attendanceSheet/$id"(controller: 'classSession', action: 'attendanceSheet')
         "/enrollStudent"(controller: 'classSession', action: 'enrollStudent')
         "/enrollStudent/$id"(controller:'course', action:'enrollStudent')
-        "/attendance/$id"(controller: 'classSession', action: 'attendance')
         "/reserveContact"(controller: 'classSession', action: 'reserveContact')
         "/welcomeLetters/$id"(controller: 'classSession', action: 'welcomeLetters')
         "/quickCallList/$id"(controller: 'classSession', action: 'quickCallList')

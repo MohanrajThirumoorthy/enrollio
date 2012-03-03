@@ -71,8 +71,8 @@ class ClassSessionController {
               title : lessonDate.lesson.name.toString().split()[0],
              // give unix-timestamp (seconds since epoch), which Javascript likes
               start : lessonDate.lessonDate.getTime().intdiv(1000),
-              url   : createLink(action:'attendance', controller:'classSession', 
-                      id:lessonDate.classSession.id, 
+              url   : createLink(controller:'classSession', action:'show', 
+                      id: lessonDate.classSession.id, 
                       params: [ 'lessonDateId':lessonDate.id ]),
               className : 'buph'
 
@@ -390,45 +390,6 @@ class ClassSessionController {
 
         }
 
-    }
-
-    // TODO: this action is pretty messy and should be refactored.
-    // Especially the duplicate calls to attendanceService
-    def attendance = {
-        def classSessionInstance = ClassSession.get( params.id )
-        if(!classSessionInstance) {
-            flash.message = "ClassSession not found with id ${params.id}"
-            redirect(action:list)
-        }
-        else {
-            // If user wants a specific lessonDate, then give it to 'em
-            if (params.lessonDateId) {
-                def lessonDateInstance = LessonDate.get(params.lessonDateId)
-                if (!lessonDateInstance) {
-                    flash.message = "Lesson date not found with id: ${params.lessonDateId}"
-                    redirect(action:show, id:classSessionInstance.id)
-                }
-                else {
-                    // Init. attendances if need be.
-                    attendanceService.initializeAttendees(lessonDateInstance)
-                    render(view:'show', model:[ courseInstanceList : Course.list(), classSessionInstance : classSessionInstance, lessonDateInstance : lessonDateInstance ])
-                }
-            }
-            else {
-                // Find closest class to highlight/show in attendance sheet.
-                def closestLessonDate = classSessionService.closestLessonDate(classSessionInstance) 
-                if (closestLessonDate) {
-                    // Init. attendances if need be.
-                    attendanceService.initializeAttendees(closestLessonDate)
-
-                    render(view:'show', model:[ courseInstanceList : Course.list(), classSessionInstance : classSessionInstance, lessonDateInstance : closestLessonDate ])
-                }
-                else {
-                    flash.message = "You don't have any lesson dates scheduled for this session"
-                    redirect(action:show, id:classSessionInstance.id)
-                }
-            }
-        }
     }
 
     def printWelcomeLetter = {
